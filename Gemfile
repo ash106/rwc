@@ -24,15 +24,15 @@ gem 'unicorn'
 group :development do
   gem 'foreman'
   gem 'spring'
-  gem 'spring-commands-rspec'
+  # gem 'spring-commands-rspec'
 end
 
 group :development, :test do
   gem 'awesome_print'
   gem 'dotenv-rails'
-  gem 'factory_girl_rails'
+  # gem 'factory_girl_rails'
   gem 'pry-rails'
-  gem 'rspec-rails', '~> 2.14.0'
+  # gem 'rspec-rails', '~> 2.14.0'
 end
 
 group :test do
