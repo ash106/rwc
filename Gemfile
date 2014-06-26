@@ -21,6 +21,7 @@ gem 'title'
 gem 'uglifier'
 gem 'unicorn'
 gem 'devise', '~> 3.2.4'
+gem 'rolify', '~> 3.4'
 
 group :development do
   gem 'foreman'
