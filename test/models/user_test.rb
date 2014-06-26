@@ -1,7 +1,7 @@
 require 'test_helper'
+
 class UserTest < ActiveSupport::TestCase
-  # test 'has valid test data' do
-  #   # assert_valid agents(:bond)
+  # test "the truth" do
   #   assert true
   # end
 end

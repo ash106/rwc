@@ -8,6 +8,7 @@ if Rails.env.development?
       # include FactoryGirl::Syntax::Methods
 
       # create(:user, email: 'user@example.com', password: 'password')
+      # User.create!(email: 'user@example.com', password: 'changeme')
     end
   end
 end
