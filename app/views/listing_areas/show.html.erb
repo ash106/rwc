@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @listing_area.name %>
+</p>
+
+<p>
+  <strong>Policy:</strong>
+  <%= @listing_area.policy %>
+</p>
+
+<%= link_to 'Edit', edit_listing_area_path(@listing_area) %> |
+<%= link_to 'Back', listing_areas_path %>
