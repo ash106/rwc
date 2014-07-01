@@ -1,37 +1,15 @@
-<%= form_for(@wanted) do |f| %>
-  <% if @wanted.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@wanted.errors.count, "error") %> prohibited this wanted from being saved:</h2>
+<%= simple_form_for(@wanted, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @wanted.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="form-inputs">
+    <%= f.input :volume %>
+    <%= f.input :source, collection: ["Surface","Well","Surface or Well"] %>
+    <%= f.input :description %>
+    <%= f.input :contact_info %>
+    <%= f.association :listing_area %>
+  </div>
 
-  <div class="field">
-    <%= f.label :volume %><br>
-    <%= f.text_field :volume %>
-  </div>
-  <div class="field">
-    <%= f.label :source %><br>
-    <%= f.text_field :source %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_info %><br>
-    <%= f.text_field :contact_info %>
-  </div>
-  <div class="field">
-    <%= f.label :listing_area_id %><br>
-    <%= f.text_field :listing_area_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions text-center">
+    <%= f.button :submit %>
   </div>
 <% end %>
