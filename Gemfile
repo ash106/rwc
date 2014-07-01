@@ -27,6 +27,8 @@ gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'aws-sdk'
 gem 'nokogiri', '~> 1.6.2.1'
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'rabl'
+gem 'active_model_serializers'
 
 group :development do
   gem 'foreman'

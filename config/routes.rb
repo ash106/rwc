@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get "/listings-dashboard", to: "listings#dashboard", as: :listings_dashboard
   get "/buy-sell", to: "listings#buy_sell", as: :buy_sell
+  get "/get-listings-data", to: "listings#get_listings_data", as: :get_listings_data
 
   resources :listing_areas
 
