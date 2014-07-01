@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :for_sales
+
   resources :wanteds
 
   get "/listings-dashboard", to: "listings#dashboard", as: :listings_dashboard

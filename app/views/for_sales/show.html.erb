@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Volume:</strong>
+  <%= @for_sale.volume %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @for_sale.source %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @for_sale.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @for_sale.price %>
+</p>
+
+<p>
+  <strong>Contact info:</strong>
+  <%= @for_sale.contact_info %>
+</p>
+
+<p>
+  <strong>Listing area:</strong>
+  <%= @for_sale.listing_area.name %>
+</p>
+
+<%= link_to 'Edit', edit_for_sale_path(@for_sale) %> |
+<%= link_to 'Back', for_sales_path %>

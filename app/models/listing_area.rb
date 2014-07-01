@@ -1,7 +1,8 @@
 require 'open-uri'
 
 class ListingArea < ActiveRecord::Base
-  has_many :wanteds
+  has_many :wanteds, dependent: :destroy
+  has_many :for_sales, dependent: :destroy
   validates :name, presence: true
   has_attached_file :kml, path: ":class/:id/:filename"
   after_create :queue_processing

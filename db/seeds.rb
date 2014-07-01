@@ -37,3 +37,10 @@ Wanted.create!(volume: 100, source: 'Surface', description: 'Need water from irr
 Wanted.create!(volume: 40, source: 'Surface or Well', description: 'Need 30 to 40 acre-feet to move to a combination of well and Provo River water. Washington and South Kamas shares will work, however, 1st class Provo River rights are preferred.', listing_area_id: slv_north.id)
 Wanted.create!(volume: 15, source: 'Well', description: 'Need 10 to 20 acre-feet of water and will only purchase based on approved change application', listing_area_id: slv_north.id)
 Wanted.create!(volume: 10, source: 'Well', description: 'Need this water for a few lots in a development.', listing_area_id: slv_north.id)
+
+ForSale.create!(volume: 100, source: 'Well', description: 'This can be moved throughout most of this area', price: 4000, listing_area_id: slv_central.id)
+ForSale.create!(volume: 27, source: 'Well', description: 'Seller is willing to sell portions or all.', price: 3800, listing_area_id: slv_east.id)
+ForSale.create!(volume: 36, source: 'Well', description: 'This is certificated water in Rush Valley and can move anywhere in Rush Valley', price: 3000, listing_area_id: slv_east.id)
+ForSale.create!(volume: 74, source: 'Surface', description: 'This is based on North Jordan Shares that can transfer to this area to a well.', price: 3100, listing_area_id: slv_west.id)
+ForSale.create!(volume: 300, source: 'Mona Res.', description: 'This is based on shares in Goshen Irrigation Company.', price: 6500, listing_area_id: slv_west.id)
+ForSale.create!(volume: 16, source: 'Provo River', description: 'This is 1st class Provo River water that is located in the Midway Area.', price: 10000, listing_area_id: slv_west.id)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701051835) do
+ActiveRecord::Schema.define(version: 20140701064952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,19 @@ ActiveRecord::Schema.define(version: 20140701051835) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
+  create_table "for_sales", force: true do |t|
+    t.float    "volume"
+    t.string   "source"
+    t.text     "description"
+    t.integer  "price"
+    t.string   "contact_info"
+    t.integer  "listing_area_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "for_sales", ["listing_area_id"], name: "index_for_sales_on_listing_area_id", using: :btree
 
   create_table "listing_areas", force: true do |t|
     t.string   "name"
