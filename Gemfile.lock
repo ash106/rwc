@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: a424b82daed0247d5926ddbff14dffb8553b1695
+  specs:
+    paperclip (4.1.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -33,6 +43,9 @@ GEM
       multi_json
     arel (5.0.1.20140414130214)
     awesome_print (1.2.0)
+    aws-sdk (1.45.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     bcrypt (3.1.7)
     bourbon (3.2.3)
       sass (~> 3.2)
@@ -48,6 +61,10 @@ GEM
     capybara-webkit (1.1.1)
       capybara (>= 2.0.2, < 2.2.0)
       json
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.4)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
@@ -205,6 +222,7 @@ PLATFORMS
 DEPENDENCIES
   airbrake
   awesome_print
+  aws-sdk
   bourbon (~> 3.2.1)
   cancancan (~> 1.8)
   capybara-webkit (>= 1.0.0)
@@ -222,6 +240,7 @@ DEPENDENCIES
   launchy
   neat (~> 1.5.1)
   newrelic_rpm (>= 3.7.3)
+  paperclip!
   pg
   pry-rails
   rack-timeout

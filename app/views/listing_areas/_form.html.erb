@@ -1,4 +1,4 @@
-<%= form_for(@listing_area) do |f| %>
+<%= form_for @listing_area, :html => { :multipart => true } do |f| %>
   <% if @listing_area.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@listing_area.errors.count, "error") %> prohibited this listing_area from being saved:</h2>
@@ -18,6 +18,10 @@
   <div class="field">
     <%= f.label :policy %><br>
     <%= f.text_area :policy %>
+  </div>
+  <div class="field">
+    <%= f.label :kml %><br>
+    <%= f.file_field :kml %>
   </div>
   <div class="actions">
     <%= f.submit %>

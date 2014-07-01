@@ -53,6 +53,6 @@ class ListingAreasController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def listing_area_params
-      params.require(:listing_area).permit(:name, :policy)
+      params.require(:listing_area).permit(:name, :policy, :kml)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140628044459) do
+ActiveRecord::Schema.define(version: 20140701014720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,10 @@ ActiveRecord::Schema.define(version: 20140628044459) do
     t.text     "policy"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "kml_file_name"
+    t.string   "kml_content_type"
+    t.integer  "kml_file_size"
+    t.datetime "kml_updated_at"
   end
 
   create_table "roles", force: true do |t|

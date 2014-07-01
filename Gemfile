@@ -23,6 +23,8 @@ gem 'unicorn'
 gem 'devise', '~> 3.2.4'
 gem 'rolify', '~> 3.4'
 gem 'cancancan', '~> 1.8'
+gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'aws-sdk'
 
 group :development do
   gem 'foreman'
