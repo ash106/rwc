@@ -14,3 +14,20 @@ user = User.create!(email: 'rileylog@gmail.com', password: 'changeme')
 user.add_role :admin
 user = User.create!(email: 'alex.howington@gmail.com', password: 'changeme')
 user.add_role :admin
+
+listing_area = ListingArea.new(name: 'SLV Central', policy: 'Salt Lake Valley Central policy goes here')
+listing_area.kml = File.open(File.join(Rails.root, "/test/fixtures/SLV_Central.kml"))
+listing_area.save!
+ListingArea.parse_kml(listing_area.id)
+listing_area = ListingArea.new(name: 'SLV East', policy: 'Salt Lake Valley East policy goes here')
+listing_area.kml = File.open(File.join(Rails.root, "/test/fixtures/SLV_East.kml"))
+listing_area.save!
+ListingArea.parse_kml(listing_area.id)
+listing_area = ListingArea.new(name: 'SLV North', policy: 'Salt Lake Valley North policy goes here')
+listing_area.kml = File.open(File.join(Rails.root, "/test/fixtures/SLV_North.kml"))
+listing_area.save!
+ListingArea.parse_kml(listing_area.id)
+listing_area = ListingArea.new(name: 'SLV West', policy: 'Salt Lake Valley West policy goes here')
+listing_area.kml = File.open(File.join(Rails.root, "/test/fixtures/SLV_West.kml"))
+listing_area.save!
+ListingArea.parse_kml(listing_area.id)

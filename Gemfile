@@ -25,6 +25,7 @@ gem 'rolify', '~> 3.4'
 gem 'cancancan', '~> 1.8'
 gem 'paperclip', github: 'thoughtbot/paperclip'
 gem 'aws-sdk'
+gem 'nokogiri', '~> 1.6.2.1'
 
 group :development do
   gem 'foreman'

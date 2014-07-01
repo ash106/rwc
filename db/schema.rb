@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140701014720) do
+ActiveRecord::Schema.define(version: 20140701025539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20140701014720) do
     t.string   "kml_content_type"
     t.integer  "kml_file_size"
     t.datetime "kml_updated_at"
+    t.json     "polygon"
   end
 
   create_table "roles", force: true do |t|
