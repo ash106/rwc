@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  volume: 1.5
+  source: MyString
+  description: MyText
+  contact_info: MyString
+  listing_area_id: 
+
+two:
+  volume: 1.5
+  source: MyString
+  description: MyText
+  contact_info: MyString
+  listing_area_id: 

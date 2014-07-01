@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Volume:</strong>
+  <%= @wanted.volume %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @wanted.source %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @wanted.description %>
+</p>
+
+<p>
+  <strong>Contact info:</strong>
+  <%= @wanted.contact_info %>
+</p>
+
+<p>
+  <strong>Listing area:</strong>
+  <%= @wanted.listing_area %>
+</p>
+
+<%= link_to 'Edit', edit_wanted_path(@wanted) %> |
+<%= link_to 'Back', wanteds_path %>
