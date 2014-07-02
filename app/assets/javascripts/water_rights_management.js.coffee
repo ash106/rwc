@@ -36,6 +36,11 @@ $ ->
     return
 
   map.data.addListener 'click', (event) ->
+    map.data.revertStyle()
+    if event.feature.getGeometry().getType() == "Polygon"
+      map.data.overrideStyle event.feature, fillColor: '#76b5c6', strokeColor: '#6eb3c6'
+    if event.feature.getGeometry().getType() == "Point"
+      map.data.overrideStyle event.feature, icon: 'http://www.googlemapsmarkers.com/v1/009900/'
     clicked_water_rights = event.feature.getProperty "water_rights"
     console.log water_rights
     $('#water_rights_table').html(
