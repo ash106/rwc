@@ -33,6 +33,7 @@ gem 'active_model_serializers'
 group :development do
   gem 'foreman'
   gem 'spring'
+  gem 'meta_request', '~> 0.3.0'
   # gem 'spring-commands-rspec'
 end
 
