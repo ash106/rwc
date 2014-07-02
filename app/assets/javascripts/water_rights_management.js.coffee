@@ -36,7 +36,14 @@ $ ->
     return
 
   map.data.addListener 'click', (event) ->
-    # console.log event.feature.getProperty "water_rights"
+    clicked_water_rights = event.feature.getProperty "water_rights"
     console.log water_rights
+    $('#water_rights_table').html(
+      for wr in water_rights
+        if _.findWhere clicked_water_rights, wr
+          "<tr class='highlighted'><td>#{wr.number}</td><td>#{wr.flow_cfs}</td><td>#{wr.change_application_number}</td></tr>"
+        else
+          "<tr><td>#{wr.number}</td><td>#{wr.flow_cfs}</td><td>#{wr.change_application_number}</td></tr>"
+    )
     return
 
