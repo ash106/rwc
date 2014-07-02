@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :water_rights
+
   resources :point_of_diversions
 
   resources :place_of_use_areas

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  flow_cfs: 9.99
+  flow_ac_ft: 9.99
+  sole_supply_acres: 9.99
+  place_of_use: MyString
+  change_application_number: MyString
+  proof_due_date: 2014-07-01
+
+two:
+  number: MyString
+  flow_cfs: 9.99
+  flow_ac_ft: 9.99
+  sole_supply_acres: 9.99
+  place_of_use: MyString
+  change_application_number: MyString
+  proof_due_date: 2014-07-01

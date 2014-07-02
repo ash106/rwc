@@ -1,0 +1,39 @@
+<!-- <p id="notice"><%#= notice %></p> -->
+
+<p>
+  <strong>Number:</strong>
+  <%= @water_right.number %>
+</p>
+
+<p>
+  <strong>Flow cfs:</strong>
+  <%= @water_right.flow_cfs %>
+</p>
+
+<p>
+  <strong>Flow ac ft:</strong>
+  <%= @water_right.flow_ac_ft %>
+</p>
+
+<p>
+  <strong>Sole supply acres:</strong>
+  <%= @water_right.sole_supply_acres %>
+</p>
+
+<p>
+  <strong>Place of use:</strong>
+  <%= @water_right.place_of_use %>
+</p>
+
+<p>
+  <strong>Change application number:</strong>
+  <%= @water_right.change_application_number %>
+</p>
+
+<p>
+  <strong>Proof due date:</strong>
+  <%= @water_right.proof_due_date %>
+</p>
+
+<%= link_to 'Edit', edit_water_right_path(@water_right) %> |
+<%= link_to 'Back', water_rights_path %>

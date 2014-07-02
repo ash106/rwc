@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702022432) do
+ActiveRecord::Schema.define(version: 20140702025529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,5 +126,17 @@ ActiveRecord::Schema.define(version: 20140702022432) do
   end
 
   add_index "wanteds", ["listing_area_id"], name: "index_wanteds_on_listing_area_id", using: :btree
+
+  create_table "water_rights", force: true do |t|
+    t.string   "number"
+    t.decimal  "flow_cfs"
+    t.decimal  "flow_ac_ft"
+    t.decimal  "sole_supply_acres"
+    t.string   "place_of_use"
+    t.string   "change_application_number"
+    t.date     "proof_due_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

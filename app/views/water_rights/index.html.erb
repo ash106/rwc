@@ -1,0 +1,37 @@
+<h1>Listing water_rights</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Number</th>
+      <th>Flow cfs</th>
+      <th>Flow ac ft</th>
+      <th>Sole supply acres</th>
+      <th>Place of use</th>
+      <th>Change application number</th>
+      <th>Proof due date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @water_rights.each do |water_right| %>
+      <tr>
+        <td><%= water_right.number %></td>
+        <td><%= water_right.flow_cfs %></td>
+        <td><%= water_right.flow_ac_ft %></td>
+        <td><%= water_right.sole_supply_acres %></td>
+        <td><%= water_right.place_of_use %></td>
+        <td><%= water_right.change_application_number %></td>
+        <td><%= water_right.proof_due_date %></td>
+        <td><%= link_to 'Show', water_right %></td>
+        <td><%= link_to 'Edit', edit_water_right_path(water_right) %></td>
+        <td><%= link_to 'Destroy', water_right, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Water right', new_water_right_path %>
