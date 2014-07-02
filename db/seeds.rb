@@ -58,4 +58,17 @@ area_three.kml = File.open(File.join(Rails.root, "/test/fixtures/Area_3.kml"))
 area_three.save!
 PlaceOfUseArea.parse_kml(area_three.id)
 
+stream = PointOfDiversion.new(name: 'Stream')
+stream.kml = File.open(File.join(Rails.root, "/test/fixtures/Stream.kml"))
+stream.save!
+PointOfDiversion.parse_kml(stream.id)
+well = PointOfDiversion.new(name: 'Well')
+well.kml = File.open(File.join(Rails.root, "/test/fixtures/Well.kml"))
+well.save!
+PointOfDiversion.parse_kml(well.id)
+well_two = PointOfDiversion.new(name: 'Well Two')
+well_two.kml = File.open(File.join(Rails.root, "/test/fixtures/Well2.kml"))
+well_two.save!
+PointOfDiversion.parse_kml(well_two.id)
+
 

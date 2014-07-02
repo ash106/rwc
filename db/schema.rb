@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702020545) do
+ActiveRecord::Schema.define(version: 20140702022432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,17 @@ ActiveRecord::Schema.define(version: 20140702020545) do
   create_table "place_of_use_areas", force: true do |t|
     t.string   "name"
     t.json     "polygon"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "kml_file_name"
+    t.string   "kml_content_type"
+    t.integer  "kml_file_size"
+    t.datetime "kml_updated_at"
+  end
+
+  create_table "point_of_diversions", force: true do |t|
+    t.string   "name"
+    t.json     "point"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "kml_file_name"
