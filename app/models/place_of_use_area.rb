@@ -2,6 +2,8 @@ require 'open-uri'
 
 class PlaceOfUseArea < ActiveRecord::Base
   validates :name, presence: true
+  has_many :place_of_use_area_water_rights
+  has_many :water_rights, through: :place_of_use_area_water_rights
   has_attached_file :kml, path: ":class/:id/:filename"
   after_create :queue_processing
   # validates_attachment_content_type :kml, content_type: "application/vnd.google-earth.kml+xml"

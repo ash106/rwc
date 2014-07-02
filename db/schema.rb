@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702025529) do
+ActiveRecord::Schema.define(version: 20140702031745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 20140702025529) do
     t.json     "polygon"
   end
 
+  create_table "place_of_use_area_water_rights", force: true do |t|
+    t.integer  "place_of_use_area_id"
+    t.integer  "water_right_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "place_of_use_area_water_rights", ["place_of_use_area_id"], name: "index_place_of_use_area_water_rights_on_place_of_use_area_id", using: :btree
+  add_index "place_of_use_area_water_rights", ["water_right_id"], name: "index_place_of_use_area_water_rights_on_water_right_id", using: :btree
+
   create_table "place_of_use_areas", force: true do |t|
     t.string   "name"
     t.json     "polygon"
@@ -67,6 +77,26 @@ ActiveRecord::Schema.define(version: 20140702025529) do
     t.integer  "kml_file_size"
     t.datetime "kml_updated_at"
   end
+
+  create_table "place_of_use_areas_water_rights", force: true do |t|
+    t.integer  "place_of_use_area_id"
+    t.integer  "water_right_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "place_of_use_areas_water_rights", ["place_of_use_area_id"], name: "index_place_of_use_areas_water_rights_on_place_of_use_area_id", using: :btree
+  add_index "place_of_use_areas_water_rights", ["water_right_id"], name: "index_place_of_use_areas_water_rights_on_water_right_id", using: :btree
+
+  create_table "point_of_diversion_water_rights", force: true do |t|
+    t.integer  "point_of_diversion_id"
+    t.integer  "water_right_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "point_of_diversion_water_rights", ["point_of_diversion_id"], name: "index_point_of_diversion_water_rights_on_point_of_diversion_id", using: :btree
+  add_index "point_of_diversion_water_rights", ["water_right_id"], name: "index_point_of_diversion_water_rights_on_water_right_id", using: :btree
 
   create_table "point_of_diversions", force: true do |t|
     t.string   "name"
