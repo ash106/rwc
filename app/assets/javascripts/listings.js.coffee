@@ -5,7 +5,7 @@ $ ->
     mapTypeId: google.maps.MapTypeId.ROADMAP
   map = new google.maps.Map($("#map_canvas")[0], mapOptions)
 
-  map.data.loadGeoJson('http://rwc.dev/get-listings-data.json')
+  map.data.loadGeoJson('/get-listings-data.json')
 
   map.data.addListener 'click', (event) ->
     $('#listing_title').html "#{event.feature.getProperty "name"} Listings"
