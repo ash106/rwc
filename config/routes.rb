@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :place_of_use_areas
+
   resources :for_sales
 
   resources :wanteds

@@ -1,0 +1,14 @@
+<!-- <p id="notice"><%#= notice %></p> -->
+
+<p>
+  <strong>Name:</strong>
+  <%= @place_of_use_area.name %>
+</p>
+
+<p>
+  <strong>Polygon:</strong>
+  <%= @place_of_use_area.polygon %>
+</p>
+
+<%= link_to 'Edit', edit_place_of_use_area_path(@place_of_use_area) %> |
+<%= link_to 'Back', place_of_use_areas_path %>

@@ -44,3 +44,18 @@ ForSale.create!(volume: 36, source: 'Well', description: 'This is certificated w
 ForSale.create!(volume: 74, source: 'Surface', description: 'This is based on North Jordan Shares that can transfer to this area to a well.', price: 3100, listing_area_id: slv_west.id)
 ForSale.create!(volume: 300, source: 'Mona Res.', description: 'This is based on shares in Goshen Irrigation Company.', price: 6500, listing_area_id: slv_west.id)
 ForSale.create!(volume: 16, source: 'Provo River', description: 'This is 1st class Provo River water that is located in the Midway Area.', price: 10000, listing_area_id: slv_west.id)
+
+area_one = PlaceOfUseArea.new(name: 'Area One')
+area_one.kml = File.open(File.join(Rails.root, "/test/fixtures/Area_1.kml"))
+area_one.save!
+PlaceOfUseArea.parse_kml(area_one.id)
+area_two = PlaceOfUseArea.new(name: 'Area Two')
+area_two.kml = File.open(File.join(Rails.root, "/test/fixtures/Area_2.kml"))
+area_two.save!
+PlaceOfUseArea.parse_kml(area_two.id)
+area_three = PlaceOfUseArea.new(name: 'Area Three')
+area_three.kml = File.open(File.join(Rails.root, "/test/fixtures/Area_3.kml"))
+area_three.save!
+PlaceOfUseArea.parse_kml(area_three.id)
+
+

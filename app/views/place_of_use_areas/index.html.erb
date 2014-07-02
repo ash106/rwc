@@ -1,0 +1,27 @@
+<h1>Listing place_of_use_areas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Polygon</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @place_of_use_areas.each do |place_of_use_area| %>
+      <tr>
+        <td><%= place_of_use_area.name %></td>
+        <td><%= place_of_use_area.polygon %></td>
+        <td><%= link_to 'Show', place_of_use_area %></td>
+        <td><%= link_to 'Edit', edit_place_of_use_area_path(place_of_use_area) %></td>
+        <td><%= link_to 'Destroy', place_of_use_area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Place of use area', new_place_of_use_area_path %>
