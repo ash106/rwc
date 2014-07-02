@@ -24,14 +24,20 @@ $ ->
       )
       setLinkListeners()
       console.log clicked_wr_number
+      selected_bounds = new google.maps.LatLngBounds()
       map.data.forEach (feature) ->
         feature_wrs = feature.getProperty "water_rights"
         for wr in feature_wrs
           if wr.number == clicked_wr_number
             if feature.getGeometry().getType() == "Polygon"
               map.data.overrideStyle feature, fillColor: '#76b5c6', strokeColor: '#6eb3c6'
+              points = feature.getGeometry().getAt(0).getArray()
+              for point in points
+                selected_bounds.extend point
             if feature.getGeometry().getType() == "Point"
               map.data.overrideStyle feature, icon: 'http://www.googlemapsmarkers.com/v1/76b5c6/'
+              selected_bounds.extend feature.getGeometry().get()
+        map.fitBounds selected_bounds
 
 
   map.data.addListener 'addfeature', (feature) ->
