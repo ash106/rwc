@@ -17,7 +17,7 @@ class PointOfDiversion < ActiveRecord::Base
     point_of_diversion.point = 
       {
         type: "Point",
-        coordinates: coordinates_set
+        coordinates: coordinates_set[0]
       }
     point_of_diversion.save
   end

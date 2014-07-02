@@ -8,6 +8,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-#map_canvas {
+#map_canvas.listings {
   height: 420px;
+}
+
+#map_canvas.water_rights {
+  height: 500px;
 }
