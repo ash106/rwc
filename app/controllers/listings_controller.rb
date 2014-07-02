@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
   def buy_sell
   end
 
-  def get_listings_data
+  def get_data
     @areas = ListingArea.all
     render json: @areas, root: "features", meta: "FeatureCollection", meta_key: 'type'
   end

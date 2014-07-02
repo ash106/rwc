@@ -1,3 +1,15 @@
 class PointOfDiversionSerializer < ActiveModel::Serializer
-  attributes :id, :name, :point
+  attributes :type, :properties, :geometry
+
+  def type
+    "Feature"
+  end
+
+  def properties
+    { id: object.id, name: object.name, water_rights: object.water_rights }
+  end
+
+  def geometry
+    object.point
+  end
 end
