@@ -1,8 +1,4 @@
 $ ->
-  _.uniqObjects = (arr) ->
-    _.uniq _.collect arr, (x) ->
-      JSON.stringify x
-
   mapOptions =
     center: new google.maps.LatLng(40.5999605, -111.747028)
     zoom: 9
@@ -13,6 +9,30 @@ $ ->
   map.data.loadGeoJson('/get-water-rights-data.json')
 
   water_rights = []
+
+  setLinkListeners = ->
+    $('td a').click (e) ->
+      e.preventDefault()
+      map.data.revertStyle()
+      clicked_wr_number = $(this).attr "href"
+      $('#water_rights_table').html(
+        for wr in water_rights
+          if wr.number == clicked_wr_number
+            "<tr class='highlighted'><td>#{wr.number}</td><td>#{wr.flow_cfs}</td><td>#{wr.change_application_number}</td><td><a href='#{wr.number}'>View Source</a></td></tr>"
+          else
+            "<tr><td>#{wr.number}</td><td>#{wr.flow_cfs}</td><td>#{wr.change_application_number}</td><td><a href='#{wr.number}'>View Source</a></td></tr>"
+      )
+      setLinkListeners()
+      console.log clicked_wr_number
+      map.data.forEach (feature) ->
+        feature_wrs = feature.getProperty "water_rights"
+        for wr in feature_wrs
+          if wr.number == clicked_wr_number
+            if feature.getGeometry().getType() == "Polygon"
+              map.data.overrideStyle feature, fillColor: '#76b5c6', strokeColor: '#6eb3c6'
+            if feature.getGeometry().getType() == "Point"
+              map.data.overrideStyle feature, icon: 'http://www.googlemapsmarkers.com/v1/76b5c6/'
+
 
   map.data.addListener 'addfeature', (feature) ->
     if feature.feature.getGeometry().getType() == "Polygon"
@@ -31,8 +51,9 @@ $ ->
                       parseInt wr.number.match(/(\d+)$/)[0], 10
     $('#water_rights_table').html(
       for wr in water_rights
-        "<tr><td>#{wr.number}</td><td>#{wr.flow_cfs}</td><td>#{wr.change_application_number}</td></tr>"
+        "<tr><td>#{wr.number}</td><td>#{wr.flow_cfs}</td><td>#{wr.change_application_number}</td><td><a href='#{wr.number}'>View Source</a></td></tr>"
     )
+    setLinkListeners()
     return
 
   map.data.addListener 'click', (event) ->
@@ -46,9 +67,11 @@ $ ->
     $('#water_rights_table').html(
       for wr in water_rights
         if _.findWhere clicked_water_rights, wr
-          "<tr class='highlighted'><td>#{wr.number}</td><td>#{wr.flow_cfs}</td><td>#{wr.change_application_number}</td></tr>"
+          "<tr class='highlighted'><td>#{wr.number}</td><td>#{wr.flow_cfs}</td><td>#{wr.change_application_number}</td><td><a href='#{wr.number}'>View Source</a></td></tr>"
         else
-          "<tr><td>#{wr.number}</td><td>#{wr.flow_cfs}</td><td>#{wr.change_application_number}</td></tr>"
+          "<tr><td>#{wr.number}</td><td>#{wr.flow_cfs}</td><td>#{wr.change_application_number}</td><td><a href='#{wr.number}'>View Source</a></td></tr>"
     )
+    setLinkListeners()
     return
+    
 
