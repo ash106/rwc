@@ -1,24 +1,22 @@
 <div class="row">
   <div class="col-md-6">
-    <h6 class="text-center">Click an area on the map below to bring up listings and information on the policy, then choose "For Sale" or "Wanted"</h6>
+    <h6 class="text-center">Click a point or area on the map below to bring up water rights associated with the clicked point/area</h6>
     <div class="water_rights" id="map_canvas">
     </div>
     <h6 class="text-center">Don't see the area that you want to buy or sell water rights in? Give us a call and we'll put it up on the website</h6>
   </div>
   <div class="col-md-6" id="data">
-    <h3 id="listing_title">Listings</h3>
-    <p id="area_policy" class="policy"></p>
-    <ul class="nav nav-pills">
-      <li class="active"><a href="#for_sale" data-toggle="pill">For Sale</a></li>
-      <li><a href="#wanted" data-toggle="pill">Wanted</a></li>
-    </ul>
-    <div class="tab-content">
-      <div class="tab-pane active" id="for_sale">
-        <p>Select an area on the map to get started!</p>
-      </div>
-      <div class="tab-pane" id="wanted">
-        <p>Select an area on the map to get started!</p>
-      </div>
+    <h3 id="water_rights_title">Water Rights</h3>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <th>Number</th>
+          <th>Flow CFS</th>
+          <th>Change Application Number</th>
+        </thead>
+        <tbody id="water_rights_table">
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
