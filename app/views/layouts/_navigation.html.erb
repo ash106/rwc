@@ -39,20 +39,20 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><%#= link_to 'Diligence Claims', diligence_claims_path %></li>
-            <li><%#= link_to 'Proof of Beneficial Use', proof_of_beneficial_use_path %></li>
-            <li><%#= link_to 'Change Application', change_application_path %></li>
-            <li><%#= link_to 'Reports of Conveyance (Title)', reports_of_conveyance_path %></li>
-            <li><%#= link_to '40 Year Plan', fourty_year_plan_path %></li>
-            <li><%#= link_to 'Extension Request', extension_request_path %></li>
-            <li><%#= link_to 'Declarations of Beneficial Use', declarations_of_beneficial_use_path %></li>
-            <li><%#= link_to 'Applications to Appropriate', applications_to_appropriate_path %></li>
-            <li><%#= link_to 'Non-use Application', non_use_application_path %></li>
+            <li><%= link_to 'Diligence Claims', page_path('diligence-claims') %></li>
+            <li><%= link_to 'Proof of Beneficial Use', page_path('proof-of-beneficial-use') %></li>
+            <li><%= link_to 'Change Application', page_path('change-application') %></li>
+            <li><%= link_to 'Reports of Conveyance (Title)', page_path('reports-of-conveyance') %></li>
+            <li><%= link_to '40 Year Plan', page_path('fourty-year-plan') %></li>
+            <li><%= link_to 'Extension Request', page_path('extension-request') %></li>
+            <li><%= link_to 'Declarations of Beneficial Use', page_path('declarations-of-beneficial-use') %></li>
+            <li><%= link_to 'Applications to Appropriate', page_path('applications-to-appropriate') %></li>
+            <li><%= link_to 'Non-use Application', page_path('non-use-application') %></li>
           </ul>
         </li>
-        <li><%#= link_to 'Profile', profile_path %></li>
-        <li><%#= link_to 'Contact', contact_path %></li>
-        <li><%#= link_to 'Buy/Sell', buy_sell_path %></li>
+        <li><%= link_to 'Profile', page_path('profile') %></li>
+        <li><%= link_to 'Contact', page_path('contact') %></li>
+        <li><%= link_to 'Buy/Sell', buy_sell_path %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
