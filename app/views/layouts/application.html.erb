@@ -10,10 +10,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>">
+  <header>
+    <%= render 'layouts/navigation' %>
+  </header>
+  <% unless params[:id] == "home" %>
   <div class="container">
+  <% end %>
     <%= render 'flashes' -%>
     <%= yield %>
     <%= render 'javascript' %>
+  <% unless params[:id] == "home" %>
   </div>
+  <% end %>
 </body>
 </html>
