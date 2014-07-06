@@ -5,6 +5,10 @@
 // @import 'neat';
 // @import 'base/base';
 
+$brand-primary: #222d69;
+$second-color: #9d9d9d;
+$third-color: #2c2e2d;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -18,4 +22,372 @@
 
 tr.highlighted {
   background-color: #76b5c6;
+}
+
+.button {
+  // $primary-color: #222D69;
+  // @include button;
+}
+footer, a {color: #222D69;}
+
+main {
+  padding-top: 0;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+
+h1 {
+  margin-top: 15px;
+  font-size: 1.65em;
+}
+
+h2 {
+  margin-top: 10px;
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+h4 {
+  font-size: 1.2em;
+  line-height: 1.2em;
+}
+
+
+#services-grid {
+  margin-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  .buggy-bastard {
+    width: 88px;
+  }
+  li {
+    list-style-type: none;
+    width: 106px;
+    a {
+      display: block;
+      color: white;
+      font-size: 1.15em;
+      line-height: 1.65em;
+    }
+  }
+}
+
+
+.btn-group > a {
+  height: 100px;
+  white-space: normal;
+}
+
+.btn-group > .btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-color: transparent;
+}
+
+.btn-second {
+  color: white;
+  background-color: $second-color;
+  border-color: darken($second-color, 5%);
+}
+
+.btn-second:hover, .btn-second:focus, .btn-second:active, .btn-second.active, .open > .btn-second.dropdown-toggle {
+  color: white;
+  background-color: darken($second-color, 10%);
+}
+
+.btn-third {
+  color: white;
+  background-color: $third-color;
+  border-color: darken($third-color, 5%);
+}
+
+.btn-third:hover, .btn-third:focus, .btn-third:active, .btn-third.active, .open > .btn-third.dropdown-toggle {
+  color: white;
+  background-color: darken($third-color, 10%);
+}
+
+#button-grid {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.color-one {
+  background-color: #203466;
+}
+
+.color-two {
+  background-color: #AEAEAE;
+}
+
+.color-three {
+  background-color: #2C2E2D;
+}
+
+.service-box {
+  height: 100px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.carousel-caption {
+  bottom: 5px;
+}
+
+.short-guy {
+  bottom: 24px;
+}
+
+/* (100 - 52) / 2 = 24 */
+.two-lines {
+  padding-top: 24px;
+}
+
+/* (100 - 26) / 2 = 37 */
+.one-line {
+  padding-top: 37px;
+}
+
+#buy-button {
+  margin-top: 20px;
+}
+
+html, body {
+  height: 100%;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -60px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+  height: 60px;
+}
+#footer {
+  background-color: #f5f5f5;
+}
+
+main {
+  padding-bottom: 20px;
+}
+
+.footer-text {
+  margin: 10px 0;
+  a {
+    font-size: 1.25em;
+    margin-left: 30px;
+  }
+}
+
+.address {
+  font-size: 0.95em;
+}
+
+.profile-pic {
+  display: block;
+  height: 250px;
+  margin: 0 auto;
+}
+
+.profile-name {
+  text-align: center;
+}
+
+.you-too-close-man {
+  margin-top: 5px;
+}
+
+.services-pic {
+  max-width: 290px;
+  margin-bottom: 10px;
+}
+
+.word-wrap {
+  word-wrap: break-word;
+}
+
+.service-list-header {
+  margin-top: 15px;
+}
+
+.list-group {
+  margin-bottom: 0;
+}
+
+.tab-pane > p {
+  margin: 10px 0 0;
+  // padding-left: 10px;
+}
+
+.table-responsive {
+  margin-bottom: 10px;
+}
+
+.dashboard-header {
+  margin-top: 15px;
+}
+
+.simple_form {
+  margin-bottom: 15px;
+}
+
+
+/* Lastly, apply responsive CSS fixes as necessary */
+// @media (max-width: 767px) {
+//   #footer {
+//     margin-left: -20px;
+//     margin-right: -20px;
+//     padding-left: 20px;
+//     padding-right: 20px;
+//   }
+// }
+
+@media (min-width: 480px) { 
+  .service-box {
+    height: 120px;
+  }
+  /* old padding plus 10px */
+  .two-lines {
+    padding-top: 34px;
+  }
+  /* old padding plus 10px */
+  .one-line {
+    padding-top: 47px;
+  }
+  .carousel-caption {
+    bottom: 25px;
+  }
+  .short-guy {
+    bottom: 55px;
+  }
+}
+
+@media (min-width: $screen-sm-min) { 
+  main {
+    // background-color: red;
+  }
+
+  .navbar {
+    margin-bottom: 20px;
+  }
+
+  .carousel-caption {
+    bottom: 20px;
+  }
+}
+
+// .item {
+//   background: rgba(0, 0, 0, 0.5);
+//   z-index: 2;
+// }
+
+// footer {
+//   color: red;
+//   a {
+//     color: red;
+//   }
+// }
+
+
+main {
+  padding-top: 20px;
+  padding-bottom: 50px;
+  // background-color: #b3b3b3;
+}
+
+#map_canvas.listings {
+  height: 275px;
+}
+
+#map_canvas.contact {
+  height: 275px;
+  margin: 15px 15px 0;
+}
+
+#map_canvas.water_rights {
+  height: 525px;
+}
+
+#data {
+  // padding-right: 0px;
+  h3 {
+    margin-top: 0px;
+  }
+}
+
+.panel {
+  margin-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  h5 {
+    margin-bottom: 5px;
+  }
+}
+
+.footer-text {
+  font-size: 12px;
+  padding-top: 2px;
+}
+
+.services-footer {
+  // padding-right: 20px;
+  font-size: 12px;
+  color: #222D69;
+}
+
+.services-pano {
+  -moz-box-shadow: 5px 5px 25px #888;
+  -webkit-box-shadow: 5px 5px 25px #888;
+  box-shadow: 5px 5px 25px #888;
+}
+
+.red-box {   
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0,0,0,.2);
+    background-color: #ae163e;
+}
+
+.policy {
+  font-size: 14px;
+  font-style: italic;
+}
+
+#listing_title {
+  font-weight: bold;
+}
+
+#water_rights_title {
+  font-weight: bold;
+}
+
+.tabs dd.active a {
+  background-color: #b3b3b3;
+}
+
+.logo {
+  height: 120px;
+  padding-top: 11px;
+  padding-bottom: 5px;
+  // display: block;
+  // margin: auto;
 }
