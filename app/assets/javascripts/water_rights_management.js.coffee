@@ -6,7 +6,7 @@ $ ->
   map = new google.maps.Map($("#map_canvas.water_rights")[0], mapOptions)
   bounds = new google.maps.LatLngBounds()
 
-  map.data.loadGeoJson('/get-water-rights-data.json')
+  map.data.loadGeoJson("/get-water-rights-data/#{$('#water_rights_table').data('user')}.json")
 
   water_rights = []
 

@@ -15,8 +15,8 @@
           <th>Change Application Number</th>
           <th>Source</th>
         </thead>
-        <tbody id="water_rights_table">
-        </tbody>
+        <%= content_tag "tbody", id: "water_rights_table", data: {user: @user_id} do %>
+        <% end %>
       </table>
     </div>
   </div>
