@@ -9,6 +9,7 @@
     <%= f.input :place_of_use %>
     <%= f.input :change_application_number %>
     <%= f.input :proof_due_date %>
+    <%= f.association :user, label_method: :email %>
   </div>
 
   <div class="form-actions text-center">
