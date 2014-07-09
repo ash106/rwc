@@ -25,9 +25,9 @@
       <% if user_signed_in? %>
         <ul class="nav navbar-nav">
           <% if current_user.has_role? :admin %>
-            <li><%= link_to 'Listings Dashboard', dashboard_path %></li>
+            <li><%= link_to 'Listings Dashboard', listings_dashboard_path %></li>
             <li><%= link_to 'WRM Dashboard', wrm_dashboard_path %></li>
-            <li><%= link_to 'Admin', users_path %></li>
+            <li><%#= link_to 'Admin', users_path %></li>
           <% end %>
           <li><%= link_to 'Edit account', edit_user_registration_path %></li>
           <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></li>
