@@ -10,14 +10,11 @@ $ ->
 
   water_rights = []
 
-  zero_pad = (x) ->
-    if x < 10 then '0'+x else ''+x
-
-  Date::pretty_string = ->
-    d = zero_pad(this.getDate())
-    m = zero_pad(this.getMonth() + 1)
-    y = this.getFullYear()
-    y + m + d
+  date_formatter = (date) ->
+    d = date.split("-")[2]
+    m = date.split("-")[1]
+    y = date.split("-")[0]
+    m + "/" + d + "/" + y
 
   setLinkListeners = ->
     $('td a').click (e) ->
@@ -27,9 +24,9 @@ $ ->
       $('#water_rights_table').html(
         for wr in water_rights
           if wr.number == clicked_wr_number
-            "<tr class='highlighted'><td>#{wr.number}</td><td>#{wr.priority_date}</td><td>#{wr.change_application_number}</td><td>#{wr.proof_due_date}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
+            "<tr class='highlighted'><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
           else
-            "<tr><td>#{wr.number}</td><td>#{wr.priority_date}</td><td>#{wr.change_application_number}</td><td>#{wr.proof_due_date}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
+            "<tr><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
       )
       setLinkListeners()
       console.log clicked_wr_number
@@ -66,7 +63,7 @@ $ ->
                       parseInt wr.number.match(/(\d+)$/)[0], 10
     $('#water_rights_table').html(
       for wr in water_rights
-        "<tr><td>#{wr.number}</td><td>#{wr.priority_date}</td><td>#{wr.change_application_number}</td><td>#{wr.proof_due_date}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
+        "<tr><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
     )
     setLinkListeners()
     return
@@ -82,9 +79,9 @@ $ ->
     $('#water_rights_table').html(
       for wr in water_rights
         if _.findWhere clicked_water_rights, wr
-          "<tr class='highlighted'><td>#{wr.number}</td><td>#{wr.priority_date}</td><td>#{wr.change_application_number}</td><td>#{wr.proof_due_date}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
+          "<tr class='highlighted'><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
         else
-          "<tr><td>#{wr.number}</td><td>#{wr.priority_date}</td><td>#{wr.change_application_number}</td><td>#{wr.proof_due_date}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
+          "<tr><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
     )
     setLinkListeners()
     return
