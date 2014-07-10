@@ -41,7 +41,7 @@ $ ->
               for point in points
                 selected_bounds.extend point
             if feature.getGeometry().getType() == "Point"
-              map.data.overrideStyle feature, icon: 'http://www.googlemapsmarkers.com/v1/76b5c6/'
+              map.data.overrideStyle feature, icon: 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Flag--Azure.png'
               selected_bounds.extend feature.getGeometry().get()
         map.fitBounds selected_bounds
 
@@ -73,7 +73,7 @@ $ ->
     if event.feature.getGeometry().getType() == "Polygon"
       map.data.overrideStyle event.feature, fillColor: '#76b5c6', strokeColor: '#6eb3c6'
     if event.feature.getGeometry().getType() == "Point"
-      map.data.overrideStyle event.feature, icon: 'http://www.googlemapsmarkers.com/v1/76b5c6/'
+      map.data.overrideStyle event.feature, icon: 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Flag--Azure.png'
     clicked_water_rights = event.feature.getProperty "water_rights"
     console.log water_rights
     $('#water_rights_table').html(
