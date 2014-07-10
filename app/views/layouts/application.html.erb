@@ -10,13 +10,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>">
-  <header>
-    <%= render 'layouts/navigation' %>
-  </header>
-  <div class="container">
-    <%= render 'flashes' -%>
-    <%= yield %>
-    <%= render 'javascript' %>
+  <div id="wrap">
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main">
+      <div class="container">
+        <%= render 'flashes' -%>
+        <%= yield %>
+        <%= render 'javascript' %>
+      </div>
+    </main>
+    <div id="push"></div>
   </div>
+  <footer>
+    <%= render 'layouts/footer' %>
+  </footer>
 </body>
 </html>
