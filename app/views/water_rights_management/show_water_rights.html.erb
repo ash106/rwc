@@ -1,11 +1,11 @@
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-4">
     <h6 class="text-center">Click a point or area on the map below to bring up water rights associated with the clicked point/area</h6>
     <div class="water_rights" id="map_canvas">
     </div>
     <h6 class="text-center">Don't see the area that you want to buy or sell water rights in? Give us a call and we'll put it up on the website</h6>
   </div>
-  <div class="col-md-6" id="data">
+  <div class="col-md-8" id="data">
     <h3 id="water_rights_title">Water Rights</h3>
     <% if user_signed_in? %>
       <% if current_user.has_role? :admin %>
