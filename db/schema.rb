@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709002102) do
+ActiveRecord::Schema.define(version: 20140710064627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,6 +168,8 @@ ActiveRecord::Schema.define(version: 20140709002102) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.date     "priority_date"
+    t.text     "comments"
   end
 
   add_index "water_rights", ["user_id"], name: "index_water_rights_on_user_id", using: :btree
