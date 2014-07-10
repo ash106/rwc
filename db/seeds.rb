@@ -10,10 +10,10 @@ user = User.create!(email: 'user@example.com', password: 'changeme')
 user.add_role :customer
 this_guy = User.create!(email: 'tester@example.com', password: 'changeme')
 this_guy.add_role :customer
-user = User.create!(email: 'rileylog@gmail.com', password: 'changeme')
-user.add_role :admin
-user = User.create!(email: 'alex.howington@gmail.com', password: 'changeme')
-user.add_role :admin
+logan = User.create!(email: 'rileylog@gmail.com', password: 'password')
+logan.add_role :customer
+itsamemario = User.create!(email: 'alex.howington@gmail.com', password: 'changeme')
+itsamemario.add_role :admin
 
 slv_central = ListingArea.new(name: 'SLV Central', policy: 'Salt Lake Valley Central policy goes here')
 slv_central.kml = File.open(File.join(Rails.root, "/test/fixtures/SLV_Central.kml"))
@@ -71,6 +71,7 @@ well_two.kml = File.open(File.join(Rails.root, "/test/fixtures/Well2.kml"))
 well_two.save!
 PointOfDiversion.parse_kml(well_two.id)
 
+
 water_right = WaterRight.create!(number: '13-142', flow_cfs: 5.12, flow_ac_ft: 1860, sole_supply_acres: 620, place_of_use: 'Full Farm', change_application_number: 'a28264', proof_due_date: "2016-06-30", user_id: this_guy.id)
 water_right.point_of_diversion_water_rights.create!(point_of_diversion_id: stream.id)
 water_right.point_of_diversion_water_rights.create!(point_of_diversion_id: well.id)
@@ -87,4 +88,69 @@ water_right.place_of_use_area_water_rights.create!(place_of_use_area_id: area_th
 water_right = WaterRight.create!(number: '13-1138', flow_cfs: 10, flow_ac_ft: 1920, sole_supply_acres: 640, place_of_use: 'Most Farm', change_application_number: 'a28259', proof_due_date: "2015-05-31", user_id: this_guy.id)
 water_right.point_of_diversion_water_rights.create!(point_of_diversion_id: well.id)
 water_right.place_of_use_area_water_rights.create!(place_of_use_area_id: area_one.id)
+
+
+one = PointOfDiversion.new(name: '57-3411_1')
+one.kml = File.open(File.join(Rails.root, "/test/fixtures/57-3411_1.kml"))
+one.save!
+PointOfDiversion.parse_kml(one.id)
+two = PointOfDiversion.new(name: '57-3411_2')
+two.kml = File.open(File.join(Rails.root, "/test/fixtures/57-3411_2.kml"))
+two.save!
+PointOfDiversion.parse_kml(two.id)
+three = PointOfDiversion.new(name: '57-3411_3')
+three.kml = File.open(File.join(Rails.root, "/test/fixtures/57-3411_3.kml"))
+three.save!
+PointOfDiversion.parse_kml(three.id)
+four = PointOfDiversion.new(name: '57-3411_4')
+four.kml = File.open(File.join(Rails.root, "/test/fixtures/57-3411_4.kml"))
+four.save!
+PointOfDiversion.parse_kml(four.id)
+five = PointOfDiversion.new(name: '57-3411_5')
+five.kml = File.open(File.join(Rails.root, "/test/fixtures/57-3411_5.kml"))
+five.save!
+PointOfDiversion.parse_kml(five.id)
+six = PointOfDiversion.new(name: '57-3411_6')
+six.kml = File.open(File.join(Rails.root, "/test/fixtures/57-3411_6.kml"))
+six.save!
+PointOfDiversion.parse_kml(six.id)
+seven = PointOfDiversion.new(name: '57-3411_7')
+seven.kml = File.open(File.join(Rails.root, "/test/fixtures/57-3411_7.kml"))
+seven.save!
+PointOfDiversion.parse_kml(seven.id)
+eight = PointOfDiversion.new(name: '57-3411_8')
+eight.kml = File.open(File.join(Rails.root, "/test/fixtures/57-3411_8.kml"))
+eight.save!
+PointOfDiversion.parse_kml(eight.id)
+nine = PointOfDiversion.new(name: '57-3411_9')
+nine.kml = File.open(File.join(Rails.root, "/test/fixtures/57-3411_9.kml"))
+nine.save!
+PointOfDiversion.parse_kml(nine.id)
+ten = PointOfDiversion.new(name: '57-3411_10')
+ten.kml = File.open(File.join(Rails.root, "/test/fixtures/57-3411_10.kml"))
+ten.save!
+PointOfDiversion.parse_kml(ten.id)
+eleven = PointOfDiversion.new(name: '57-3411_11')
+eleven.kml = File.open(File.join(Rails.root, "/test/fixtures/57-3411_11.kml"))
+eleven.save!
+PointOfDiversion.parse_kml(eleven.id)
+
+
+
+two_one = PointOfDiversion.new(name: '57-10327_1')
+two_one.kml = File.open(File.join(Rails.root, "/test/fixtures/57-10327_1.kml"))
+two_one.save!
+PointOfDiversion.parse_kml(two_one.id)
+two_two = PointOfDiversion.new(name: '57-10327_2')
+two_two.kml = File.open(File.join(Rails.root, "/test/fixtures/57-10327_2.kml"))
+two_two.save!
+PointOfDiversion.parse_kml(two_two.id)
+two_three = PointOfDiversion.new(name: '57-10327_3')
+two_three.kml = File.open(File.join(Rails.root, "/test/fixtures/57-10327_3.kml"))
+two_three.save!
+PointOfDiversion.parse_kml(two_three.id)
+two_four = PointOfDiversion.new(name: '57-10327_4')
+two_four.kml = File.open(File.join(Rails.root, "/test/fixtures/57-10327_4.kml"))
+two_four.save!
+PointOfDiversion.parse_kml(two_four.id)
 
