@@ -15,10 +15,15 @@
     <div class="table-responsive">
       <table class="table">
         <thead>
-          <th>Number</th>
-          <th>Flow CFS</th>
-          <th>Change Application Number</th>
+          <th>Water Right #</th>
+          <th>Priority Date</th>
+          <th>Change App #</th>
+          <th>Proof Due Date</th>
           <th>Source</th>
+          <th>Flow (cfs)</th>
+          <th>Volume (ac-ft)</th>
+          <th>Uses</th>
+          <th>Comments</th>
         </thead>
         <%= content_tag "tbody", id: "water_rights_table", data: {user: @user_id} do %>
         <% end %>

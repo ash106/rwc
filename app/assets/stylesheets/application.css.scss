@@ -8,6 +8,8 @@
 $brand-primary: #222d69;
 $second-color: #9d9d9d;
 $third-color: #2c2e2d;
+$grid-gutter-width: 30px;
+$container-large-desktop: ((1320px + $grid-gutter-width));
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
