@@ -36,8 +36,18 @@
 </p>
 
 <p>
+  <strong>Priority date:</strong>
+  <%= @water_right.priority_date %>
+</p>
+
+<p>
   <strong>User:</strong>
-  <%= @water_right.user %>
+  <%= @water_right.user.email if @water_right.user %>
+</p>
+
+<p>
+  <strong>Comments:</strong>
+  <%= @water_right.comments %>
 </p>
 
 <%= link_to 'Edit', edit_water_right_path(@water_right) %> |

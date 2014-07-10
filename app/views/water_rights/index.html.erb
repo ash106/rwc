@@ -10,7 +10,9 @@
       <th>Place of use</th>
       <th>Change application number</th>
       <th>Proof due date</th>
+      <th>Priority date</th>
       <th>User</th>
+      <th>Comments</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -25,7 +27,9 @@
         <td><%= water_right.place_of_use %></td>
         <td><%= water_right.change_application_number %></td>
         <td><%= water_right.proof_due_date %></td>
-        <td><%= water_right.user %></td>
+        <td><%= water_right.priority_date %></td>
+        <td><%= water_right.user.email if water_right.user %></td>
+        <td><%= water_right.comments %></td>
         <td><%= link_to 'Show', water_right %></td>
         <td><%= link_to 'Edit', edit_water_right_path(water_right) %></td>
         <td><%= link_to 'Destroy', water_right, method: :delete, data: { confirm: 'Are you sure?' } %></td>
