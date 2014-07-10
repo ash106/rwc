@@ -8,6 +8,8 @@ class WaterRightsManagementController < ApplicationController
     else
       @user_id = 0
     end
+    @users = User.all.map{ |user| [user.email, user.id] if user.water_rights.any? }.compact
+    @users.unshift ["All Users", @user_id]
   end
 
   def get_data

@@ -79,5 +79,10 @@ $ ->
     )
     setLinkListeners()
     return
+
+  $('#user-selector').change (e) ->
+    map.data.forEach (feature) ->
+      map.data.remove feature
+    map.data.loadGeoJson("/get-water-rights-data/#{$(this).val()}.json")
     
 
