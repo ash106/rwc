@@ -1,2 +1,105 @@
-<h1>Listings#dashboard</h1>
-<p>Find me in app/views/listings/dashboard.html.erb</p>
+<h1 class="text-center">Listing Areas</h1>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Policy</th>
+        <th>Polygon JSON</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @listing_areas.each do |listing_area| %>
+        <tr>
+          <td><%= listing_area.name %></td>
+          <td><%= listing_area.policy %></td>
+          <td><%= listing_area.polygon.to_s.truncate(140) %></td>
+          <td><%= link_to 'Show', listing_area %></td>
+          <td><%= link_to 'Edit', edit_listing_area_path(listing_area) %></td>
+          <td><%= link_to 'Destroy', listing_area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="text-center">
+  <%= link_to 'New Listing Area', new_listing_area_path, class: "btn btn-primary" %>
+</div>
+
+
+<h1 class="text-center">Wanteds</h1>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Volume</th>
+        <th>Source</th>
+        <th>Description</th>
+        <th>Contact info</th>
+        <th>Listing area</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @wanteds.each do |wanted| %>
+        <tr>
+          <td><%= wanted.volume %></td>
+          <td><%= wanted.source %></td>
+          <td><%= wanted.description %></td>
+          <td><%= wanted.contact_info %></td>
+          <td><%= wanted.listing_area.name %></td>
+          <td><%= link_to 'Show', wanted %></td>
+          <td><%= link_to 'Edit', edit_wanted_path(wanted) %></td>
+          <td><%= link_to 'Destroy', wanted, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="text-center">
+  <%= link_to 'New Wanted', new_wanted_path, class: "btn btn-primary" %>
+</div>
+
+
+<h1 class="text-center">For Sales</h1>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Volume</th>
+        <th>Source</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Contact info</th>
+        <th>Listing area</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @for_sales.each do |for_sale| %>
+        <tr>
+          <td><%= for_sale.volume %></td>
+          <td><%= for_sale.source %></td>
+          <td><%= for_sale.description %></td>
+          <td><%= for_sale.price %></td>
+          <td><%= for_sale.contact_info %></td>
+          <td><%= for_sale.listing_area.name %></td>
+          <td><%= link_to 'Show', for_sale %></td>
+          <td><%= link_to 'Edit', edit_for_sale_path(for_sale) %></td>
+          <td><%= link_to 'Destroy', for_sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="text-center">
+  <%= link_to 'New For Sale', new_for_sale_path, class: "btn btn-primary" %>
+</div>
+

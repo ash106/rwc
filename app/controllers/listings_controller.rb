@@ -1,5 +1,9 @@
 class ListingsController < ApplicationController
   def dashboard
+    @listing_areas = ListingArea.all
+    @wanteds = Wanted.all
+    @for_sales = ForSale.all
+
   end
 
   def buy_sell
