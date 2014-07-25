@@ -14,6 +14,10 @@ $container-large-desktop: ((1320px + $grid-gutter-width));
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.alert {
+  margin: 0 -15px;
+}
+
 #map_canvas.listings {
   height: 420px;
 }
