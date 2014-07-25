@@ -22,6 +22,10 @@ $container-large-desktop: ((1320px + $grid-gutter-width));
   height: 420px;
 }
 
+#map_canvas.water_rights {
+  height: 275px;
+}
+
 tr.highlighted {
   background-color: #76b5c6;
 }
@@ -317,10 +321,6 @@ main {
 #map_canvas.contact {
   height: 275px;
   margin: 15px 15px 0;
-}
-
-#map_canvas.water_rights {
-  height: 500px;
 }
 
 #data {
