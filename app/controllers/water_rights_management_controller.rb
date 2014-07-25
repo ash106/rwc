@@ -1,5 +1,8 @@
 class WaterRightsManagementController < ApplicationController
   def dashboard
+    @water_rights = WaterRight.all
+    @place_of_use_areas = PlaceOfUseArea.all
+    @point_of_diversions = PointOfDiversion.all
   end
 
   def show_water_rights
