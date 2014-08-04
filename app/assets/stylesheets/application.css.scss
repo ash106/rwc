@@ -9,7 +9,8 @@ $brand-primary: #222d69;
 $second-color: #9d9d9d;
 $third-color: #2c2e2d;
 $grid-gutter-width: 30px;
-$container-large-desktop: ((1320px + $grid-gutter-width));
+// $screen-lg: 1350px;
+// $container-large-desktop: ((1320px + $grid-gutter-width));
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -19,7 +20,7 @@ $container-large-desktop: ((1320px + $grid-gutter-width));
 }
 
 #map_canvas.listings {
-  height: 420px;
+  height: 275px;
 }
 
 #map_canvas.water_rights {
@@ -223,7 +224,7 @@ main {
 }
 
 .services-pic {
-  max-width: 290px;
+  max-width: 100%;
   margin-bottom: 10px;
 }
 
@@ -254,68 +255,6 @@ main {
 
 .simple_form {
   margin-bottom: 15px;
-}
-
-
-/* Lastly, apply responsive CSS fixes as necessary */
-// @media (max-width: 767px) {
-//   #footer {
-//     margin-left: -20px;
-//     margin-right: -20px;
-//     padding-left: 20px;
-//     padding-right: 20px;
-//   }
-// }
-
-@media (min-width: 480px) { 
-  .service-box {
-    height: 120px;
-  }
-  /* old padding plus 10px */
-  .two-lines {
-    padding-top: 34px;
-  }
-  /* old padding plus 10px */
-  .one-line {
-    padding-top: 47px;
-  }
-  .carousel-caption {
-    bottom: 25px;
-  }
-  .short-guy {
-    bottom: 55px;
-  }
-}
-
-@media (min-width: $screen-sm-min) { 
-  main {
-    // background-color: red;
-  }
-
-  .navbar {
-    margin-bottom: 20px;
-  }
-
-  .carousel-caption {
-    bottom: 20px;
-  }
-}
-
-// .item {
-//   background: rgba(0, 0, 0, 0.5);
-//   z-index: 2;
-// }
-
-// footer {
-//   color: red;
-//   a {
-//     color: red;
-//   }
-// }
-
-
-#map_canvas.listings {
-  height: 275px;
 }
 
 #map_canvas.contact {
@@ -387,3 +326,93 @@ main {
   // display: block;
   // margin: auto;
 }
+
+
+/* Lastly, apply responsive CSS fixes as necessary */
+// @media (max-width: 767px) {
+//   #footer {
+//     margin-left: -20px;
+//     margin-right: -20px;
+//     padding-left: 20px;
+//     padding-right: 20px;
+//   }
+// }
+
+@media (min-width: 480px) { 
+  .service-box {
+    height: 120px;
+  }
+  /* old padding plus 10px */
+  .two-lines {
+    padding-top: 34px;
+  }
+  /* old padding plus 10px */
+  .one-line {
+    padding-top: 47px;
+  }
+  .carousel-caption {
+    bottom: 25px;
+  }
+  .short-guy {
+    bottom: 55px;
+  }
+}
+
+@media (min-width: $screen-sm-min) { 
+  main {
+    // background-color: red;
+  }
+
+  .navbar {
+    margin-bottom: 20px;
+  }
+
+  .carousel-caption {
+    bottom: 20px;
+  }
+}
+
+@media (min-width: $screen-md-min) { 
+  .btn-group > a {
+    height: 125px;
+    font-size: 1.15em;
+  }
+
+  #map_canvas.contact {
+    height: 400px;
+    margin: 0 auto;
+  }
+
+  #map_canvas.listings {
+    height: 420px;
+  }
+
+  #map_canvas.water_rights {
+    height: 420px;
+  }
+
+  .footer-text {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: $screen-lg-min) { 
+  .btn-group > a {
+    height: 150px;
+    font-size: 1.35em;
+  }
+}
+
+// .item {
+//   background: rgba(0, 0, 0, 0.5);
+//   z-index: 2;
+// }
+
+// footer {
+//   color: red;
+//   a {
+//     color: red;
+//   }
+// }
+
+

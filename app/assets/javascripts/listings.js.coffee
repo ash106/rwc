@@ -19,7 +19,7 @@ $ ->
       )
     else
       $('#wanted').html(
-          "<div><p>No wanted listings for this area.</p></div>"
+          "<div><h5>No wanted listings for this area.</h5></div>"
       )
     if for_sales.length > 0
       $('#for_sale').html(
@@ -28,6 +28,6 @@ $ ->
       )
     else
       $('#for_sale').html(
-          "<div><p>No for sale listings for this area.</p></div>"
+          "<div><h5>No for sale listings for this area.</h5></div>"
       )
     return
