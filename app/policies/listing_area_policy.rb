@@ -1,0 +1,2 @@
+class ListingAreaPolicy < ApplicationPolicy
+end

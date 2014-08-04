@@ -1,0 +1,2 @@
+class PointOfDiversionPolicy < ApplicationPolicy
+end

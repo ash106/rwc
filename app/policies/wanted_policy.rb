@@ -1,0 +1,2 @@
+class WantedPolicy < ApplicationPolicy
+end

@@ -1,27 +1,33 @@
 class WaterRightsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_water_right, only: [:show, :edit, :update, :destroy]
 
   # GET /water_rights
   def index
     @water_rights = WaterRight.all
+    authorize @water_rights
   end
 
   # GET /water_rights/1
   def show
+    authorize @water_right
   end
 
   # GET /water_rights/new
   def new
     @water_right = WaterRight.new
+    authorize @water_right
   end
 
   # GET /water_rights/1/edit
   def edit
+    authorize @water_right
   end
 
   # POST /water_rights
   def create
     @water_right = WaterRight.new(water_right_params)
+    authorize @water_right
 
     if @water_right.save
       redirect_to @water_right, notice: 'Water right was successfully created.'
@@ -32,6 +38,7 @@ class WaterRightsController < ApplicationController
 
   # PATCH/PUT /water_rights/1
   def update
+    authorize @water_right
     if @water_right.update(water_right_params)
       redirect_to @water_right, notice: 'Water right was successfully updated.'
     else
@@ -41,6 +48,7 @@ class WaterRightsController < ApplicationController
 
   # DELETE /water_rights/1
   def destroy
+    authorize @water_right
     @water_right.destroy
     redirect_to water_rights_url, notice: 'Water right was successfully destroyed.'
   end

@@ -1,8 +1,11 @@
 class WaterRightsManagementController < ApplicationController
+  before_action :authenticate_user!, only: :dashboard
+
   def dashboard
     @water_rights = WaterRight.all
     @place_of_use_areas = PlaceOfUseArea.all
     @point_of_diversions = PointOfDiversion.all
+    authorize @water_rights, :index?
   end
 
   def show_water_rights

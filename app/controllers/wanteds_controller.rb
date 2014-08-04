@@ -1,27 +1,33 @@
 class WantedsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_wanted, only: [:show, :edit, :update, :destroy]
 
   # GET /wanteds
   def index
     @wanteds = Wanted.all
+    authorize @wanteds
   end
 
   # GET /wanteds/1
   def show
+    authorize @wanted
   end
 
   # GET /wanteds/new
   def new
     @wanted = Wanted.new
+    authorize @wanted
   end
 
   # GET /wanteds/1/edit
   def edit
+    authorize @wanted
   end
 
   # POST /wanteds
   def create
     @wanted = Wanted.new(wanted_params)
+    authorize @wanted
 
     if @wanted.save
       redirect_to @wanted, notice: 'Wanted was successfully created.'
@@ -32,6 +38,7 @@ class WantedsController < ApplicationController
 
   # PATCH/PUT /wanteds/1
   def update
+    authorize @wanted
     if @wanted.update(wanted_params)
       redirect_to @wanted, notice: 'Wanted was successfully updated.'
     else
@@ -41,6 +48,7 @@ class WantedsController < ApplicationController
 
   # DELETE /wanteds/1
   def destroy
+    authorize @wanted
     @wanted.destroy
     redirect_to wanteds_url, notice: 'Wanted was successfully destroyed.'
   end

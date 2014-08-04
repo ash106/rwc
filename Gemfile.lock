@@ -146,6 +146,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
+    pundit (0.2.3)
+      activesupport (>= 3.0.0)
     rabl (0.10.1)
       activesupport (>= 2.3.14)
     rack (1.5.2)
@@ -261,6 +263,7 @@ DEPENDENCIES
   paperclip!
   pg
   pry-rails
+  pundit
   rabl
   rack-timeout
   rails (= 4.1.1)

@@ -30,6 +30,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'rabl'
 gem 'active_model_serializers'
 gem 'underscore-rails'
+gem 'pundit'
 
 group :development do
   gem 'foreman'

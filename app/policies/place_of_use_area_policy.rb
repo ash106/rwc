@@ -1,0 +1,2 @@
+class PlaceOfUseAreaPolicy < ApplicationPolicy
+end

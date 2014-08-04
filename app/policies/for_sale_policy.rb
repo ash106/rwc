@@ -1,0 +1,2 @@
+class ForSalePolicy < ApplicationPolicy
+end

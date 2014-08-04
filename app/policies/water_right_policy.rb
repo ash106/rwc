@@ -1,0 +1,2 @@
+class WaterRightPolicy < ApplicationPolicy
+end

@@ -1,9 +1,11 @@
 class ListingsController < ApplicationController
+  before_action :authenticate_user!, only: :dashboard
+
   def dashboard
     @listing_areas = ListingArea.all
     @wanteds = Wanted.all
     @for_sales = ForSale.all
-
+    authorize @listing_areas, :index?
   end
 
   def buy_sell
