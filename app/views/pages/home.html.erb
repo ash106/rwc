@@ -79,13 +79,14 @@
     <h4>Get in touch!</h4>
         
     <div class="row">
-      <div class="col-lg-9">
+      <div class="col-lg-7">
         <p>We help our clients buy and sell their water rights! Check out our buy/sell page to see what's for sale and what people are looking for. Our buy/sell page also gives information on the water right policy for each area.</p>
+        <div id="buy-button" class="text-center">
+          <%= link_to "Buy/Sell", buy_sell_path, class: "btn btn-primary visible-xs-block" %>
+          <%= link_to "Buy/Sell", buy_sell_path, class: "btn btn-primary btn-lg hidden-xs" %>
+        </div>
       </div>
-      <div id="buy-button" class="col-lg-3 text-center">
-        <%= link_to "Buy/Sell", buy_sell_path, class: "btn btn-primary visible-xs-block" %>
-        <%= link_to "Buy/Sell", buy_sell_path, class: "btn btn-primary btn-lg hidden-xs" %>
-      </div>
+      
     </div>
   </div>
 </div>
