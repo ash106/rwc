@@ -327,6 +327,21 @@ main {
   // margin: auto;
 }
 
+.inverse-dropdown{
+  background-color: #222;
+  border-color: #080808;
+  &>li>a{
+    color: #999;
+    &:hover{
+      color: #fff;
+      background-color: #000;
+    }
+  }
+  &>.divider {
+    background-color: #000;
+  }
+}
+
 
 /* Lastly, apply responsive CSS fixes as necessary */
 // @media (max-width: 767px) {
