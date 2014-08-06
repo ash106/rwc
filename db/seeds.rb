@@ -14,7 +14,7 @@ logan = User.create!(email: 'rileylog@gmail.com', password: 'password')
 logan.add_role :customer
 itsamemario = User.create!(email: 'alex.howington@gmail.com', password: 'wheatbox')
 itsamemario.add_role :admin
-admin = User.create!(email: 'admin@rwc.com', password: 'logan')
+admin = User.create!(email: 'admin@rwc.com', password: 'loganlogan')
 admin.add_role :admin
 
 slv_central = ListingArea.new(name: 'SLV Central', policy: 'Salt Lake Valley Central policy goes here')
