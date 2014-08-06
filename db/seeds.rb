@@ -12,7 +12,7 @@ this_guy = User.create!(email: 'tester@example.com', password: 'changeme')
 this_guy.add_role :customer
 logan = User.create!(email: 'rileylog@gmail.com', password: 'password')
 logan.add_role :customer
-itsamemario = User.create!(email: 'alex.howington@gmail.com', password: 'changeme')
+itsamemario = User.create!(email: 'alex.howington@gmail.com', password: 'wheatbox')
 itsamemario.add_role :admin
 admin = User.create!(email: 'admin@rwc.com', password: 'logan')
 admin.add_role :admin
