@@ -31,7 +31,7 @@ gem 'rabl'
 gem 'active_model_serializers'
 gem 'underscore-rails'
 gem 'pundit'
-gem 'workless', '~> 1.1.3'
+gem 'workless', github: 'r4m/workless'
 
 group :development do
   gem 'foreman'

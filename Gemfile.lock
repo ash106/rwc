@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/r4m/workless.git
+  revision: 35b83426a7ea219388680e5878149e445ddf2604
+  specs:
+    workless (1.2.3)
+      delayed_job (>= 2.0.7)
+      heroku-api
+      rails
+      rush
+
+GIT
   remote: git://github.com/thoughtbot/paperclip.git
   revision: dca87ec5d8038b2d436a75ad6119c8eb67b73e70
   specs:
@@ -236,11 +246,6 @@ GEM
     webmock (1.18.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
-    workless (1.1.3)
-      delayed_job (>= 2.0.7)
-      heroku-api
-      rails
-      rush
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -292,4 +297,4 @@ DEPENDENCIES
   underscore-rails
   unicorn
   webmock
-  workless (~> 1.1.3)
+  workless!
