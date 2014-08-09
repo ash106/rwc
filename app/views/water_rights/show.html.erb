@@ -45,10 +45,35 @@
   <%= @water_right.user.email if @water_right.user %>
 </p>
 
-<p>
-  <strong>Comments:</strong>
-  <%= @water_right.comments %>
-</p>
+<% if @water_right.comments %>
+  <p>
+    <strong>Comments:</strong>
+    <%= @water_right.comments %>
+  </p>
+<% end %>
+
+<% if @water_right.place_of_use_areas.any? %>
+  <div>
+    <strong>Place of Use Areas:</strong>
+    <ul>
+      <% @water_right.place_of_use_areas.each do |area| %>
+        <li><%= area.name %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<% if @water_right.point_of_diversions.any? %>
+  <div>
+    <strong>Points of Diversion:</strong>
+    <ul>
+      <% @water_right.point_of_diversions.each do |point| %>
+        <li><%= point.name %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <%= link_to 'Edit', edit_water_right_path(@water_right) %> |
 <%= link_to 'Back', water_rights_path %>
