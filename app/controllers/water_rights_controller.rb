@@ -11,6 +11,8 @@ class WaterRightsController < ApplicationController
   # GET /water_rights/1
   def show
     authorize @water_right
+    @unassociated_place_of_use_areas = PlaceOfUseArea.all - @water_right.place_of_use_areas
+    @unassociated_point_of_diversions = PointOfDiversion.all - @water_right.point_of_diversions
   end
 
   # GET /water_rights/new

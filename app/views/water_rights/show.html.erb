@@ -52,28 +52,35 @@
   </p>
 <% end %>
 
-<% if @water_right.place_of_use_areas.any? %>
-  <div>
-    <strong>Place of Use Areas:</strong>
-    <ul>
-      <% @water_right.place_of_use_areas.each do |area| %>
-        <li><%= area.name %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<div>
+  <strong>Place of Use Areas:</strong>
+  <ul>
+    <% @water_right.place_of_use_areas.each do |area| %>
+      <li><%= area.name %></li>
+    <% end %>
+  </ul>
+  <%= simple_form_for :place_of_use_area_water_right, url: '/place_of_use_area_water_rights' do |f| %>
+    <%= f.input :water_right_id, as: :hidden, input_html: { value: @water_right.id } %>
+    <%= f.input :place_of_use_area_id, collection: @unassociated_place_of_use_areas, label_method: :name, value_method: :id, label: false, include_blank: false %>
+    <%= f.submit "Create Association", class: 'btn btn-primary' %>
+  <% end %>
+</div>
 
 
-<% if @water_right.point_of_diversions.any? %>
-  <div>
-    <strong>Points of Diversion:</strong>
-    <ul>
-      <% @water_right.point_of_diversions.each do |point| %>
-        <li><%= point.name %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<div>
+  <strong>Points of Diversion:</strong>
+  <ul>
+    <% @water_right.point_of_diversions.each do |point| %>
+      <li><%= point.name %></li>
+    <% end %>
+  </ul>
+  <%= simple_form_for :point_of_diversion_water_right, url: '/point_of_diversion_water_rights' do |f| %>
+    <%= f.input :water_right_id, as: :hidden, input_html: { value: @water_right.id } %>
+    <%= f.input :point_of_diversion_id, collection: @unassociated_point_of_diversions, label_method: :name, value_method: :id, label: false, include_blank: false %>
+    <%= f.submit "Create Association", class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
 
 <%= link_to 'Edit', edit_water_right_path(@water_right) %> |
 <%= link_to 'Back', water_rights_path %>
