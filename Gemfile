@@ -32,6 +32,7 @@ gem 'active_model_serializers'
 gem 'underscore-rails'
 gem 'pundit'
 gem 'workless', github: 'r4m/workless'
+gem 'eco'
 
 group :development do
   gem 'foreman'

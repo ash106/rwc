@@ -1,0 +1,11 @@
+<tr>
+  <td><%= @number %></td>
+  <td><%= if @priority_date then @priority_date else "" %></td>
+  <td><%= if @change_application_number then @change_application_number else "" %></td>
+  <td><%= if @proof_due_date then @proof_due_date else "" %></td>
+  <td><a href='<%= @number %>'>View</a></td>
+  <td><%= if @flow_cfs then @flow_cfs else "" %></td>
+  <td><%= if @flow_ac_ft then @flow_ac_ft else "" %></td>
+  <td><%= if @place_of_use then @place_of_use else "" %></td>
+  <td><%= if @comments then @comments else "" %></td>
+</tr>
