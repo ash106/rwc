@@ -24,6 +24,55 @@ $ ->
     y = date.split("-")[0]
     m + "/" + d + "/" + y
 
+  # Called when 'View' button is clicked in a table row
+  $('#water_rights_table').on 'click', 'td a', (e) ->
+    e.preventDefault()
+    # Reset styling for map features
+    map.data.revertStyle()
+    # Get number from clicked water right link
+    clicked_wr_number = $(this).attr 'href'
+    # Clear water rights table before appends
+    $('#water_rights_table').html ""
+    # Re-add water rights to table, highlighting only the clicked row
+    for wr in water_rights
+      # Set the clicked row to highlighted
+      if wr.number == clicked_wr_number
+        context = 
+          wr: wr
+          date_formatter: date_formatter
+          highlighted: true
+        $('#water_rights_table').append JST['templates/water_right'](context)
+      # All other rows are unhighlighted
+      else
+        context = 
+          wr: wr
+          date_formatter: date_formatter
+        $('#water_rights_table').append JST['templates/water_right'](context)
+    # Create bounds for features associated with clicked water right
+    selected_bounds = new google.maps.LatLngBounds()
+    # Set styling for features associated with clicked water right
+    map.data.forEach (feature) ->
+      # Get water rights associated with current feature
+      feature_wrs = feature.getProperty "water_rights"
+      # Loop thru current feature's water rights
+      for wr in feature_wrs
+        # If water right number matches clicked water right number, set styling on feature
+        if wr.number == clicked_wr_number
+          # If feature is a polygon, set fill color and stroke color
+          if feature.getGeometry().getType() == "Polygon"
+            map.data.overrideStyle feature, fillColor: '#76b5c6', strokeColor: '#6eb3c6'
+            # Extend bounds for each point in polygon
+            points = feature.getGeometry().getAt(0).getArray()
+            for point in points
+              selected_bounds.extend point
+          # If feature is a point, set icon
+          if feature.getGeometry().getType() == "Point"
+            map.data.overrideStyle feature, icon: 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Flag--Azure.png'
+            # Extend bounds for point
+            selected_bounds.extend feature.getGeometry().get()
+      # Zoom map to bounds for features associated with clicked water right
+      map.fitBounds selected_bounds
+
   # setLinkListeners = ->
   #   console.log "called setLinkListeners"
   #   $('td a').click (e) ->
@@ -57,7 +106,7 @@ $ ->
 
   # Called when each feature is added to the map
   map.data.addListener 'addfeature', (e) ->
-    console.log e.feature
+    # console.log e.feature
     # If feature is a polygon, add all points of polygon to map bounds
     if e.feature.getGeometry().getType() == "Polygon"
       # Get array of points that make up outer linear ring of polygon
@@ -98,7 +147,7 @@ $ ->
 
   # Called when a feature (piece of geometry) is clicked
   map.data.addListener 'click', (e) ->
-    # Remove all styling from any previously clicked feature 
+    # Reset styling for map features 
     map.data.revertStyle()
     # If clicked feature is a polygon, set fill color and stroke color
     if e.feature.getGeometry().getType() == "Polygon"
@@ -120,7 +169,7 @@ $ ->
           date_formatter: date_formatter
           highlighted: true
         $('#water_rights_table').append JST['templates/water_right'](context)
-  #         "<tr class='highlighted'><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
+          # "<tr class='highlighted'><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
       # Otherwise add the water right without the highlighted class
       else
         context = 
