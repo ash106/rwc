@@ -85,7 +85,7 @@ $ ->
     # Add water rights to table
     $('#water_rights_table').html(
       for wr in water_rights
-        "<tr><td>#{wr.number}</td><td>#{if wr.priority_date then date_formatter(wr.priority_date) else ""}</td><td>#{if wr.change_application_number then wr.change_application_number else ""}</td><td>#{if wr.proof_due_date then date_formatter(wr.proof_due_date) else ""}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments then wr.comments else ""}</td></tr>"
+        "<tr><td>#{wr.number}</td><td>#{if wr.priority_date then date_formatter(wr.priority_date) else ""}</td><td>#{if wr.change_application_number then wr.change_application_number else ""}</td><td>#{if wr.proof_due_date then date_formatter(wr.proof_due_date) else ""}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft then wr.flow_ac_ft else ""}</td><td>#{if wr.place_of_use then wr.place_of_use else ""}</td><td>#{if wr.comments then wr.comments else ""}</td></tr>"
     )
   #   setLinkListeners()
   #   return
