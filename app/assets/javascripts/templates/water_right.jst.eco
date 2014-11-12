@@ -1,4 +1,4 @@
-<tr>
+<tr <% if @highlighted: %>class='highlighted'<% end %>>
   <td><%= @wr.number %></td>
   <td><%= if @wr.priority_date then @date_formatter(@wr.priority_date) else "" %></td>
   <td><%= if @wr.change_application_number then @wr.change_application_number else "" %></td>

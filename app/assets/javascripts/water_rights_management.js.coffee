@@ -82,7 +82,7 @@ $ ->
     # Sort water rights by number
     water_rights = _.sortBy water_rights, (wr) ->
                       parseInt wr.number.match(/(\d+)$/)[0], 10
-    # Clear water rights table before append
+    # Clear water rights table before appends
     $('#water_rights_table').html ""
     # Add water rights to table
     for wr in water_rights
@@ -96,20 +96,37 @@ $ ->
   #   setLinkListeners()
   #   return
 
-
-  # map.data.addListener 'click', (event) ->
-  #   map.data.revertStyle()
-  #   if event.feature.getGeometry().getType() == "Polygon"
-  #     map.data.overrideStyle event.feature, fillColor: '#76b5c6', strokeColor: '#6eb3c6'
-  #   if event.feature.getGeometry().getType() == "Point"
-  #     map.data.overrideStyle event.feature, icon: 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Flag--Azure.png'
-  #   clicked_water_rights = event.feature.getProperty "water_rights"
-  #   console.log water_rights
-  #   $('#water_rights_table').html(
-  #     for wr in water_rights
-  #       if _.findWhere clicked_water_rights, wr
+  # Called when a feature (piece of geometry) is clicked
+  map.data.addListener 'click', (e) ->
+    # Remove all styling from any previously clicked feature 
+    map.data.revertStyle()
+    # If clicked feature is a polygon, set fill color and stroke color
+    if e.feature.getGeometry().getType() == "Polygon"
+      map.data.overrideStyle e.feature, fillColor: '#76b5c6', strokeColor: '#6eb3c6'
+    # If clicked feature is a point, set icon
+    if e.feature.getGeometry().getType() == "Point"
+      map.data.overrideStyle e.feature, icon: 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Flag--Azure.png'
+    # Get water rights for clicked feature
+    clicked_water_rights = e.feature.getProperty "water_rights"
+    # console.log water_rights
+    # Clear water rights table before appends
+    $('#water_rights_table').html ""
+    # Re-add water rights to table, highlighting the ones associated with the clicked feature
+    for wr in water_rights
+      # If current water right is in clicked_water_rights, add the highlighted class
+      if _.findWhere clicked_water_rights, wr
+        context = 
+          wr: wr
+          date_formatter: date_formatter
+          highlighted: true
+        $('#water_rights_table').append JST['templates/water_right'](context)
   #         "<tr class='highlighted'><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
-  #       else
+      # Otherwise add the water right without the highlighted class
+      else
+        context = 
+          wr: wr
+          date_formatter: date_formatter
+        $('#water_rights_table').append JST['templates/water_right'](context)
   #         "<tr><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
   #   )
   #   setLinkListeners()
