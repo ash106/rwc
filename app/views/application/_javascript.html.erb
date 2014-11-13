@@ -1,5 +1,6 @@
 <%= javascript_include_tag :application %>
-<%= javascript_include_tag "#{params[:controller]}" %>
+<% page_specific_js = "#{params[:controller]}" %>
+<%= javascript_include_tag page_specific_js if Rails.application.assets.find_asset page_specific_js %>
 
 <%= yield :javascript %>
 
