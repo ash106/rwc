@@ -3,10 +3,11 @@ require 'open-uri'
 class ListingArea < ActiveRecord::Base
   has_many :wanteds, dependent: :destroy
   has_many :for_sales, dependent: :destroy
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   has_attached_file :kml, path: ":class/:id/:filename"
   after_create :queue_processing
   # validates_attachment_content_type :kml, content_type: "application/vnd.google-earth.kml+xml"
+  validates_attachment_presence :kml
   validates_attachment_file_name :kml, matches: /kml\Z/
 
   def self.parse_kml(id)

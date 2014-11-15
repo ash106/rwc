@@ -1,9 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  policy: MyText
+# slv_central:
+#   name: SLV Central
+#   policy: Salt Lake Valley Central policy goes here
+#   # kml: fixture_file_upload(Rails.root.join('/test/fixtures/SLV_Central.kml'))
 
-two:
-  name: MyString
-  policy: MyText
+# slv_east:
+#   name: SLV East
+#   policy: Salt Lake Valley East policy goes here
+
+# slv_north:
+#   name: SLV North
+#   policy: Salt Lake Valley North policy goes here
+
+# slv_west:
+#   name: SLV West
+#   policy: Salt Lake Valley West policy goes here
