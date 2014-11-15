@@ -1,7 +1,7 @@
-require 'test_helper'
+# require 'test_helper'
 
-class PlaceOfUseAreaWaterRightsControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-end
+# class PlaceOfUseAreaWaterRightsControllerTest < ActionController::TestCase
+#   # test "the truth" do
+#   #   assert true
+#   # end
+# end
