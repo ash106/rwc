@@ -33,6 +33,7 @@ gem 'underscore-rails'
 gem 'pundit'
 gem 'workless', github: 'r4m/workless'
 gem 'eco'
+gem 'daemons'
 
 group :development do
   gem 'foreman'

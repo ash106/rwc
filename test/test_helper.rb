@@ -5,18 +5,19 @@ require 'rails/test_help'
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
 
-  include FactoryGirl::Syntax::Methods
+  ActiveRecord::Migration.maintain_test_schema! if defined?(ActiveRecord::Migration)
 
-  # Test database wasn't resetting for some reason
-  (ActiveRecord::Base.connection.tables - %w{schema_migrations}).each do |table_name|
-    ActiveRecord::Base.connection.execute "TRUNCATE TABLE #{table_name};"
-  end
+  include ActionDispatch::TestProcess
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
-  # fixtures :all
+  fixtures :all
+
+  def after_teardown
+    FileUtils.rm_rf(Dir["#{Rails.root}/test/test_uploads"])
+  end
 
   # Add more helper methods to be used by all tests here...
   def assert_valid(record, message = nil)
