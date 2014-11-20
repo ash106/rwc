@@ -39,6 +39,10 @@ class ActiveSupport::TestCase
   end
 end
 
+class ActionController::TestCase
+  include Devise::TestHelpers
+end
+
 FactoryGirl::SyntaxRunner.class_eval do
   include ActionDispatch::TestProcess
 end
