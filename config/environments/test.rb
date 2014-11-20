@@ -41,7 +41,7 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
     :storage => :filesystem,
-    :path => "#{Rails.root}/test/test_uploads/:class/:id/:filename",
-    :url => "#{Rails.root}/test/test_uploads/:class/:id/:filename"
+    :path => "#{Rails.root}/test/fixtures/:filename",
+    :url => "#{Rails.root}/test/fixtures/:filename"
   }
 end

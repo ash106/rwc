@@ -9,15 +9,21 @@ class ActiveSupport::TestCase
 
   include ActionDispatch::TestProcess
 
+  include FactoryGirl::Syntax::Methods
+
+  # self.use_transactional_fixtures = true
+
+  Delayed::Worker.delay_jobs = false
+
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
-  fixtures :all
+  # fixtures :all
 
-  def after_teardown
-    FileUtils.rm_rf(Dir["#{Rails.root}/test/test_uploads"])
-  end
+  # def after_teardown
+  #   FileUtils.rm_rf(Dir["#{Rails.root}/test/test_uploads"])
+  # end
 
   # Add more helper methods to be used by all tests here...
   def assert_valid(record, message = nil)
@@ -31,4 +37,8 @@ class ActiveSupport::TestCase
       assert_includes record.errors[attribute], message
     end
   end
+end
+
+FactoryGirl::SyntaxRunner.class_eval do
+  include ActionDispatch::TestProcess
 end
