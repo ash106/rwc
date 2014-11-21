@@ -23,5 +23,14 @@ FactoryGirl.define do
     description 'Need 5 to 20 acre feet of Strawberry Water.'
     contact_info 'tester@example.com'
   end
+
+  factory :for_sale do
+    listing_area
+    volume 100
+    source 'Well'
+    description 'This can be moved throughout most of this area'
+    price 4000
+    contact_info 'tester@example.com'
+  end
   
 end
