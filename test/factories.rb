@@ -17,20 +17,26 @@ FactoryGirl.define do
   end
 
   factory :wanted do
-    listing_area
+    # listing_area
     volume 20
     source 'Surface'
     description 'Need 5 to 20 acre feet of Strawberry Water.'
     contact_info 'tester@example.com'
+    after(:build) do |wanted|
+      wanted.listing_area = (ListingArea.first || create(:listing_area))
+    end
   end
 
   factory :for_sale do
-    listing_area
+    # listing_area
     volume 100
     source 'Well'
     description 'This can be moved throughout most of this area'
     price 4000
     contact_info 'tester@example.com'
+    after(:build) do |wanted|
+      wanted.listing_area = (ListingArea.first || create(:listing_area))
+    end
   end
 
   factory :place_of_use_area do
@@ -54,8 +60,8 @@ FactoryGirl.define do
     priority_date "1972-07-17"
     # user
     after(:build) do |wr|
-      wr.place_of_use_areas << build(:place_of_use_area)
-      wr.point_of_diversions << build(:point_of_diversion)
+      wr.place_of_use_areas << create(:place_of_use_area)
+      wr.point_of_diversions << create(:point_of_diversion)
     end
   end
 
