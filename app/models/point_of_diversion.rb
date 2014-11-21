@@ -1,25 +1,26 @@
 require 'open-uri'
 
 class PointOfDiversion < ActiveRecord::Base
-  validates :name, presence: true
   has_many :point_of_diversion_water_rights
   has_many :water_rights, through: :point_of_diversion_water_rights
-  has_attached_file :kml, path: ":class/:id/:filename"
-  after_create :queue_processing
+  validates :name, presence: true, uniqueness: true
+  has_attached_file :kml, use_timestamp: false
   # validates_attachment_content_type :kml, content_type: "application/vnd.google-earth.kml+xml"
+  validates_attachment_presence :kml
   validates_attachment_file_name :kml, matches: /kml\Z/
+  after_create :queue_processing
 
   def self.parse_kml(id)
     point_of_diversion = PointOfDiversion.find(id)
     doc = Nokogiri::HTML(open(point_of_diversion.kml.url))
     coordinates = doc.at_css("point coordinates").text
     coordinates_set = coordinates.scan(/(-?\d+.\d+),(-?\d+.\d+)/).collect { |lon, lat| [lon.to_f, lat.to_f]}
-    point_of_diversion.point = 
+    point = 
       {
         type: "Point",
         coordinates: coordinates_set[0]
       }
-    point_of_diversion.save
+    point_of_diversion.update_column(:point, point)
   end
 
 private
