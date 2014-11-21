@@ -16,7 +16,6 @@ class ListingAreasControllerTest < ActionController::TestCase
     get :index
     assert_includes assigns(:listing_areas), listing_area
     assert_response :success
-    listing_area.destroy
     # assert_not_nil assigns(:listing_areas)
   end
 
@@ -25,7 +24,6 @@ class ListingAreasControllerTest < ActionController::TestCase
     get :show, id: listing_area.id
     assert_equal listing_area, assigns(:listing_area)
     assert_response :success
-    listing_area.destroy
   end
 
   test "get new is successful" do
@@ -39,7 +37,6 @@ class ListingAreasControllerTest < ActionController::TestCase
     get :edit, id: listing_area.id
     assert_equal listing_area, assigns(:listing_area)
     assert_response :success
-    listing_area.destroy
   end
 
   test 'post create is successful with valid attributes' do
@@ -70,7 +67,6 @@ class ListingAreasControllerTest < ActionController::TestCase
     put :update, id: listing_area.id, listing_area: valid_attributes
     assert_equal valid_attributes[:name], listing_area.reload.name
     assert_redirected_to listing_area_path(listing_area)
-    listing_area.destroy
   end
 
   test 'put update is unsuccessful with invalid attributes' do

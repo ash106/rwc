@@ -23,7 +23,6 @@ class ListingAreaTest < ActiveSupport::TestCase
     listing_area = create(:listing_area)
     copy_cat = ListingArea.new(name: listing_area.name)
     assert_invalid copy_cat, name: 'has already been taken'
-    listing_area.destroy
   end
 
   test 'parse_kml creates polygon json attribute' do
@@ -37,7 +36,6 @@ class ListingAreaTest < ActiveSupport::TestCase
     assert_equal "Polygon", listing_area.polygon["type"]
     assert_equal [-111.923637152839,40.6885149314539], listing_area.polygon["coordinates"][0][0] # First coordinate in array
     assert_equal [-111.923637152839,40.6885149314539], listing_area.polygon["coordinates"][0][-1] # Last coordinate in array
-    listing_area.destroy
   end
 
 end
