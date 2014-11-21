@@ -15,5 +15,13 @@ FactoryGirl.define do
     policy "Salt Lake Valley Central policy goes here"
     kml { File.open(File.join(Rails.root, "/test/fixtures/SLV_Central.kml")) }
   end
+
+  factory :wanted do
+    listing_area
+    volume 20
+    source 'Surface'
+    description 'Need 5 to 20 acre feet of Strawberry Water.'
+    contact_info 'tester@example.com'
+  end
   
 end

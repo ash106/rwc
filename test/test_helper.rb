@@ -15,6 +15,14 @@ class ActiveSupport::TestCase
 
   Delayed::Worker.delay_jobs = false
 
+  def setup
+    DatabaseCleaner.start
+  end
+
+  def teardown
+    DatabaseCleaner.clean
+  end
+
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
