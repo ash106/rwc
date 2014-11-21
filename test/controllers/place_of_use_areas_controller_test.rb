@@ -1,49 +1,87 @@
-# require 'test_helper'
+require 'test_helper'
 
-# class PlaceOfUseAreasControllerTest < ActionController::TestCase
-#   setup do
-#     @place_of_use_area = place_of_use_areas(:one)
-#   end
+class PlaceOfUseAreasControllerTest < ActionController::TestCase
+  setup do
+    @user = create(:admin)
+    sign_in @user
+    # @listing_area = listing_areas(:one)
+  end
 
-#   test "should get index" do
-#     get :index
-#     assert_response :success
-#     assert_not_nil assigns(:place_of_use_areas)
-#   end
+  teardown do
+    @user.destroy
+  end
 
-#   test "should get new" do
-#     get :new
-#     assert_response :success
-#   end
+  test "get index is successful" do
+    place_of_use_area = create(:place_of_use_area)
+    get :index
+    assert_includes assigns(:place_of_use_areas), place_of_use_area
+    assert_response :success
+  end
 
-#   test "should create place_of_use_area" do
-#     assert_difference('PlaceOfUseArea.count') do
-#       post :create, place_of_use_area: { name: @place_of_use_area.name, polygon: @place_of_use_area.polygon }
-#     end
+  test 'get show is successful' do
+    place_of_use_area = create(:place_of_use_area)
+    get :show, id: place_of_use_area.id
+    assert_equal place_of_use_area, assigns(:place_of_use_area)
+    assert_response :success
+  end
 
-#     assert_redirected_to place_of_use_area_path(assigns(:place_of_use_area))
-#   end
+  test "get new is successful" do
+    get :new
+    assert_kind_of PlaceOfUseArea, assigns(:place_of_use_area)
+    assert_response :success
+  end
 
-#   test "should show place_of_use_area" do
-#     get :show, id: @place_of_use_area
-#     assert_response :success
-#   end
+  test 'get edit is successful' do
+    place_of_use_area = create(:place_of_use_area)
+    get :edit, id: place_of_use_area.id
+    assert_equal place_of_use_area, assigns(:place_of_use_area)
+    assert_response :success
+  end
 
-#   test "should get edit" do
-#     get :edit, id: @place_of_use_area
-#     assert_response :success
-#   end
+  test 'post create is successful with valid attributes' do
+    kml_file = ActionDispatch::Http::UploadedFile.new({
+      filename: 'Area_1.kml',
+      content_type: 'application/xml',
+      tempfile: File.new("#{Rails.root}/test/fixtures/Area_1.kml")
+    })
+    place_of_use_area_params = { name: 'Area One', kml: kml_file }
+    assert_difference 'PlaceOfUseArea.count' do
+      post :create, place_of_use_area: place_of_use_area_params
+    end
+    assert_redirected_to place_of_use_area_path(PlaceOfUseArea.last)
+  end
 
-#   test "should update place_of_use_area" do
-#     patch :update, id: @place_of_use_area, place_of_use_area: { name: @place_of_use_area.name, polygon: @place_of_use_area.polygon }
-#     assert_redirected_to place_of_use_area_path(assigns(:place_of_use_area))
-#   end
+  test 'post create is unsuccessful with invalid attributes' do
+    invalid_params = { name: '', kml: '' }
+    assert_no_difference 'PlaceOfUseArea.count' do
+      post :create, place_of_use_area: invalid_params
+    end
+    assert_template 'new'
+    assert_response :success
+  end
 
-#   test "should destroy place_of_use_area" do
-#     assert_difference('PlaceOfUseArea.count', -1) do
-#       delete :destroy, id: @place_of_use_area
-#     end
+  test 'put update is successful with valid attributes' do
+    place_of_use_area = create(:place_of_use_area)
+    valid_attributes = { name: 'Area Uno' }
+    put :update, id: place_of_use_area.id, place_of_use_area: valid_attributes
+    assert_equal valid_attributes[:name], place_of_use_area.reload.name
+    assert_redirected_to place_of_use_area_path(place_of_use_area)
+  end
 
-#     assert_redirected_to place_of_use_areas_path
-#   end
-# end
+  test 'put update is unsuccessful with invalid attributes' do
+    place_of_use_area = create(:place_of_use_area)
+    invalid_attributes = { name: '' }
+    put :update, id: place_of_use_area.id, place_of_use_area: invalid_attributes
+    refute_equal invalid_attributes[:name], place_of_use_area.reload.name
+    assert_template 'edit'
+    assert_response :success
+  end
+
+  test 'delete destroy is successful' do
+    place_of_use_area = create(:place_of_use_area)
+    assert_difference 'PlaceOfUseArea.count', -1 do
+      delete :destroy, id: place_of_use_area.id
+    end
+    assert_redirected_to place_of_use_areas_path
+  end
+end

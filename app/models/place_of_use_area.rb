@@ -1,27 +1,28 @@
 require 'open-uri'
 
 class PlaceOfUseArea < ActiveRecord::Base
-  validates :name, presence: true
   has_many :place_of_use_area_water_rights
   has_many :water_rights, through: :place_of_use_area_water_rights
-  has_attached_file :kml, path: ":class/:id/:filename"
-  after_create :queue_processing
+  validates :name, presence: true, uniqueness: true
+  has_attached_file :kml, use_timestamp: false
   # validates_attachment_content_type :kml, content_type: "application/vnd.google-earth.kml+xml"
+  validates_attachment_presence :kml
   validates_attachment_file_name :kml, matches: /kml\Z/
+  after_create :queue_processing
 
   def self.parse_kml(id)
     place_of_use_area = PlaceOfUseArea.find(id)
     doc = Nokogiri::HTML(open(place_of_use_area.kml.url))
     coordinates = doc.at_css("polygon coordinates").text
     coordinates_array = coordinates.scan(/(-?\d+.\d+),(-?\d+.\d+)/).collect { |lon, lat| [lon.to_f, lat.to_f]}
-    place_of_use_area.polygon = 
+    polygon = 
       {
         type: "Polygon",
         coordinates: [
           coordinates_array
         ]
       }
-    place_of_use_area.save
+    place_of_use_area.update_column(:polygon, polygon)
   end
 
 private

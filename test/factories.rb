@@ -32,5 +32,10 @@ FactoryGirl.define do
     price 4000
     contact_info 'tester@example.com'
   end
+
+  factory :place_of_use_area do
+    name 'Area One'
+    kml { File.open(File.join(Rails.root, "/test/fixtures/Area_1.kml")) }
+  end
   
 end
