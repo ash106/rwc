@@ -43,4 +43,20 @@ FactoryGirl.define do
     kml { File.open(File.join(Rails.root, "/test/fixtures/Stream.kml")) }
   end
 
+  factory :water_right do
+    number '13-1138'
+    flow_cfs 10
+    flow_ac_ft 1920
+    sole_supply_acres 640
+    place_of_use 'Most Farm'
+    change_application_number 'a28259'
+    proof_due_date "2015-05-31"
+    priority_date "1972-07-17"
+    # user
+    after(:build) do |wr|
+      wr.place_of_use_areas << build(:place_of_use_area)
+      wr.point_of_diversions << build(:point_of_diversion)
+    end
+  end
+
 end
