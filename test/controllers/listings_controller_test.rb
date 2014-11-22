@@ -13,7 +13,6 @@ class ListingsControllerTest < ActionController::TestCase
     assert_includes assigns(:wanteds), wanted
     assert_includes assigns(:for_sales), for_sale
     assert_response :success
-    user.destroy
   end
 
   test "get buy_sell is successful" do
