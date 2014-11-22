@@ -40,12 +40,12 @@ FactoryGirl.define do
   end
 
   factory :place_of_use_area do
-    name 'Area One'
+    sequence(:name) { |n| "Area #{n}" }
     kml { File.open(File.join(Rails.root, "/test/fixtures/Area_1.kml")) }
   end
   
   factory :point_of_diversion do
-    name 'Stream'
+    sequence(:name) { |n| "Stream #{n}" }
     kml { File.open(File.join(Rails.root, "/test/fixtures/Stream.kml")) }
   end
 

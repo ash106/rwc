@@ -29,5 +29,6 @@ class ListingsControllerTest < ActionController::TestCase
     response = JSON.parse(@response.body)
     assert_equal "FeatureCollection", response["type"] # Make sure "type":"FeatureCollection" key exists
     assert_equal 1, response["features"].length # Make sure "features" key includes only the created listing_area
+    assert_response :success
   end
 end
