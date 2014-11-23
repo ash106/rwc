@@ -5,8 +5,8 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 before_script:
   - cp .sample.env .env
+  
   - psql -c 'create database "rwc_test";' -U postgres
-  - CODECLIMATE_REPO_TOKEN=d198b41bf631d7e64a50854b77f0b0680d5bc6c933e1c432ba6d7e10c6b5f090
   
 branches:
   only:
