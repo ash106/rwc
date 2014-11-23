@@ -1,5 +1,18 @@
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
+require 'simplecov'
+require 'codeclimate-test-reporter'
+require 'coveralls'
+ 
+formatters = [SimpleCov::Formatter::HTMLFormatter]
+ 
+formatters << Coveralls::SimpleCov::Formatter if ENV['COVERALLS_REPO_TOKEN']
+formatters << CodeClimate::TestReporter::Formatter if ENV['CODECLIMATE_REPO_TOKEN']
+ 
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[*formatters]
+ 
+SimpleCov.start 'rails'
+
+# require "codeclimate-test-reporter"
+# CodeClimate::TestReporter.start
 
 # require 'coveralls'
 # Coveralls.wear!('rails')

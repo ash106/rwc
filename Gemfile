@@ -35,7 +35,6 @@ gem 'workless', github: 'r4m/workless'
 gem 'eco'
 gem 'daemons'
 gem 'coveralls', require: false
-gem "codeclimate-test-reporter", group: :test, require: nil
 
 group :development do
   gem 'foreman'
@@ -60,6 +59,8 @@ group :test do
   gem 'shoulda-matchers', require: false
   gem 'timecop'
   gem 'webmock'
+  gem "codeclimate-test-reporter", require: nil
+  gem 'simplecov', :require => false
 end
 
 group :staging, :production do
