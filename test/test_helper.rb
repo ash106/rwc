@@ -1,8 +1,8 @@
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
-require 'coveralls'
-Coveralls.wear!('rails')
+# require 'coveralls'
+# Coveralls.wear!('rails')
 
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
