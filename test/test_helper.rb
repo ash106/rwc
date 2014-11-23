@@ -1,8 +1,6 @@
 require "codeclimate-test-reporter"
 CodeClimate::TestReporter.start
 
-WebMock.disable_net_connect!(:allow => "codeclimate.com")
-
 # require 'coveralls'
 # Coveralls.wear!('rails')
 
@@ -30,6 +28,8 @@ class ActiveSupport::TestCase
   def teardown
     DatabaseCleaner.clean
   end
+
+  WebMock.disable_net_connect!(:allow => "codeclimate.com")
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   #
