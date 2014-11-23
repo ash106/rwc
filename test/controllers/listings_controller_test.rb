@@ -2,6 +2,11 @@ require 'test_helper'
 
 class ListingsControllerTest < ActionController::TestCase
 
+  test "get dashboard redirects for non-admin" do
+    get :dashboard
+    assert_response :redirect
+  end
+
   test "get dashboard is successful" do
     user = create(:admin)
     sign_in user
