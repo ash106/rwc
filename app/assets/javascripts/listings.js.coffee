@@ -17,6 +17,10 @@ $ ->
 
   # Called when an area on the map is clicked
   map.data.addListener 'click', (e) ->
+    # Reset styling for map features 
+    map.data.revertStyle()
+    # Set styling for clicked feature
+    map.data.overrideStyle e.feature, fillColor: polygon_fill_color, strokeColor: polygon_stroke_color
     # Set listing_title to clicked feature's name
     $('#listing_title').html "#{e.feature.getProperty "name"} Listings"
     # Set area_policy to clicked feature's policy
