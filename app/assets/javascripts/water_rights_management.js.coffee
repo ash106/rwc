@@ -17,7 +17,7 @@ $ ->
   #Geometry style settings
   polygon_fill_color = '#76b5c6'
   polygon_stroke_color = '#6eb3c6'
-  point_icon_url = 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Flag--Azure.png'
+  point_icon_url = 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Outside-Azure.png'
 
   # Load GeoJSON based on current_user ID, which defaults to 0 if no user is signed in
   map.data.loadGeoJson("/get-water-rights-data/#{$('#water_rights_table').data('user')}.json")
