@@ -1,33 +1,44 @@
 $ ->
+  # Basic map options object
   mapOptions =
     center: new google.maps.LatLng(40.5999605, -111.747028)
     zoom: 9
     mapTypeId: google.maps.MapTypeId.ROADMAP
+
+  # Create map
   map = new google.maps.Map($("#map_canvas.listings")[0], mapOptions)
 
+  # Geometry style settings
+  polygon_fill_color = '#76b5c6'
+  polygon_stroke_color = '#6eb3c6'
+
+  # Load GeoJSON listings data
   map.data.loadGeoJson('/get-listings-data.json')
 
-  map.data.addListener 'click', (event) ->
-    $('#listing_title').html "#{event.feature.getProperty "name"} Listings"
-    $('#area_policy').html event.feature.getProperty "policy"
-    wanteds = event.feature.getProperty "wanteds"
-    for_sales = event.feature.getProperty "for_sales"
+  # Called when an area on the map is clicked
+  map.data.addListener 'click', (e) ->
+    # Set listing_title to clicked feature's name
+    $('#listing_title').html "#{e.feature.getProperty "name"} Listings"
+    # Set area_policy to clicked feature's policy
+    $('#area_policy').html e.feature.getProperty "policy"
+    # Get wanteds and for_sales for clicked feature
+    wanteds = e.feature.getProperty "wanteds"
+    for_sales = e.feature.getProperty "for_sales"
+    # Clear wanted div before appending new wanteds
+    $('#wanted').html ""
+    # If any wanteds, append them to wanted div
     if wanteds.length > 0
-      $('#wanted').html(
-        for wanted in wanteds
-          "<div><h5>#{wanted.volume} ac-ft</h5><p>#{wanted.source} | #{wanted.description}</p></div>"
-      )
+      for wanted in wanteds
+        $('#wanted').append JST['templates/wanted'](wanted: wanted)
+    # Otherwise print generic message
     else
-      $('#wanted').html(
-          "<div><h5>No wanted listings for this area.</h5></div>"
-      )
+      $('#wanted').append "<div><h5>No wanted listings for this area.</h5></div>"
+    # Clear for_sale div before appending new for_sales
+    $('#for_sale').html ""
+    # If any for_sales, append them to for_sale div
     if for_sales.length > 0
-      $('#for_sale').html(
-        for for_sale in for_sales
-          "<div><h5>#{for_sale.volume} ac-ft | $#{for_sale.price}/ac-ft</h5><p>#{for_sale.source} | #{for_sale.description}</p></div>"
-      )
+      for for_sale in for_sales
+        $('#for_sale').append JST['templates/for_sale'](for_sale: for_sale)
+    # Otherwise print generic message
     else
-      $('#for_sale').html(
-          "<div><h5>No for sale listings for this area.</h5></div>"
-      )
-    return
+      $('#for_sale').html "<div><h5>No for sale listings for this area.</h5></div>"

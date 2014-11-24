@@ -15,4 +15,6 @@
 //= require bootstrap-sprockets
 //= require underscore
 //= require templates/water_right
+//= require templates/wanted
+//= require templates/for_sale
 

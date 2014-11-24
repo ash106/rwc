@@ -1,0 +1,4 @@
+<div>
+  <h5><%= @for_sale.volume %> ac-ft | $<%= @for_sale.price %>/ac-ft</h5>
+  <p><%= @for_sale.source %> | <%= @for_sale.description %></p>
+</div>

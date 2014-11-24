@@ -1,0 +1,4 @@
+<div>
+  <h5><%= @wanted.volume %> ac-ft</h5>
+  <p><%= @wanted.source %> | <%= @wanted.description %></p>
+</div>
