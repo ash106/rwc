@@ -14,6 +14,11 @@ $ ->
   # Empty array that will be used to store water rights
   water_rights = []
 
+  #Geometry style settings
+  polygon_fill_color = '#76b5c6'
+  polygon_stroke_color = '#6eb3c6'
+  point_icon_url = 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Flag--Azure.png'
+
   # Load GeoJSON based on current_user ID, which defaults to 0 if no user is signed in
   map.data.loadGeoJson("/get-water-rights-data/#{$('#water_rights_table').data('user')}.json")
 
@@ -60,14 +65,14 @@ $ ->
         if wr.number == clicked_wr_number
           # If feature is a polygon, set fill color and stroke color
           if feature.getGeometry().getType() == "Polygon"
-            map.data.overrideStyle feature, fillColor: '#76b5c6', strokeColor: '#6eb3c6'
+            map.data.overrideStyle feature, fillColor: polygon_fill_color, strokeColor: polygon_stroke_color
             # Extend bounds for each point in polygon
             points = feature.getGeometry().getAt(0).getArray()
             for point in points
               selected_bounds.extend point
           # If feature is a point, set icon
           if feature.getGeometry().getType() == "Point"
-            map.data.overrideStyle feature, icon: 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Flag--Azure.png'
+            map.data.overrideStyle feature, icon: point_icon_url
             # Extend bounds for point
             selected_bounds.extend feature.getGeometry().get()
       # Zoom map to bounds for features associated with clicked water right
@@ -151,10 +156,10 @@ $ ->
     map.data.revertStyle()
     # If clicked feature is a polygon, set fill color and stroke color
     if e.feature.getGeometry().getType() == "Polygon"
-      map.data.overrideStyle e.feature, fillColor: '#76b5c6', strokeColor: '#6eb3c6'
+      map.data.overrideStyle e.feature, fillColor: polygon_fill_color, strokeColor: polygon_stroke_color
     # If clicked feature is a point, set icon
     if e.feature.getGeometry().getType() == "Point"
-      map.data.overrideStyle e.feature, icon: 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Flag--Azure.png'
+      map.data.overrideStyle e.feature, icon: point_icon_url
     # Get water rights for clicked feature
     clicked_water_rights = e.feature.getProperty "water_rights"
     # console.log water_rights
