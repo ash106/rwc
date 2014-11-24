@@ -2,7 +2,7 @@ Riley Water Consulting
 ===
 
 [![Build Status](https://travis-ci.org/ash106/rwc.svg?branch=master)](https://travis-ci.org/ash106/rwc)
-[![Test Coverage](https://codeclimate.com/github/ash106/rwc/badges/coverage.svg)](https://codeclimate.com/github/ash106/rwc)
+[![Coverage Status](https://img.shields.io/coveralls/ash106/rwc.svg)](https://coveralls.io/r/ash106/rwc?branch=master)
 [![Code Climate](https://codeclimate.com/github/ash106/rwc/badges/gpa.svg)](https://codeclimate.com/github/ash106/rwc)
 
 Getting Started
