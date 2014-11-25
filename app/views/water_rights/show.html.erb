@@ -41,6 +41,11 @@
 </p>
 
 <p>
+  <strong>External link:</strong>
+  <%= link_to @water_right.external_link, @water_right.external_link if @water_right.external_link %>
+</p>
+
+<p>
   <strong>User:</strong>
   <%= @water_right.user.email if @water_right.user %>
 </p>

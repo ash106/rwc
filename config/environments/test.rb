@@ -44,4 +44,6 @@ Rails.application.configure do
     :path => "#{Rails.root}/test/fixtures/:filename",
     :url => "#{Rails.root}/test/fixtures/:filename"
   }
+
+  config.action_controller.action_on_unpermitted_parameters = :raise
 end

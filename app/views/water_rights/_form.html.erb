@@ -10,6 +10,7 @@
     <%= f.input :change_application_number %>
     <%= f.input :proof_due_date, start_year: 1880, end_year: Date.today.year + 15 %>
     <%= f.input :priority_date, start_year: 1880, end_year: Date.today.year + 15 %>
+    <%= f.input :external_link %>
     <%= f.input :comments %>
     <%= f.association :user, label_method: :email %>
   </div>

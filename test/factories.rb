@@ -58,6 +58,7 @@ FactoryGirl.define do
     change_application_number 'a28259'
     proof_due_date "2015-05-31"
     priority_date "1972-07-17"
+    external_link "https://www.google.com/"
     # user
     after(:build) do |wr|
       wr.place_of_use_areas << create(:place_of_use_area)
