@@ -30,7 +30,7 @@ $ ->
     m + "/" + d + "/" + y
 
   # Called when 'View' button is clicked in a table row
-  $('#water_rights_table').on 'click', 'td a', (e) ->
+  $('#water_rights_table').on 'click', 'td a.show-link', (e) ->
     e.preventDefault()
     # Reset styling for map features
     map.data.revertStyle()
