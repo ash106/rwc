@@ -40,4 +40,8 @@ Rails.application.configure do
 
 
   config.action_mailer.default_url_options = { host: 'rwc.local' }
+
+  config.after_initialize do 
+    Delayed::Job.scaler = :local # used for local development
+  end
 end
