@@ -9,7 +9,7 @@
     <h3 id="water_rights_title">Water Rights</h3>
     <% if user_signed_in? %>
       <% if current_user.has_role? :admin %>
-        <%#= select_tag :user_id, options_for_select(@users, 0), class: 'form-control', id: 'user-selector' %>
+        <%= select_tag :user_id, options_for_select(@users, 0), class: 'form-control', id: 'user-selector' %>
       <% end %>
     <% end %>
     <div class="table-responsive">

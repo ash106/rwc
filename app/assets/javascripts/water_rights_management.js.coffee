@@ -186,9 +186,16 @@ $ ->
   #   setLinkListeners()
   #   return
 
-  # $('#user-selector').change (e) ->
-  #   map.data.forEach (feature) ->
-  #     map.data.remove feature
-  #   map.data.loadGeoJson("/get-water-rights-data/#{$(this).val()}.json")
+  # Called when the user selectbox changes
+  $('#user-selector').change (e) ->
+    # Remove previous GeoJSON features
+    map.data.forEach (feature) ->
+      map.data.remove feature
+    # Reset map bounds
+    bounds = new google.maps.LatLngBounds()
+    # Reset water_rights array
+    water_rights = []
+    # Load new data based on selected user_id
+    map.data.loadGeoJson("/get-water-rights-data/#{$(this).val()}.json")
     
 
