@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/wrm-dashboard', to: 'water_rights_management#dashboard', as: :wrm_dashboard
+  get '/wrm-dashboard(/:user_id)', to: 'water_rights_management#dashboard', as: :wrm_dashboard
   get '/show-water-rights', to: 'water_rights_management#show_water_rights', as: :show_water_rights
   get "/get-water-rights-data/:id(.:format)", to: "water_rights_management#get_data", as: :get_water_rights_data
 

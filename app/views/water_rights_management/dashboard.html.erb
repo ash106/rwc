@@ -1,3 +1,9 @@
+<div class="row">
+  <div class="col-lg-3">
+    <%= select_tag :user_id, options_for_select(@users, (@user.id if @user) || 0), class: 'form-control', id: 'dashboard-user-selector' %>
+  </div>
+</div>
+
 <h1 class="text-center">Water Rights</h1>
 
 <div class="table-responsive">

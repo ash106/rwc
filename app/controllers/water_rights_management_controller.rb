@@ -2,9 +2,24 @@ class WaterRightsManagementController < ApplicationController
   before_action :authenticate_user!, only: :dashboard
 
   def dashboard
-    @water_rights = WaterRight.all
-    @place_of_use_areas = PlaceOfUseArea.all
-    @point_of_diversions = PointOfDiversion.all
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @water_rights = @user.water_rights
+      areas = []
+      points = []
+      @user.water_rights.each do |wr|
+        areas << wr.place_of_use_areas
+        points << wr.point_of_diversions
+      end
+      @place_of_use_areas = areas.flatten.uniq{|a| a.id}
+      @point_of_diversions = points.flatten.uniq{|p| p.id}
+    else
+      @water_rights = WaterRight.all
+      @place_of_use_areas = PlaceOfUseArea.all
+      @point_of_diversions = PointOfDiversion.all
+    end
+    @users = User.all.map{ |user| [user.email, user.id] if user.water_rights.any? }.compact
+    @users.unshift ["All Users", nil]
     authorize @water_rights, :index?
   end
 

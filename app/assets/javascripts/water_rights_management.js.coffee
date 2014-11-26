@@ -1,4 +1,9 @@
 $ ->
+  # Called when the dashboard user selectbox changes
+  $('#dashboard-user-selector').change (e) ->
+    console.log $(this).val()
+    window.location.href = "/wrm-dashboard/#{$(this).val()}"
+
   # Basic map options object
   mapOptions =
     center: new google.maps.LatLng(40.5999605, -111.747028)
@@ -197,5 +202,3 @@ $ ->
     water_rights = []
     # Load new data based on selected user_id
     map.data.loadGeoJson("/get-water-rights-data/#{$(this).val()}.json")
-    
-

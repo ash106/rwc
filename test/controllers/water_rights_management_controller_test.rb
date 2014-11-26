@@ -9,7 +9,7 @@ class WaterRightsManagementControllerTest < ActionController::TestCase
     assert_response :redirect
   end
 
-  test "get dashboard is successful" do
+  test "get dashboard is successful without user_id param" do
     user = create(:admin)
     sign_in user
     water_right = create(:water_right)
@@ -17,6 +17,19 @@ class WaterRightsManagementControllerTest < ActionController::TestCase
     assert_includes assigns(:water_rights), water_right
     assert_includes assigns(:place_of_use_areas), water_right.place_of_use_areas.first
     assert_includes assigns(:point_of_diversions), water_right.point_of_diversions.first
+    assert_response :success
+  end
+
+  test "get dashboard is successful with user_id param" do
+    admin = create(:admin, email: "admin@example.com")
+    sign_in admin
+    user = create(:user)
+    associated_water_right = create(:water_right)
+    user.water_rights << associated_water_right
+    get :dashboard, user_id: user.id
+    assert_includes assigns(:water_rights), user.water_rights.first
+    assert_includes assigns(:place_of_use_areas), user.water_rights.first.place_of_use_areas.first
+    assert_includes assigns(:point_of_diversions), user.water_rights.first.point_of_diversions.first
     assert_response :success
   end
 
