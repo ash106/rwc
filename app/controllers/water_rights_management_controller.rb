@@ -11,11 +11,13 @@ class WaterRightsManagementController < ApplicationController
   def show_water_rights
     if current_user
       @user_id = current_user.id
+      if current_user.has_role? :admin
+        @users = User.all.map{ |user| [user.email, user.id] if user.water_rights.any? }.compact
+        @users.unshift ["All Users", @user_id]
+      end
     else
       @user_id = 0
     end
-    @users = User.all.map{ |user| [user.email, user.id] if user.water_rights.any? }.compact
-    @users.unshift ["All Users", @user_id]
   end
 
   def get_data

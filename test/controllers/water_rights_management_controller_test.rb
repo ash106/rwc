@@ -31,6 +31,19 @@ class WaterRightsManagementControllerTest < ActionController::TestCase
     sign_in user
     get :show_water_rights
     assert_equal user.id, assigns(:user_id)
+    assert_equal nil, assigns(:users)
+    assert_response :success
+  end
+
+  test "get show_water_rights is successful for admin" do
+    admin = create(:admin, email: "admin@example.com")
+    sign_in admin
+    user = create(:user)
+    associated_water_right = create(:water_right)
+    user.water_rights << associated_water_right
+    get :show_water_rights
+    assert_equal admin.id, assigns(:user_id)
+    assert_equal [["All Users", admin.id], [user.email, user.id]], assigns(:users)
     assert_response :success
   end
 
