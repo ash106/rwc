@@ -1,0 +1,10 @@
+<tr>
+  <td><%= wanted.volume %></td>
+  <td><%= wanted.source %></td>
+  <td><%= wanted.description %></td>
+  <td><%= wanted.contact_info %></td>
+  <td><%= wanted.listing_area.name %></td>
+  <td><%= link_to 'Show', wanted %></td>
+  <td><%= link_to 'Edit', edit_wanted_path(wanted) %></td>
+  <td><%= link_to 'Destroy', wanted, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
