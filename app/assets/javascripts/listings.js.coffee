@@ -1,4 +1,4 @@
-$ ->
+$(".listings-buy_sell").ready ->
   # Basic map options object
   mapOptions =
     center: new google.maps.LatLng(40.5999605, -111.747028)

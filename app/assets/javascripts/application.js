@@ -14,7 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require underscore
-//= require templates/water_right
-//= require templates/wanted
-//= require templates/for_sale
-
+//= require jquery-readyselector
+//= require_tree .

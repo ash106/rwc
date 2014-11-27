@@ -1,4 +1,4 @@
-$ ->
+$(".static_pages-contact").ready ->
   google.maps.visualRefresh = true
   ourLoc = new google.maps.LatLng(40.765344, -111.890736)
   mapOptions =

@@ -1,9 +1,11 @@
-$ ->
+$(".water_rights_management-dashboard").ready ->
   # Called when the dashboard user selectbox changes
-  $('#dashboard-user-selector').change (e) ->
+  $('#user-selector').change (e) ->
     console.log $(this).val()
     window.location.href = "/wrm-dashboard/#{$(this).val()}"
 
+
+$(".water_rights_management-show_water_rights").ready ->
   # Basic map options object
   mapOptions =
     center: new google.maps.LatLng(40.5999605, -111.747028)
