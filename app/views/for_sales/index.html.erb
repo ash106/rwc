@@ -1,35 +1,24 @@
-<h1>Listing for_sales</h1>
+<h1 class="text-center">For Sales</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Volume</th>
-      <th>Source</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Contact info</th>
-      <th>Listing area</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @for_sales.each do |for_sale| %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= for_sale.volume %></td>
-        <td><%= for_sale.source %></td>
-        <td><%= for_sale.description %></td>
-        <td><%= for_sale.price %></td>
-        <td><%= for_sale.contact_info %></td>
-        <td><%= for_sale.listing_area.name %></td>
-        <td><%= link_to 'Show', for_sale %></td>
-        <td><%= link_to 'Edit', edit_for_sale_path(for_sale) %></td>
-        <td><%= link_to 'Destroy', for_sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Volume</th>
+        <th>Source</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Contact info</th>
+        <th>Listing area</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <%= render(@for_sales) %>
+    </tbody>
+  </table>
+</div>
 
-<br>
-
-<%= link_to 'New For sale', new_for_sale_path %>
+<div class="text-center">
+  <%= link_to 'New For Sale', new_for_sale_path, class: "btn btn-primary" %>
+</div>
