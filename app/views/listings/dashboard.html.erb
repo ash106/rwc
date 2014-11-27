@@ -1,34 +1,4 @@
-<h1 class="text-center">Listing Areas</h1>
-
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Policy</th>
-        <th>Polygon JSON</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @listing_areas.each do |listing_area| %>
-        <tr>
-          <td><%= listing_area.name %></td>
-          <td><%= listing_area.policy %></td>
-          <td><%= listing_area.polygon.to_s.truncate(140) %></td>
-          <td><%= link_to 'Show', listing_area %></td>
-          <td><%= link_to 'Edit', edit_listing_area_path(listing_area) %></td>
-          <td><%= link_to 'Destroy', listing_area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-
-<div class="text-center">
-  <%= link_to 'New Listing Area', new_listing_area_path, class: "btn btn-primary" %>
-</div>
-
+<%= render template: 'listing_areas/index', object: @listing_areas %>
 
 <h1 class="text-center">Wanteds</h1>
 
