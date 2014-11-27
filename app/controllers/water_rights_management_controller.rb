@@ -5,14 +5,8 @@ class WaterRightsManagementController < ApplicationController
     if params[:user_id]
       @user = User.find(params[:user_id])
       @water_rights = @user.water_rights
-      areas = []
-      points = []
-      @user.water_rights.each do |wr|
-        areas << wr.place_of_use_areas
-        points << wr.point_of_diversions
-      end
-      @place_of_use_areas = areas.flatten.uniq{|a| a.id}
-      @point_of_diversions = points.flatten.uniq{|p| p.id}
+      @place_of_use_areas = set_areas(@user)
+      @point_of_diversions = set_points(@user)
     else
       @water_rights = WaterRight.all
       @place_of_use_areas = PlaceOfUseArea.all
@@ -38,31 +32,34 @@ class WaterRightsManagementController < ApplicationController
   def get_data
     if params[:id].to_i > 0 # params[:id] is set to 0 if no user signed in
       user = User.find(params[:id])
-      @geometry = set_geometry(user)
+      if user.has_role? :admin
+        @geometry = PlaceOfUseArea.all + PointOfDiversion.all
+      else
+        @geometry = set_areas(user) + set_points(user)
+      end
     else
       user = User.find_by(email: 'tester@example.com')
-      @geometry = set_geometry(user)
+      @geometry = set_areas(user) + set_points(user)
     end
     render json: @geometry, root: "features", meta: "FeatureCollection", meta_key: 'type'
   end
 
 private
 
-  def set_geometry(user)
+  def set_areas(user)
     areas = []
-    points = []
-    if user.has_role? :admin
-      areas = PlaceOfUseArea.all
-      points = PointOfDiversion.all
-    else
-      user.water_rights.each do |wr|
-        areas << wr.place_of_use_areas
-        points << wr.point_of_diversions
-      end
-      areas = areas.flatten.uniq{|a| a.id}
-      points = points.flatten.uniq{|p| p.id}
+    user.water_rights.each do |wr|
+      areas << wr.place_of_use_areas
     end
-    areas + points
+    areas.flatten.uniq{|a| a.id}
+  end
+
+  def set_points(user)
+    points = []
+    user.water_rights.each do |wr|
+      points << wr.point_of_diversions
+    end
+    points.flatten.uniq{|p| p.id}
   end
 
 end
