@@ -12,8 +12,7 @@ class WaterRightsManagementController < ApplicationController
       @place_of_use_areas = PlaceOfUseArea.all
       @point_of_diversions = PointOfDiversion.all
     end
-    @users = User.all.map{ |user| [user.email, user.id] if user.water_rights.any? }.compact
-    @users.unshift ["All Users", nil]
+    @users = set_users_for_select(nil)
     authorize @water_rights, :index?
   end
 
@@ -21,8 +20,7 @@ class WaterRightsManagementController < ApplicationController
     if current_user
       @user_id = current_user.id
       if current_user.has_role? :admin
-        @users = User.all.map{ |user| [user.email, user.id] if user.water_rights.any? }.compact
-        @users.unshift ["All Users", @user_id]
+        @users = set_users_for_select(@user_id)
       end
     else
       @user_id = 0
@@ -51,6 +49,11 @@ private
       geometry << wr.send(geo_type)
     end
     geometry.flatten.uniq{|a| a.id}
+  end
+
+  def set_users_for_select(all_users_val)
+    users = User.all.map{ |user| [user.email, user.id] if user.water_rights.any? }.compact
+    users.unshift ["All Users", all_users_val]
   end
 
 end
