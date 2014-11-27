@@ -1,0 +1,7 @@
+<tr>
+  <td><%= place_of_use_area.name %></td>
+  <td><%= place_of_use_area.polygon.to_s.truncate(140) %></td>
+  <td><%= link_to 'Show', place_of_use_area %></td>
+  <td><%= link_to 'Edit', edit_place_of_use_area_path(place_of_use_area) %></td>
+  <td><%= link_to 'Destroy', place_of_use_area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
