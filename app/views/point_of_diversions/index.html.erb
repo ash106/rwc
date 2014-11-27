@@ -1,27 +1,20 @@
-<h1>Listing point_of_diversions</h1>
+<h1 class="text-center">Point of Diversions</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Point</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @point_of_diversions.each do |point_of_diversion| %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= point_of_diversion.name %></td>
-        <td><%= point_of_diversion.point %></td>
-        <td><%= link_to 'Show', point_of_diversion %></td>
-        <td><%= link_to 'Edit', edit_point_of_diversion_path(point_of_diversion) %></td>
-        <td><%= link_to 'Destroy', point_of_diversion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Point</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <%= render(@point_of_diversions) %>
+    </tbody>
+  </table>
+</div>
 
-<br>
-
-<%= link_to 'New Point of diversion', new_point_of_diversion_path %>
+<div class="text-center">
+  <%= link_to 'New Point of Diversion', new_point_of_diversion_path, class: 'btn btn-primary' %>
+</div>
