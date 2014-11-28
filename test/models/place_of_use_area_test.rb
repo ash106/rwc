@@ -20,7 +20,7 @@ class PlaceOfUseAreaTest < ActiveSupport::TestCase
     assert_invalid copy_cat, name: 'has already been taken'
   end
 
-  test 'parse_kml creates polygon json attribute' do
+  test 'KmlParser creates polygon json attribute' do
     place_of_use_area = create(:place_of_use_area)
     place_of_use_area.reload
     assert_equal "Polygon", place_of_use_area.polygon["type"]
@@ -28,4 +28,13 @@ class PlaceOfUseAreaTest < ActiveSupport::TestCase
     assert_equal [-111.7355055947721,40.17300160313579], place_of_use_area.polygon["coordinates"][0][-1] # Last coordinate in array
   end
 
+  test 'KmlParser updates polygon when kml file changes' do
+    place_of_use_area = create(:place_of_use_area)
+    place_of_use_area.kml = File.open(File.join(Rails.root, "/test/fixtures/Area_2.kml"))
+    place_of_use_area.save!
+    place_of_use_area.reload
+    assert_equal "Polygon", place_of_use_area.polygon["type"]
+    assert_equal [-111.7416557558074,40.16315956981207], place_of_use_area.polygon["coordinates"][0][0] # First coordinate in array
+    assert_equal [-111.7416557558074,40.16315956981207], place_of_use_area.polygon["coordinates"][0][-1] # Last coordinate in array
+  end
 end

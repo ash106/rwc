@@ -6,12 +6,14 @@ class ListingArea < ActiveRecord::Base
   # validates_attachment_content_type :kml, content_type: "application/vnd.google-earth.kml+xml"
   validates_attachment_presence :kml
   validates_attachment_file_name :kml, matches: /kml\Z/
-  after_create :queue_processing
+  after_save :queue_processing
 
 private
   
   def queue_processing
-    parser = KmlParser.new(id, 'ListingArea')
-    parser.delay.parse_polygon
+    if kml_updated_at_changed?
+      parser = KmlParser.new(id, 'ListingArea')
+      parser.delay.parse_polygon
+    end
   end
 end

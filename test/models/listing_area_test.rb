@@ -25,7 +25,7 @@ class ListingAreaTest < ActiveSupport::TestCase
     assert_invalid copy_cat, name: 'has already been taken'
   end
 
-  test 'parse_kml creates polygon json attribute' do
+  test 'KmlParser creates polygon json attribute' do
     # listing_area = listing_areas(:slv_central)
     # listing_area.kml = fixture_file_upload 'SLV_Central.kml'
     # listing_area.save!
@@ -36,6 +36,16 @@ class ListingAreaTest < ActiveSupport::TestCase
     assert_equal "Polygon", listing_area.polygon["type"]
     assert_equal [-111.923637152839,40.6885149314539], listing_area.polygon["coordinates"][0][0] # First coordinate in array
     assert_equal [-111.923637152839,40.6885149314539], listing_area.polygon["coordinates"][0][-1] # Last coordinate in array
+  end
+
+  test 'KmlParser updates polygon when kml file changes' do
+    listing_area = create(:listing_area)
+    listing_area.kml = File.open(File.join(Rails.root, "/test/fixtures/SLV_North.kml"))
+    listing_area.save!
+    listing_area.reload
+    assert_equal "Polygon", listing_area.polygon["type"]
+    assert_equal [-111.937543450496,40.8273962794556], listing_area.polygon["coordinates"][0][0] # First coordinate in array
+    assert_equal [-111.937543450496,40.8273962794556], listing_area.polygon["coordinates"][0][-1] # Last coordinate in array
   end
 
 end

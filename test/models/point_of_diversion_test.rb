@@ -20,11 +20,20 @@ class PointOfDiversionTest < ActiveSupport::TestCase
     assert_invalid copy_cat, name: 'has already been taken'
   end
 
-  test 'parse_kml creates polygon json attribute' do
+  test 'KmlParser creates polygon json attribute' do
     point_of_diversion = create(:point_of_diversion)
     point_of_diversion.reload
     assert_equal "Point", point_of_diversion.point["type"]
     assert_equal [-111.7182951841196,40.16560061443249], point_of_diversion.point["coordinates"] # Points only have one set of coordinates
+  end
+
+  test 'KmlParser updates polygon when kml file changes' do
+    point_of_diversion = create(:point_of_diversion)
+    point_of_diversion.kml = File.open(File.join(Rails.root, "/test/fixtures/Well.kml"))
+    point_of_diversion.save!
+    point_of_diversion.reload
+    assert_equal "Point", point_of_diversion.point["type"]
+    assert_equal [-111.7261537428767,40.15541516986399], point_of_diversion.point["coordinates"] # Points only have one set of coordinates
   end
 
 end
