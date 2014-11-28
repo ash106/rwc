@@ -3,6 +3,9 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
+    <% if @place_of_use_area.kml_file_name %>
+      <p>Current KML File: <%= @place_of_use_area.kml_file_name %></p>
+    <% end %>
     <%= f.input :kml %>
   </div>
 
