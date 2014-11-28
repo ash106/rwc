@@ -2,18 +2,20 @@
 
 <div class="table-responsive">
   <table class="table">
-    <thead>
-      <tr>
-        <th>Volume</th>
-        <th>Source</th>
-        <th>Description</th>
-        <th>Contact info</th>
-        <th>Listing area</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+    <% if @wanteds.any? %>
+      <thead>
+        <tr>
+          <th>Volume</th>
+          <th>Source</th>
+          <th>Description</th>
+          <th>Contact info</th>
+          <th>Listing area</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+    <% end %>
     <tbody>
-      <%= render @wanteds %>
+      <%= render(@wanteds) || render('wanteds/empty') %>
     </tbody>
   </table>
 </div>

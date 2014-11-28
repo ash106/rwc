@@ -2,16 +2,18 @@
 
 <div class="table-responsive">
   <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Policy</th>
-        <th>Polygon JSON</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+    <% if @listing_areas.any? %>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Policy</th>
+          <th>Polygon JSON</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+    <% end %>
     <tbody>
-      <%= render(@listing_areas) %>
+      <%= render(@listing_areas) || render('listing_areas/empty') %>
     </tbody>
   </table>
 </div>

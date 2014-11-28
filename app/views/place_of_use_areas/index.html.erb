@@ -2,15 +2,17 @@
 
 <div class="table-responsive">
   <table class="table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Polygon</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+    <% if @place_of_use_areas.any? %>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Polygon</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+    <% end %>
     <tbody>
-      <%= render(@place_of_use_areas) %>
+      <%= render(@place_of_use_areas) || render('place_of_use_areas/empty') %>
     </tbody>
   </table>
 </div>

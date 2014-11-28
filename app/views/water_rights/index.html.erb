@@ -2,24 +2,26 @@
 
 <div class="table-responsive">
   <table class="table">
-    <thead>
-      <tr>
-        <th>Number</th>
-        <th>Flow cfs</th>
-        <th>Flow ac ft</th>
-        <th>Sole supply acres</th>
-        <th>Place of use</th>
-        <th>Change application number</th>
-        <th>Proof due date</th>
-        <th>Priority date</th>
-        <th>External link</th>
-        <th>User</th>
-        <th>Comments</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+    <% if @water_rights.any? %>
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Flow cfs</th>
+          <th>Flow ac ft</th>
+          <th>Sole supply acres</th>
+          <th>Place of use</th>
+          <th>Change application number</th>
+          <th>Proof due date</th>
+          <th>Priority date</th>
+          <th>External link</th>
+          <th>User</th>
+          <th>Comments</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+    <% end %>
     <tbody>
-      <%= render(@water_rights) %>
+      <%= render(@water_rights) || render('water_rights/empty') %>
     </tbody>
   </table>
 </div>
