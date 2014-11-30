@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get "/buy-sell", to: "listings#buy_sell", as: :buy_sell
   get "/get-listings-data", to: "listings#get_data", as: :get_listings_data
 
-  get "/contact", to: "static_pages#contact", as: :contact
+  # get "/contact", to: "static_pages#contact", as: :contact
 
   resources :listing_areas
 
