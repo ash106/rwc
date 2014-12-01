@@ -28,6 +28,11 @@ $grid-gutter-width: 30px;
   height: 275px;
 }
 
+#map_canvas.edit_page {
+  height: 275px;
+  margin-bottom: 10px;
+}
+
 table.table.table-striped tr.highlighted td {
   background-color: #76b5c6;
 }
