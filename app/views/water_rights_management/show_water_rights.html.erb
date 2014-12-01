@@ -13,19 +13,21 @@
       <% end %>
     <% end %>
     <div class="table-responsive">
-      <table class="table">
+      <table id="water_rights_table" class="tablesorter">
         <thead>
-          <th>Water Right #</th>
-          <th>Priority Date</th>
-          <th>Change App #</th>
-          <th>Proof Due Date</th>
-          <th>View Right</th>
-          <th>Flow (cfs)</th>
-          <th>Volume (ac-ft)</th>
-          <th>Uses</th>
-          <th>Comments</th>
+          <tr>
+            <th>Water Right #</th>
+            <th>Priority Date</th>
+            <th>Change App #</th>
+            <th>Proof Due Date</th>
+            <th>View Right</th>
+            <th>Flow (cfs)</th>
+            <th>Volume (ac-ft)</th>
+            <th>Uses</th>
+            <th>Comments</th>
+          </tr>
         </thead>
-        <%= content_tag "tbody", id: "water_rights_table", data: {user: @user_id} do %>
+        <%= content_tag "tbody", id: "water_rights_table_body", data: {user: @user_id} do %>
         <% end %>
       </table>
     </div>

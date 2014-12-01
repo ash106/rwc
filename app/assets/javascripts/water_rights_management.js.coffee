@@ -6,6 +6,16 @@ $(".water_rights_management-dashboard").ready ->
 
 
 $(".water_rights_management-show_water_rights").ready ->
+  # Initialize tablesorter
+  $("#water_rights_table").tablesorter
+    theme: 'bootstrap',
+    widgets: ['uitheme'],
+    headerTemplate: '{content} {icon}', # new in v2.7. Needed to add the bootstrap icon!
+    sortList: [[0,0]], #Default sort on first column, order ascending
+    headers:
+      4: # View Right column
+        sorter: false
+
   # Basic map options object
   mapOptions =
     center: new google.maps.LatLng(40.5999605, -111.747028)
@@ -27,7 +37,7 @@ $(".water_rights_management-show_water_rights").ready ->
   point_icon_url = 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Outside-Azure.png'
 
   # Load GeoJSON based on current_user ID, which defaults to 0 if no user is signed in
-  map.data.loadGeoJson("/get-water-rights-data/#{$('#water_rights_table').data('user')}.json")
+  map.data.loadGeoJson("/get-water-rights-data/#{$('#water_rights_table_body').data('user')}.json")
 
   #Date formatter for water rights dates in table
   date_formatter = (date) ->
@@ -37,14 +47,14 @@ $(".water_rights_management-show_water_rights").ready ->
     m + "/" + d + "/" + y
 
   # Called when 'View' button is clicked in a table row
-  $('#water_rights_table').on 'click', 'td a.show-link', (e) ->
+  $('#water_rights_table_body').on 'click', 'td a.show-link', (e) ->
     e.preventDefault()
     # Reset styling for map features
     map.data.revertStyle()
     # Get number from clicked water right link
     clicked_wr_number = $(this).attr 'href'
     # Clear water rights table before appends
-    $('#water_rights_table').html ""
+    $('#water_rights_table_body').html ""
     # Re-add water rights to table, highlighting only the clicked row
     for wr in water_rights
       # Set the clicked row to highlighted
@@ -53,13 +63,15 @@ $(".water_rights_management-show_water_rights").ready ->
           wr: wr
           date_formatter: date_formatter
           highlighted: true
-        $('#water_rights_table').append JST['templates/water_right'](context)
+        $('#water_rights_table_body').append JST['templates/water_right'](context)
       # All other rows are unhighlighted
       else
         context = 
           wr: wr
           date_formatter: date_formatter
-        $('#water_rights_table').append JST['templates/water_right'](context)
+        $('#water_rights_table_body').append JST['templates/water_right'](context)
+    # Update tablesorter
+    $("#water_rights_table").trigger("update")
     # Create bounds for features associated with clicked water right
     selected_bounds = new google.maps.LatLngBounds()
     # Set styling for features associated with clicked water right
@@ -91,7 +103,7 @@ $(".water_rights_management-show_water_rights").ready ->
   #     e.preventDefault()
   #     map.data.revertStyle()
   #     clicked_wr_number = $(this).attr "href"
-  #     $('#water_rights_table').html(
+  #     $('#water_rights_table_body').html(
   #       for wr in water_rights
   #         if wr.number == clicked_wr_number
   #           "<tr class='highlighted'><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
@@ -141,19 +153,20 @@ $(".water_rights_management-show_water_rights").ready ->
     water_rights = _.uniq water_rights, (wr) ->
                       wr.number
     # Sort water rights by number
-    water_rights = _.sortBy water_rights, (wr) ->
-                      parseInt wr.number.match(/(\d+)$/)[0], 10
+    # water_rights = _.sortBy water_rights, (wr) ->
+    #                   parseInt wr.number.match(/(\d+)$/)[0], 10
     # Clear water rights table before appends
-    $('#water_rights_table').html ""
+    $('#water_rights_table_body').html ""
     # Add water rights to table
     for wr in water_rights
       context = 
         wr: wr
         date_formatter: date_formatter
       # Append each water right using water_right.jst.eco template
-      $('#water_rights_table').append JST['templates/water_right'](context)
+      $('#water_rights_table_body').append JST['templates/water_right'](context)
         # "<tr><td>#{wr.number}</td><td>#{if wr.priority_date then date_formatter(wr.priority_date) else ""}</td><td>#{if wr.change_application_number then wr.change_application_number else ""}</td><td>#{if wr.proof_due_date then date_formatter(wr.proof_due_date) else ""}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft then wr.flow_ac_ft else ""}</td><td>#{if wr.place_of_use then wr.place_of_use else ""}</td><td>#{if wr.comments then wr.comments else ""}</td></tr>"
-
+    # Update tablesorter
+    $("#water_rights_table").trigger("update")
   #   setLinkListeners()
   #   return
 
@@ -171,7 +184,7 @@ $(".water_rights_management-show_water_rights").ready ->
     clicked_water_rights = e.feature.getProperty "water_rights"
     # console.log water_rights
     # Clear water rights table before appends
-    $('#water_rights_table').html ""
+    $('#water_rights_table_body').html ""
     # Re-add water rights to table, highlighting the ones associated with the clicked feature
     for wr in water_rights
       # If current water right is in clicked_water_rights, add the highlighted class
@@ -180,15 +193,17 @@ $(".water_rights_management-show_water_rights").ready ->
           wr: wr
           date_formatter: date_formatter
           highlighted: true
-        $('#water_rights_table').append JST['templates/water_right'](context)
+        $('#water_rights_table_body').append JST['templates/water_right'](context)
           # "<tr class='highlighted'><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
       # Otherwise add the water right without the highlighted class
       else
         context = 
           wr: wr
           date_formatter: date_formatter
-        $('#water_rights_table').append JST['templates/water_right'](context)
+        $('#water_rights_table_body').append JST['templates/water_right'](context)
   #         "<tr><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
+    # Update tablesorter
+    $("#water_rights_table").trigger("update")
   #   )
   #   setLinkListeners()
   #   return

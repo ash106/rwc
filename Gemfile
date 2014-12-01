@@ -35,6 +35,7 @@ gem 'workless', github: 'r4m/workless'
 gem 'eco'
 gem 'daemons'
 gem 'coveralls', require: false
+gem 'jquery-tablesorter'
 
 group :development do
   gem 'foreman'

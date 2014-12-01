@@ -15,4 +15,5 @@
 //= require bootstrap-sprockets
 //= require underscore
 //= require jquery-readyselector
+//= require jquery-tablesorter
 //= require_tree .
