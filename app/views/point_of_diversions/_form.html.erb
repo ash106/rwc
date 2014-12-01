@@ -3,10 +3,18 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
+    <%= f.input :kml %>
     <% if @point_of_diversion.kml_file_name %>
       <p>Current KML File: <%= @point_of_diversion.kml_file_name %></p>
+      <% if @point_of_diversion.point %>
+        <div class="row">
+          <div class="col-md-4">
+            <%= content_tag "div", id: "map_canvas", class: "edit_page", data: {feature: {type: "Feature", geometry: @point_of_diversion.point}} do %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-    <%= f.input :kml %>
   </div>
 
   <div class="form-actions text-center">
