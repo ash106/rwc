@@ -10,5 +10,14 @@
   <%= @point_of_diversion.point %>
 </p>
 
+<% if @point_of_diversion.point %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= content_tag "div", id: "map_canvas", class: "show_page", data: {feature: {type: "Feature", geometry: @point_of_diversion.point}} do %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_point_of_diversion_path(@point_of_diversion) %> |
 <%= link_to 'Back', point_of_diversions_path %>

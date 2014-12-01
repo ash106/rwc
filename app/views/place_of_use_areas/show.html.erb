@@ -10,5 +10,14 @@
   <%= @place_of_use_area.polygon %>
 </p>
 
+<% if @place_of_use_area.polygon %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= content_tag "div", id: "map_canvas", class: "show_page", data: {feature: {type: "Feature", geometry: @place_of_use_area.polygon}} do %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
 <%= link_to 'Edit', edit_place_of_use_area_path(@place_of_use_area) %> |
 <%= link_to 'Back', place_of_use_areas_path %>

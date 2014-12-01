@@ -1,4 +1,4 @@
-$(".listing_areas-edit, .place_of_use_areas-edit, .point_of_diversions-edit").ready ->
+$(".listing_areas-edit, .place_of_use_areas-edit, .point_of_diversions-edit, .listing_areas-show, .place_of_use_areas-show, .point_of_diversions-show").ready ->
   createMap = ->
     # Basic map options object
     mapOptions =
@@ -7,15 +7,15 @@ $(".listing_areas-edit, .place_of_use_areas-edit, .point_of_diversions-edit").re
       mapTypeId: google.maps.MapTypeId.ROADMAP
 
     # Create the map
-    map = new google.maps.Map($("#map_canvas.edit_page")[0], mapOptions)
+    map = new google.maps.Map($("#map_canvas")[0], mapOptions)
 
     # Create bounds to focus map on the added geometry
     bounds = new google.maps.LatLngBounds()
 
-    # console.log $("#map_canvas.edit_page").data('feature')
+    # console.log $("#map_canvas").data('feature')
 
     # Add GeoJSON for area being edited
-    map.data.addGeoJson $("#map_canvas.edit_page").data('feature')
+    map.data.addGeoJson $("#map_canvas").data('feature')
 
     # Set bounds of map for added feature
     map.data.forEach (feature) ->
@@ -34,4 +34,4 @@ $(".listing_areas-edit, .place_of_use_areas-edit, .point_of_diversions-edit").re
         map.setCenter bounds.getCenter()
         map.setZoom 14
 
-  createMap() if $("#map_canvas.edit_page").data('feature') 
+  createMap() if $("#map_canvas").data('feature') 

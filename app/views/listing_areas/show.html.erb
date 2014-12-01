@@ -15,6 +15,15 @@
   <%= @listing_area.polygon %>
 </p>
 
+<% if @listing_area.polygon %>
+  <div class="row">
+    <div class="col-md-4">
+      <%= content_tag "div", id: "map_canvas", class: "show_page", data: {feature: {type: "Feature", geometry: @listing_area.polygon}} do %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
 
 <%= link_to 'Edit', edit_listing_area_path(@listing_area) %> |
 <%= link_to 'Back', listing_areas_path %>
