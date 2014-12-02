@@ -33,13 +33,7 @@ module ApplicationHelper
     coordinates = []
     # If more than 200 points in polygon, then simplify polygon
     if poly["coordinates"][0].length > 200
-      # Parse coordinates into expected format for simplify method
-      coordinates_hash = []
-      poly["coordinates"][0].each do |c|
-        coordinates_hash << {x: c[0], y: c[1]}
-      end
-      # Simplify coordinates using tolerance: 0.001
-      simple_coordinates = SimplifyRb.simplify(coordinates_hash, 0.001)
+      simple_coordinates = simplify_coordinates(poly["coordinates"][0])
       # Parse coordinates into expected format for encode method
       simple_coordinates.each do |c|
         coordinates << [c[:y], c[:x]]
@@ -52,6 +46,16 @@ module ApplicationHelper
     end
     # Encode points using Google encoded polyline algorithm
     Polylines::Encoder.encode_points(coordinates)
+  end
+
+  def simplify_coordinates(coordinates)
+    # Parse coordinates into expected format for simplify method
+    coordinates_hash = []
+    coordinates.each do |c|
+      coordinates_hash << {x: c[0], y: c[1]}
+    end
+    # Simplify coordinates using tolerance: 0.001
+    SimplifyRb.simplify(coordinates_hash, 0.001)
   end
   
 end
