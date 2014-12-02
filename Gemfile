@@ -36,6 +36,8 @@ gem 'eco'
 gem 'daemons'
 gem 'coveralls', require: false
 gem 'jquery-tablesorter'
+gem 'polylines'
+gem 'simplify_rb'
 
 group :development do
   gem 'foreman'
