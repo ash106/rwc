@@ -38,6 +38,7 @@ gem 'coveralls', require: false
 gem 'jquery-tablesorter'
 gem 'polylines'
 gem 'simplify_rb'
+gem 'mandrill-api'
 
 group :development do
   gem 'foreman'

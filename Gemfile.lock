@@ -158,6 +158,9 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mandrill-api (1.0.53)
+      excon (>= 0.16.0, < 1.0)
+      json (>= 1.7.7, < 2.0)
     meta_request (0.3.4)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
@@ -315,6 +318,7 @@ DEPENDENCIES
   jquery-rails
   jquery-tablesorter
   launchy
+  mandrill-api
   meta_request (~> 0.3.0)
   neat (~> 1.5.1)
   newrelic_rpm (>= 3.7.3)
