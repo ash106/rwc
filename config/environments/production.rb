@@ -88,8 +88,9 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'riley-water.com' }
   # ActionMailer Config
+  # config.action_mailer.default_url_options = { host: 'riley-water.com' }
+  config.action_mailer.default_url_options = { host: 'rwc-production.herokuapp.com' }
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
