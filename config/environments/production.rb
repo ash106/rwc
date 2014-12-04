@@ -103,6 +103,10 @@ Rails.application.configure do
     :password  => ENV["MANDRILL_API_KEY"]
   }
 
+  MandrillMailer.configure do |config|
+    config.api_key = ENV['MANDRILL_API_KEY']
+  end
+
   config.after_initialize do 
     Delayed::Job.scaler = :heroku_cedar
   end
