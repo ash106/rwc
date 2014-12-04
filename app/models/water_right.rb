@@ -10,8 +10,6 @@ class WaterRight < ActiveRecord::Base
   
   def self.send_reminders
     WaterRight.all.each do |water_right|
-      puts water_right.id
-      puts water_right.proof_due_date
       if water_right.proof_due_date && (water_right.proof_due_date - 2.months) == Date.today
         TransactionMailer.proof_due_date_reminder(water_right).deliver
       end
