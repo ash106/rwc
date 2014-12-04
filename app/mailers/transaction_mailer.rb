@@ -3,7 +3,7 @@ class TransactionMailer < MandrillMailer::TemplateMailer
  
   def proof_due_date_reminder(water_right)
     mandrill_mail template: 'proof-due-date-reminder',
-      subject: 'Proof Due Date Reminder',
+      subject: "Proof Due Date Reminder for ##{water_right.number}",
       to: {email: water_right.user.email},
       vars: {
         'WATER_RIGHT_NUM' => water_right.number,
