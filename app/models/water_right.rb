@@ -8,9 +8,9 @@ class WaterRight < ActiveRecord::Base
 
 # private
   
-  def self.send_reminders
+  def self.send_reminders(num_of_days)
     WaterRight.all.each do |water_right|
-      if water_right.proof_due_date && (water_right.proof_due_date - 2.months) == Date.today
+      if water_right.proof_due_date && (water_right.proof_due_date - num_of_days) == Date.today
         TransactionMailer.proof_due_date_reminder(water_right).deliver
       end
     end
