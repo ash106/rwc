@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'mandrill_mailer/offline'
 
 class WaterRightTest < ActiveSupport::TestCase
   
@@ -24,6 +25,18 @@ class WaterRightTest < ActiveSupport::TestCase
     water_right = create(:water_right)
     copy_cat = WaterRight.new(number: water_right.number)
     assert_invalid copy_cat, number: 'has already been taken'
+  end
+
+  test 'send_reminders sends emails for the correct water_rights' do
+    user = create(:user)
+    correct_water_right = create(:water_right, number: '777-777', proof_due_date: (Date.today + 60.days))
+    wrong_water_right = create(:water_right, number: '555-555', proof_due_date: (Date.today + 61.days))
+    user.water_rights << correct_water_right
+    WaterRight.send_reminders(60.days)
+    email = MandrillMailer::deliveries.detect { |mail| mail.template_name == 'proof-due-date-reminder' }
+    assert_equal user.email, email.message['to'][0][:email]
+    assert_equal 'Proof Due Date Reminder for #777-777', email.message['subject']
+    MandrillMailer.deliveries.clear
   end
 
 end
