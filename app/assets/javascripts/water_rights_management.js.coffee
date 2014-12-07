@@ -78,22 +78,22 @@ $(".water_rights_management-show_water_rights").ready ->
     map.data.forEach (feature) ->
       # Get water rights associated with current feature
       feature_wrs = feature.getProperty "water_rights"
-      # Loop thru current feature's water rights
-      for wr in feature_wrs
-        # If water right number matches clicked water right number, set styling on feature
-        if wr.number == clicked_wr_number
-          # If feature is a polygon, set fill color and stroke color
-          if feature.getGeometry().getType() == "Polygon"
-            map.data.overrideStyle feature, fillColor: polygon_fill_color, strokeColor: polygon_stroke_color
-            # Extend bounds for each point in polygon
-            points = feature.getGeometry().getAt(0).getArray()
-            for point in points
-              selected_bounds.extend point
-          # If feature is a point, set icon
-          if feature.getGeometry().getType() == "Point"
-            map.data.overrideStyle feature, icon: point_icon_url
-            # Extend bounds for point
-            selected_bounds.extend feature.getGeometry().get()
+      # Get array of water right numbers associated with current feature
+      feature_wr_numbers = _.pluck(feature_wrs, 'number')
+      # If feature_wr_numbers contains clicked water right number, set styling on feature
+      if _.contains(feature_wr_numbers, clicked_wr_number)
+        # If feature is a polygon, set fill color and stroke color
+        if feature.getGeometry().getType() == "Polygon"
+          map.data.overrideStyle feature, fillColor: polygon_fill_color, strokeColor: polygon_stroke_color
+          # Extend bounds for each point in polygon
+          points = feature.getGeometry().getAt(0).getArray()
+          for point in points
+            selected_bounds.extend point
+        # If feature is a point, set icon
+        if feature.getGeometry().getType() == "Point"
+          map.data.overrideStyle feature, icon: point_icon_url
+          # Extend bounds for point
+          selected_bounds.extend feature.getGeometry().get()
       # Zoom map to bounds for features associated with clicked water right
       map.fitBounds selected_bounds
 
@@ -182,13 +182,14 @@ $(".water_rights_management-show_water_rights").ready ->
       map.data.overrideStyle e.feature, icon: point_icon_url
     # Get water rights for clicked feature
     clicked_water_rights = e.feature.getProperty "water_rights"
-    # console.log water_rights
+    # Get array of water right numbers for clicked feature
+    clicked_wr_numbers = _.pluck(clicked_water_rights, 'number')
     # Clear water rights table before appends
     $('#water_rights_table_body').html ""
     # Re-add water rights to table, highlighting the ones associated with the clicked feature
     for wr in water_rights
-      # If current water right is in clicked_water_rights, add the highlighted class
-      if _.findWhere clicked_water_rights, wr
+      # If current water right number is in clicked_wr_numbers, add the highlighted class
+      if _.contains(clicked_wr_numbers, wr.number)
         context = 
           wr: wr
           date_formatter: date_formatter
