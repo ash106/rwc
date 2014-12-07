@@ -5,9 +5,7 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 before_script:
   - cp .sample.env .env
-  
   - psql -c 'create database "rwc_test";' -U postgres
-  
 branches:
   only:
     - master
@@ -29,4 +27,8 @@ rvm:
   - 2.1.2
 addons:
   postgresql: "9.3"
-
+deploy:
+  provider: heroku
+  api_key:
+    secure: E7oODk0Qq0UNssPPogcPncwVCwhS/PH51bBP/VwreeRK0EpAYHCia9tRuGPyKEI7sdD8Ov8bbl8pNYpGCHigfR1WyvF9a+ZhlcDvmNJkRpEW9U1lLA/0s03RGahbT74dlGnf9peyimEDdj514dJj7xcvCs8C3K1gnIz3xku4DEI=
+  app: rwc-staging
