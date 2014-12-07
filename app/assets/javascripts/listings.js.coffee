@@ -10,7 +10,7 @@ $(".listings-buy_sell").ready ->
 
   # Geometry style settings
   polygon_fill_color = '#76b5c6'
-  polygon_stroke_color = '#6eb3c6'
+  # polygon_stroke_color = '#6eb3c6'
 
   # Load GeoJSON listings data
   map.data.loadGeoJson('/get-listings-data.json')
@@ -20,7 +20,7 @@ $(".listings-buy_sell").ready ->
     # Reset styling for map features 
     map.data.revertStyle()
     # Set styling for clicked feature
-    map.data.overrideStyle e.feature, fillColor: polygon_fill_color, strokeColor: polygon_stroke_color
+    map.data.overrideStyle e.feature, fillColor: polygon_fill_color#, strokeColor: polygon_stroke_color
     # Set listing_title to clicked feature's name
     $('#listing_title').html "#{e.feature.getProperty "name"} Listings"
     # Set area_policy to clicked feature's policy
