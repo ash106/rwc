@@ -94,8 +94,8 @@ $(".water_rights_management-show_water_rights").ready ->
           map.data.overrideStyle feature, icon: point_icon_url
           # Extend bounds for point
           selected_bounds.extend feature.getGeometry().get()
-      # Zoom map to bounds for features associated with clicked water right
-      map.fitBounds selected_bounds
+    # Zoom map to bounds for features associated with clicked water right
+    map.fitBounds selected_bounds
 
   # setLinkListeners = ->
   #   console.log "called setLinkListeners"
