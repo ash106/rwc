@@ -34,9 +34,9 @@ class WaterRightsManagementController < ApplicationController
       user = User.find_by(email: 'tester@example.com')
     end
     if user.has_role? :admin
-      @geometry = PlaceOfUseArea.all + PointOfDiversion.all
+      @geometry = PlaceOfUseArea.includes(:water_rights) + PointOfDiversion.includes(:water_rights)
     else
-      @geometry = set_geometry(user.water_rights, 'place_of_use_areas') + set_geometry(user.water_rights, 'point_of_diversions')
+      @geometry = set_geometry(user.water_rights.includes(:place_of_use_areas), 'place_of_use_areas') + set_geometry(user.water_rights.includes(:point_of_diversions), 'point_of_diversions')
     end
     render json: @geometry, root: "features", meta: "FeatureCollection", meta_key: 'type'
   end

@@ -12,7 +12,7 @@ class ListingsController < ApplicationController
   end
 
   def get_data
-    @areas = ListingArea.all
+    @areas = ListingArea.includes(:wanteds, :for_sales)
     render json: @areas, root: "features", meta: "FeatureCollection", meta_key: 'type'
   end
 end
