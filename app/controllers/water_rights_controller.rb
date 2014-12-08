@@ -4,7 +4,7 @@ class WaterRightsController < ApplicationController
 
   # GET /water_rights
   def index
-    @water_rights = WaterRight.all
+    @water_rights = WaterRight.includes(:user)
     authorize @water_rights
   end
 

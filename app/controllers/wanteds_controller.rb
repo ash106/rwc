@@ -4,7 +4,7 @@ class WantedsController < ApplicationController
 
   # GET /wanteds
   def index
-    @wanteds = Wanted.all
+    @wanteds = Wanted.includes(:listing_area)
     authorize @wanteds
   end
 

@@ -4,11 +4,11 @@ class WaterRightsManagementController < ApplicationController
   def dashboard
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @water_rights = @user.water_rights
-      @place_of_use_areas = set_geometry(@user, 'place_of_use_areas')
-      @point_of_diversions = set_geometry(@user, 'point_of_diversions')
+      @water_rights = @user.water_rights.includes(:place_of_use_areas, :point_of_diversions)
+      @place_of_use_areas = set_geometry(@water_rights, 'place_of_use_areas')
+      @point_of_diversions = set_geometry(@water_rights, 'point_of_diversions')
     else
-      @water_rights = WaterRight.all
+      @water_rights = WaterRight.includes(:user)
       @place_of_use_areas = PlaceOfUseArea.all
       @point_of_diversions = PointOfDiversion.all
     end
@@ -36,23 +36,23 @@ class WaterRightsManagementController < ApplicationController
     if user.has_role? :admin
       @geometry = PlaceOfUseArea.all + PointOfDiversion.all
     else
-      @geometry = set_geometry(user, 'place_of_use_areas') + set_geometry(user, 'point_of_diversions')
+      @geometry = set_geometry(user.water_rights, 'place_of_use_areas') + set_geometry(user.water_rights, 'point_of_diversions')
     end
     render json: @geometry, root: "features", meta: "FeatureCollection", meta_key: 'type'
   end
 
 private
 
-  def set_geometry(user, geo_type)
+  def set_geometry(water_rights, geo_type)
     geometry = []
-    user.water_rights.each do |wr|
+    water_rights.each do |wr|
       geometry << wr.send(geo_type)
     end
     geometry.flatten.uniq{|a| a.id}
   end
 
   def set_users_for_select(all_users_val)
-    users = User.all.map{ |user| [user.email, user.id] if user.water_rights.any? }.compact
+    users = User.includes(:water_rights).map{ |user| [user.email, user.id] if user.water_rights.any? }.compact
     users.unshift ["All Users", all_users_val]
   end
 

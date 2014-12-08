@@ -4,7 +4,7 @@ class ForSalesController < ApplicationController
 
   # GET /for_sales
   def index
-    @for_sales = ForSale.all
+    @for_sales = ForSale.includes(:listing_area)
     authorize @for_sales
   end
 

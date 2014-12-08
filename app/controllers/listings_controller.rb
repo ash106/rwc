@@ -3,8 +3,8 @@ class ListingsController < ApplicationController
 
   def dashboard
     @listing_areas = ListingArea.all
-    @wanteds = Wanted.all
-    @for_sales = ForSale.all
+    @wanteds = Wanted.includes(:listing_area)
+    @for_sales = ForSale.includes(:listing_area)
     authorize @listing_areas, :index?
   end
 
