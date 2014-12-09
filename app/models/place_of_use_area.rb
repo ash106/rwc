@@ -8,6 +8,10 @@ class PlaceOfUseArea < ActiveRecord::Base
   validates_attachment_file_name :kml, matches: /kml\Z/
   after_save :queue_processing
 
+  def self.for_user(user)
+    joins(:water_rights).where(water_rights: { user_id: user.id }).group('place_of_use_areas.id')
+  end
+
 private
   
   def queue_processing

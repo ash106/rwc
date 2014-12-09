@@ -8,6 +8,10 @@ class PointOfDiversion < ActiveRecord::Base
   validates_attachment_file_name :kml, matches: /kml\Z/
   after_save :queue_processing
 
+  def self.for_user(user)
+    joins(:water_rights).where(water_rights: { user_id: user.id }).group('point_of_diversions.id')
+  end
+
 private
   
   def queue_processing
