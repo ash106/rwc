@@ -41,7 +41,7 @@ class WaterRightsControllerTest < ActionController::TestCase
   end
 
   test 'post create is successful with valid attributes' do
-    water_right_params = { number: '13-1138', flow_cfs: 10, flow_ac_ft: 1920, uses: 'Most Farm', change_application_number: 'a28259', proof_due_date: "2015-05-31", priority_date: "1972-07-17", external_link: "http://www.google.com/", user_id: @user.id }
+    water_right_params = { number: '13-1138', flow_cfs: 10, flow_ac_ft: 1920, uses: 'Most Farm', change_application_number: 'a28259', proof_due_date: "2015-05-31", priority_date: "1972-07-17", view_link_text: "Area One, Stream", external_link: "http://www.google.com/", user_id: @user.id }
     assert_difference 'WaterRight.count' do
       post :create, water_right: water_right_params
     end

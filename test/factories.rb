@@ -58,6 +58,7 @@ FactoryGirl.define do
     proof_due_date "2015-05-31"
     priority_date "1972-07-17"
     external_link "https://www.google.com/"
+    view_link_text "Area One, Stream"
     # user
     after(:build) do |wr|
       wr.place_of_use_areas << create(:place_of_use_area)

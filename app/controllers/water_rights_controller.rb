@@ -63,6 +63,6 @@ class WaterRightsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def water_right_params
-      params.require(:water_right).permit(:number, :flow_cfs, :flow_ac_ft, :uses, :change_application_number, :proof_due_date, :user_id, :priority_date, :comments, :external_link)
+      params.require(:water_right).permit(:number, :flow_cfs, :flow_ac_ft, :uses, :change_application_number, :proof_due_date, :user_id, :priority_date, :comments, :external_link, :view_link_text)
     end
 end
