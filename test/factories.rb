@@ -54,7 +54,7 @@ FactoryGirl.define do
     flow_cfs 10
     flow_ac_ft 1920
     sole_supply_acres 640
-    place_of_use 'Most Farm'
+    uses 'Most Farm'
     change_application_number 'a28259'
     proof_due_date "2015-05-31"
     priority_date "1972-07-17"
