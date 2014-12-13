@@ -30,6 +30,22 @@
         <%= content_tag "tbody", id: "water_rights_table_body", data: {user: @user_id} do %>
         <% end %>
       </table>
+      <div id="pager" class="pager"> 
+        <form> 
+          <img src=<%= image_path("pager/first.png") %> class="first"/> 
+          <img src=<%= image_path("pager/prev.png") %> class="prev"/> 
+          <span class="pagedisplay"></span> <!-- this can be any element, including an input --> 
+          <img src=<%= image_path("pager/next.png") %> class="next"/> 
+          <img src=<%= image_path("pager/last.png") %> class="last"/> 
+          <select class="pagesize"> 
+            <option value="5">5</option> 
+            <option selected="selected" value="10">10</option> 
+            <option value="20">20</option> 
+            <option value="30">30</option> 
+            <option value="40">40</option> 
+          </select> 
+        </form> 
+      </div>
     </div>
   </div>
 </div>

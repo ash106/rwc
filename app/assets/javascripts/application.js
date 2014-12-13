@@ -16,4 +16,5 @@
 //= require underscore
 //= require jquery-readyselector
 //= require jquery-tablesorter
+//= require jquery-tablesorter/addons/pager/jquery.tablesorter.pager
 //= require_tree .

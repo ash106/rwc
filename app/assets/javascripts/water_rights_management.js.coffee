@@ -7,11 +7,14 @@ $(".water_rights_management-dashboard").ready ->
 
 $(".water_rights_management-show_water_rights").ready ->
   # Initialize tablesorter
-  $("#water_rights_table").tablesorter
+  $("#water_rights_table").tablesorter(
     theme: 'bootstrap',
     widgets: ['uitheme'],
     headerTemplate: '{content} {icon}', # new in v2.7. Needed to add the bootstrap icon!
-    sortList: [[0,0]], #Default sort on first column, order ascending
+    sortList: [[0,0]] #Default sort on first column, order ascending
+  ).tablesorterPager 
+    container: $("#pager"),
+    output: '{startRow} to {endRow} ({totalRows})'
 
   # Basic map options object
   mapOptions =
