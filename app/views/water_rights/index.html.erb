@@ -1,30 +1,28 @@
-<h1 class="text-center">Water Rights</h1>
-
-<div class="table-responsive">
-  <table class="table">
-    <% if @water_rights.any? %>
-      <thead>
-        <tr>
-          <th>Number</th>
-          <th>Flow cfs</th>
-          <th>Flow ac ft</th>
-          <th>Uses</th>
-          <th>Change application number</th>
-          <th>Proof due date</th>
-          <th>Priority date</th>
-          <th>View link text</th>
-          <th>External link</th>
-          <th>User</th>
-          <th>Comments</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-    <% end %>
-    <tbody>
-      <%= render(@water_rights) || render('water_rights/empty') %>
-    </tbody>
-  </table>
-</div>
+<table id="water-rights-table" class="table table-striped table-bordered dt-responsive no-wrap">
+  <% if @water_rights.any? %>
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Flow cfs</th>
+        <th>Flow ac ft</th>
+        <th>Uses</th>
+        <th>Change application number</th>
+        <th>Proof due date</th>
+        <th>Priority date</th>
+        <th>View link text</th>
+        <th>External link</th>
+        <th>User</th>
+        <th>Comments</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+  <% end %>
+  <tbody>
+    <%= render(@water_rights) || render('water_rights/empty') %>
+  </tbody>
+</table>
 
 <div class="text-center">
   <%= link_to 'New Water Right', new_water_right_path, class: 'btn btn-primary' %>

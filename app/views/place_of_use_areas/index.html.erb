@@ -1,21 +1,20 @@
-<h1 class="text-center">Place of Use Areas</h1>
+<table id="place-of-use-areas-table" class="table table-striped table-bordered dt-responsive no-wrap">
+  <% if @place_of_use_areas.any? %>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Preview Map</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+  <% end %>
+  <tbody>
+    <%= render(@place_of_use_areas) || render('place_of_use_areas/empty') %>
+  </tbody>
+</table>
 
-<div class="table-responsive">
-  <table class="table">
-    <% if @place_of_use_areas.any? %>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Polygon</th>
-          <th colspan="4"></th>
-        </tr>
-      </thead>
-    <% end %>
-    <tbody>
-      <%= render(@place_of_use_areas) || render('place_of_use_areas/empty') %>
-    </tbody>
-  </table>
-</div>
 
 <div class="text-center">
   <%= link_to 'New Place of Use Area', new_place_of_use_area_path, class: 'btn btn-primary' %>

@@ -3,6 +3,27 @@ $(".water_rights_management-dashboard").ready ->
   $('#user-selector').change (e) ->
     console.log $(this).val()
     window.location.href = "/wrm-dashboard/#{$(this).val()}"
+  $('#water-rights-table').DataTable
+    pagingType: 'simple_numbers',
+    responsive: true,
+    columnDefs: [
+      orderable: false, 
+      targets: [11,12,13]
+    ]
+  $('#place-of-use-areas-table').DataTable
+    pagingType: 'simple_numbers',
+    responsive: true,
+    columnDefs: [
+      orderable: false, 
+      targets: [1,2,3,4]
+    ]
+  $('#point-of-diversions-table').DataTable
+    pagingType: 'simple_numbers',
+    responsive: true,
+    columnDefs: [
+      orderable: false, 
+      targets: [1,2,3,4]
+    ]
 
 
 $(".water_rights_management-show_water_rights").ready ->

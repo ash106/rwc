@@ -1,21 +1,19 @@
-<h1 class="text-center">Point of Diversions</h1>
-
-<div class="table-responsive">
-  <table class="table">
-    <% if @point_of_diversions.any? %>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Point</th>
-          <th colspan="4"></th>
-        </tr>
-      </thead>
-    <% end %>
-    <tbody>
-      <%= render(@point_of_diversions) || render('point_of_diversions/empty') %>
-    </tbody>
-  </table>
-</div>
+<table id="point-of-diversions-table" class="table table-striped table-bordered dt-responsive no-wrap">
+  <% if @point_of_diversions.any? %>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Preview Map</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+  <% end %>
+  <tbody>
+    <%= render(@point_of_diversions) || render('point_of_diversions/empty') %>
+  </tbody>
+</table>
 
 <div class="text-center">
   <%= link_to 'New Point of Diversion', new_point_of_diversion_path, class: 'btn btn-primary' %>
