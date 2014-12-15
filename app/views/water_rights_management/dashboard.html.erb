@@ -1,8 +1,6 @@
-<div class="row">
-  <div class="col-lg-3">
-    <%= select_tag :user_id, options_for_select(@users, (@user.id if @user) || 0), class: 'form-control', id: 'user-selector' %>
-  </div>
-</div>
+
+    <%= select_tag :user_id, options_for_select(@users, (@user.id if @user) || 0), class: 'form-control', id: 'dashboard-user-selector' %>
+
 
 <div role="tabpanel">
   <!-- Nav tabs -->

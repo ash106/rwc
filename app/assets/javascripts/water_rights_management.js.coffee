@@ -1,6 +1,6 @@
 $(".water_rights_management-dashboard").ready ->
   # Called when the dashboard user selectbox changes
-  $('#user-selector').change (e) ->
+  $('#dashboard-user-selector').change (e) ->
     console.log $(this).val()
     window.location.href = "/wrm-dashboard/#{$(this).val()}"
   $('#water-rights-table').DataTable
