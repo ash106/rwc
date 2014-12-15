@@ -7,7 +7,7 @@
   <td><%= water_right.proof_due_date %></td>
   <td><%= water_right.priority_date %></td>
   <td><%= water_right.view_link_text %></td>
-  <td><%= link_to water_right.external_link, water_right.external_link if water_right.external_link %></td>
+  <td class="table-word-wrap"><%= link_to water_right.external_link, water_right.external_link if water_right.external_link %></td>
   <td><%= water_right.user.email if water_right.user %></td>
   <td><%= water_right.comments %></td>
   <td><%= link_to 'Show', water_right %></td>
