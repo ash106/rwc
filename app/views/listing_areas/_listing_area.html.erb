@@ -1,7 +1,6 @@
 <tr>
   <td><%= listing_area.name %></td>
   <td><%= listing_area.policy %></td>
-  <td><%= listing_area.polygon.to_s.truncate(140) %></td>
   <td><%= static_map(listing_area.polygon) if listing_area.polygon %></td>
   <td><%= link_to 'Show', listing_area %></td>
   <td><%= link_to 'Edit', edit_listing_area_path(listing_area) %></td>

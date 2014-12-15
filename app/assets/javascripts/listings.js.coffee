@@ -46,3 +46,33 @@ $(".listings-buy_sell").ready ->
     # Otherwise print generic message
     else
       $('#for_sale').html "<div><h5>No for sale listings for this area.</h5></div>"
+
+
+$(".listings-dashboard").ready ->
+  $('#listing-areas-table').DataTable
+    # ajax: ...,
+    # autoWidth: false,
+    pagingType: 'simple_numbers',
+    # responsive: true,
+    columnDefs: [
+      orderable: false, 
+      targets: [2,3,4,5]
+    ]
+    # processing: true,
+    # serverSide: true
+    # Optional, if you want full pagination controls.
+    # Check dataTables documentation to learn more about available options.
+    # http://datatables.net/reference/option/pagingType
+  $('#wanteds-table').DataTable
+    pagingType: 'simple_numbers',
+    columnDefs: [
+      orderable: false, 
+      targets: [5,6,7]
+    ]
+  $('#for-sales-table').DataTable
+    pagingType: 'simple_numbers',
+    columnDefs: [
+      orderable: false, 
+      targets: [6,7,8]
+    ]
+

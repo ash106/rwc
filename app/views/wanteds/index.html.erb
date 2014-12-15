@@ -1,24 +1,22 @@
-<h1 class="text-center">Wanteds</h1>
-
-<div class="table-responsive">
-  <table class="table">
-    <% if @wanteds.any? %>
-      <thead>
-        <tr>
-          <th>Volume</th>
-          <th>Source</th>
-          <th>Description</th>
-          <th>Contact info</th>
-          <th>Listing area</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-    <% end %>
-    <tbody>
-      <%= render(@wanteds) || render('wanteds/empty') %>
-    </tbody>
-  </table>
-</div>
+<table id="wanteds-table" class="table table-striped table-bordered responsive no-wrap">
+  <% if @wanteds.any? %>
+    <thead>
+      <tr>
+        <th>Volume</th>
+        <th>Source</th>
+        <th>Description</th>
+        <th>Contact info</th>
+        <th>Listing area</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+  <% end %>
+  <tbody>
+    <%= render(@wanteds) || render('wanteds/empty') %>
+  </tbody>
+</table>
 
 <div class="text-center">
   <%= link_to 'New Wanted', new_wanted_path, class: "btn btn-primary" %>

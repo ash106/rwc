@@ -1,22 +1,18 @@
-<h1 class="text-center">Listing Areas</h1>
-
-<div class="table-responsive">
-  <table class="table">
-    <% if @listing_areas.any? %>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Policy</th>
-          <th>Polygon JSON</th>
-          <th colspan="4"></th>
-        </tr>
-      </thead>
-    <% end %>
-    <tbody>
-      <%= render(@listing_areas) || render('listing_areas/empty') %>
-    </tbody>
-  </table>
-</div>
+<table id="listing-areas-table" class="table table-striped table-bordered responsive no-wrap">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Policy</th>
+      <th>Preview Map</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render(@listing_areas) || render('listing_areas/empty') %>
+  </tbody>
+</table>
 
 <div class="text-center">
   <%= link_to 'New Listing Area', new_listing_area_path, class: "btn btn-primary" %>
