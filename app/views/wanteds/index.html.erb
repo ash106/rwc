@@ -1,18 +1,16 @@
-<table id="wanteds-table" class="table table-striped table-bordered responsive no-wrap">
-  <% if @wanteds.any? %>
-    <thead>
-      <tr>
-        <th>Volume</th>
-        <th>Source</th>
-        <th>Description</th>
-        <th>Contact info</th>
-        <th>Listing area</th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-    </thead>
-  <% end %>
+<table id="wanteds-table" class="table table-striped table-bordered dt-responsive no-wrap">
+  <thead>
+    <tr>
+      <th>Volume</th>
+      <th>Source</th>
+      <th>Description</th>
+      <th>Contact info</th>
+      <th>Listing area</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
   <tbody>
     <%= render(@wanteds) || render('wanteds/empty') %>
   </tbody>

@@ -53,7 +53,7 @@ $(".listings-dashboard").ready ->
     # ajax: ...,
     # autoWidth: false,
     pagingType: 'simple_numbers',
-    # responsive: true,
+    responsive: true,
     columnDefs: [
       orderable: false, 
       targets: [2,3,4,5]
@@ -65,12 +65,14 @@ $(".listings-dashboard").ready ->
     # http://datatables.net/reference/option/pagingType
   $('#wanteds-table').DataTable
     pagingType: 'simple_numbers',
+    responsive: true,
     columnDefs: [
       orderable: false, 
       targets: [5,6,7]
     ]
   $('#for-sales-table').DataTable
     pagingType: 'simple_numbers',
+    responsive: true,
     columnDefs: [
       orderable: false, 
       targets: [6,7,8]
