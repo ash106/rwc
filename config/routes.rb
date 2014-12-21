@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :wanteds
 
   post '/place_of_use_area_water_rights(.:format)', to: 'place_of_use_area_water_rights#create', as: :place_of_use_area_water_rights
+  delete '/place_of_use_area_water_rights(.:format)', to: 'place_of_use_area_water_rights#destroy', as: :place_of_use_area_water_right
   post '/point_of_diversion_water_rights(.:format)', to: 'point_of_diversion_water_rights#create', as: :point_of_diversion_water_rights
 
   get "/listings-dashboard", to: "listings#dashboard", as: :listings_dashboard

@@ -61,7 +61,7 @@
   <strong>Place of Use Areas:</strong>
   <ul>
     <% @water_right.place_of_use_areas.each do |area| %>
-      <li><%= area.name %></li>
+      <li><%= area.name %> <%= link_to '(x)', place_of_use_area_water_right_path(water_right_id: @water_right.id, place_of_use_area_id: area.id), method: :delete, data: { confirm: 'Are you sure?' } %></li>
     <% end %>
   </ul>
   <%= simple_form_for :place_of_use_area_water_right, url: '/place_of_use_area_water_rights' do |f| %>
