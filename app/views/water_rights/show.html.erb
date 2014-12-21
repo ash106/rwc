@@ -76,7 +76,7 @@
   <strong>Points of Diversion:</strong>
   <ul>
     <% @water_right.point_of_diversions.each do |point| %>
-      <li><%= point.name %></li>
+      <li><%= point.name %> <%= link_to '(x)', point_of_diversion_water_right_path(water_right_id: @water_right.id, point_of_diversion_id: point.id), method: :delete, data: { confirm: 'Are you sure?' } %></li>
     <% end %>
   </ul>
   <%= simple_form_for :point_of_diversion_water_right, url: '/point_of_diversion_water_rights' do |f| %>
