@@ -11,5 +11,5 @@
   <td><%= if @wr.flow_cfs then @wr.flow_cfs else "" %></td>
   <td><%= if @wr.flow_ac_ft then @wr.flow_ac_ft else "" %></td>
   <td><%= if @wr.uses then @wr.uses else "" %></td>
-  <td><div><%= if @wr.comments: %><button type="button" class="btn btn-default comments-popover" data-container="body" data-toggle="popover" data-placement="left" data-content="<%= @wr.comments %>">Comments</button></div></td>
+  <td><div><%= if @wr.comments: %><button type="button" class="btn btn-default comments-popover" data-container="body" data-toggle="popover" data-placement="left" data-trigger="hover" data-content="<%= @wr.comments %>">Comments</button></div></td>
 </tr>
