@@ -37,10 +37,13 @@ $(".water_rights_management-show_water_rights").ready ->
     container: $("#pager"),
     output: '{startRow} to {endRow} ({totalRows})'
   ).bind("sortStart", (e, t) ->
+      $('.comments-popover').popover 'hide'
       $('.comments-popover').popover()
   ).bind("sortEnd", (e, t) ->
+      $('.comments-popover').popover 'hide'
       $('.comments-popover').popover()
   ).bind "pagerChange pagerComplete pagerInitialized pageMoved", (e, c) ->
+      $('.comments-popover').popover 'hide'
       $('.comments-popover').popover()
 
   # wr_table = $("water_rights_table").DataTable
@@ -190,6 +193,7 @@ $(".water_rights_management-show_water_rights").ready ->
     # Sort water rights by number
     # water_rights = _.sortBy water_rights, (wr) ->
     #                   parseInt wr.number.match(/(\d+)$/)[0], 10
+    $('.comments-popover').popover 'hide'
     # Clear water rights table before appends
     $('#water_rights_table_body').html ""
     # Add water rights to table
@@ -222,6 +226,7 @@ $(".water_rights_management-show_water_rights").ready ->
     clicked_water_rights = e.feature.getProperty "water_rights"
     # Get array of water right numbers for clicked feature
     clicked_wr_numbers = _.pluck(clicked_water_rights, 'number')
+    $('.comments-popover').popover 'hide'
     # Clear water rights table before appends
     $('#water_rights_table_body').html ""
     # Re-add water rights to table, highlighting the ones associated with the clicked feature
