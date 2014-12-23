@@ -33,18 +33,9 @@ $(".water_rights_management-show_water_rights").ready ->
     widgets: ['uitheme'],
     headerTemplate: '{content} {icon}', # new in v2.7. Needed to add the bootstrap icon!
     sortList: [[0,0]] #Default sort on first column, order ascending
-  ).tablesorterPager( 
+  ).tablesorterPager
     container: $("#pager"),
     output: '{startRow} to {endRow} ({totalRows})'
-  ).bind("sortStart", (e, t) ->
-      $('.comments-popover').popover 'hide'
-      $('.comments-popover').popover()
-  ).bind("sortEnd", (e, t) ->
-      $('.comments-popover').popover 'hide'
-      $('.comments-popover').popover()
-  ).bind "pagerChange pagerComplete pagerInitialized pageMoved", (e, c) ->
-      $('.comments-popover').popover 'hide'
-      $('.comments-popover').popover()
 
   # wr_table = $("water_rights_table").DataTable
   #               pagingType: 'simple_numbers'
@@ -193,7 +184,6 @@ $(".water_rights_management-show_water_rights").ready ->
     # Sort water rights by number
     # water_rights = _.sortBy water_rights, (wr) ->
     #                   parseInt wr.number.match(/(\d+)$/)[0], 10
-    $('.comments-popover').popover 'hide'
     # Clear water rights table before appends
     $('#water_rights_table_body').html ""
     # Add water rights to table
@@ -205,7 +195,9 @@ $(".water_rights_management-show_water_rights").ready ->
       # Append each water right using water_right.jst.eco template
       $('#water_rights_table_body').append JST['templates/water_right'](context)
         # "<tr><td>#{wr.number}</td><td>#{if wr.priority_date then date_formatter(wr.priority_date) else ""}</td><td>#{if wr.change_application_number then wr.change_application_number else ""}</td><td>#{if wr.proof_due_date then date_formatter(wr.proof_due_date) else ""}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft then wr.flow_ac_ft else ""}</td><td>#{if wr.place_of_use then wr.place_of_use else ""}</td><td>#{if wr.comments then wr.comments else ""}</td></tr>"
-    $('.comments-popover').popover()
+    $('.comments').readmore
+      maxHeight: 20
+      moreLink: '<a href="#">...</a>'
     # Update tablesorter
     $("#water_rights_table").trigger("update")
   #   setLinkListeners()
@@ -226,7 +218,6 @@ $(".water_rights_management-show_water_rights").ready ->
     clicked_water_rights = e.feature.getProperty "water_rights"
     # Get array of water right numbers for clicked feature
     clicked_wr_numbers = _.pluck(clicked_water_rights, 'number')
-    $('.comments-popover').popover 'hide'
     # Clear water rights table before appends
     $('#water_rights_table_body').html ""
     # Re-add water rights to table, highlighting the ones associated with the clicked feature
@@ -248,7 +239,9 @@ $(".water_rights_management-show_water_rights").ready ->
         date_formatter: date_formatter
       $('#water_rights_table_body').append JST['templates/water_right'](context)
   #         "<tr><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
-    $('.comments-popover').popover()
+    $('.comments').readmore
+      maxHeight: 20
+      moreLink: '<a href="#">...</a>'
     # Update tablesorter
     $("#water_rights_table").trigger("update", [false])
   #   )
