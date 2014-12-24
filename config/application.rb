@@ -51,5 +51,7 @@ module Rwc
       :path => ":class/:id/:filename",
       :url => ":s3_domain_url"
     }
+
+    config.assets.paths << "#{Rails.root}/vendor/assets/swf"
   end
 end

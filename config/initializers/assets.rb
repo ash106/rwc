@@ -1,0 +1,1 @@
+Rails.application.config.assets.precompile += %w( copy_csv_xls_pdf.swf )

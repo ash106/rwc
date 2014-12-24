@@ -14,9 +14,9 @@ $grid-gutter-width: 30px;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "jquery-tablesorter/theme.bootstrap";
 @import "dataTables/bootstrap/3/jquery.dataTables.bootstrap";
 @import "dataTables/extras/dataTables.responsive";
+@import "dataTables/extras/dataTables.tableTools";
 
 .alert {
   margin: 0 -15px;

@@ -39,6 +39,31 @@ $(".water_rights_management-show_water_rights").ready ->
 
   wr_table = $("#water_rights_table").DataTable
                 pagingType: 'simple_numbers'
+                dom: 'T<"clear">lfrtip'
+                tableTools:
+                  sSwfPath: "<%= asset_path('copy_csv_xls_pdf.swf') %>"
+                  aButtons: [
+                    {
+                      sExtends: "copy"
+                      mColumns: 'visible'
+                    }
+                    {
+                      sExtends: "csv"
+                      mColumns: 'visible'
+                    }
+                    {
+                      sExtends: "xls"
+                      mColumns: 'visible'
+                    }
+                    {
+                      sExtends: "pdf"
+                      mColumns: 'visible'
+                    }
+                    {
+                      sExtends: "print"
+                      mColumns: 'visible'
+                    }
+                  ]
                 columnDefs: [
                   visible: false
                   searchable: false

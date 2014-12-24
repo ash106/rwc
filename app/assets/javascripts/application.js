@@ -18,5 +18,6 @@
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require dataTables/extras/dataTables.responsive
+//= require dataTables/extras/dataTables.tableTools
 //= require readmore.min
 //= require_tree .
