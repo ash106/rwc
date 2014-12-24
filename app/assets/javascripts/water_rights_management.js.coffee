@@ -28,17 +28,22 @@ $(".water_rights_management-dashboard").ready ->
 
 $(".water_rights_management-show_water_rights").ready ->
   # Initialize tablesorter
-  $("#water_rights_table").tablesorter(
-    theme: 'bootstrap',
-    widgets: ['uitheme'],
-    headerTemplate: '{content} {icon}', # new in v2.7. Needed to add the bootstrap icon!
-    sortList: [[0,0]] #Default sort on first column, order ascending
-  ).tablesorterPager
-    container: $("#pager"),
-    output: '{startRow} to {endRow} ({totalRows})'
+  # $("#water_rights_table").tablesorter(
+  #   theme: 'bootstrap',
+  #   widgets: ['uitheme'],
+  #   headerTemplate: '{content} {icon}', # new in v2.7. Needed to add the bootstrap icon!
+  #   sortList: [[0,0]] #Default sort on first column, order ascending
+  # ).tablesorterPager
+  #   container: $("#pager"),
+  #   output: '{startRow} to {endRow} ({totalRows})'
 
-  # wr_table = $("water_rights_table").DataTable
-  #               pagingType: 'simple_numbers'
+  wr_table = $("#water_rights_table").DataTable
+                pagingType: 'simple_numbers'
+                columnDefs: [
+                  visible: false
+                  searchable: false
+                  targets: 9
+                ]
 
   # Basic map options object
   mapOptions =
@@ -65,10 +70,13 @@ $(".water_rights_management-show_water_rights").ready ->
 
   #Date formatter for water rights dates in table
   date_formatter = (date) ->
-    d = date.split("-")[2]
-    m = date.split("-")[1]
-    y = date.split("-")[0]
-    m + "/" + d + "/" + y
+    if date
+      d = date.split("-")[2]
+      m = date.split("-")[1]
+      y = date.split("-")[0]
+      m + "/" + d + "/" + y
+    else
+      ""
 
   # Called when 'View' button is clicked in a table row
   $('#water_rights_table_body').on 'click', 'td a.show-link', (e) ->
@@ -185,26 +193,52 @@ $(".water_rights_management-show_water_rights").ready ->
     # water_rights = _.sortBy water_rights, (wr) ->
     #                   parseInt wr.number.match(/(\d+)$/)[0], 10
     # Clear water rights table before appends
-    $('#water_rights_table_body').html ""
+    # $('#water_rights_table_body').html ""
+    wr_table.clear()
     # Add water rights to table
+    formatted_water_rights = _.map water_rights, (wr) ->
+                              if wr.external_link
+                                number = "<a target='_blank' href='#{wr.external_link}'>#{wr.number}</a>"
+                              else
+                                number = wr.number
+                              if wr.view_link_text
+                                view_link_text = wr.view_link_text
+                              else
+                                view_link_text = "Show"
+                              [
+                                number
+                                date_formatter(wr.priority_date)
+                                wr.change_application_number
+                                date_formatter(wr.proof_due_date)
+                                "<a href='#{wr.number}' class='show-link'>#{view_link_text}</a>"
+                                wr.flow_cfs
+                                wr.flow_ac_ft
+                                wr.uses
+                                "<div class='comments'>#{wr.comments}</div>"
+                                "" # associated column
+                              ]
+
+    # console.log formatted_water_rights
+    wr_table.rows.add(formatted_water_rights).draw()
     for wr in water_rights
       # console.log wr_table.row.add(wr).draw().node()
       context = 
         wr: wr
         date_formatter: date_formatter
       # Append each water right using water_right.jst.eco template
-      $('#water_rights_table_body').append JST['templates/water_right'](context)
+      # $('#water_rights_table_body').append JST['templates/water_right'](context)
         # "<tr><td>#{wr.number}</td><td>#{if wr.priority_date then date_formatter(wr.priority_date) else ""}</td><td>#{if wr.change_application_number then wr.change_application_number else ""}</td><td>#{if wr.proof_due_date then date_formatter(wr.proof_due_date) else ""}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft then wr.flow_ac_ft else ""}</td><td>#{if wr.place_of_use then wr.place_of_use else ""}</td><td>#{if wr.comments then wr.comments else ""}</td></tr>"
     $('.comments').readmore
       maxHeight: 20
       moreLink: '<a href="#">...</a>'
     # Update tablesorter
-    $("#water_rights_table").trigger("update")
+    # $("#water_rights_table").trigger("update")
   #   setLinkListeners()
   #   return
 
   # Called when a feature (piece of geometry) is clicked
   map.data.addListener 'click', (e) ->
+    associated_water_rights = []
     nonassociated_water_rights = []
     # Reset styling for map features 
     map.data.revertStyle()
@@ -219,31 +253,78 @@ $(".water_rights_management-show_water_rights").ready ->
     # Get array of water right numbers for clicked feature
     clicked_wr_numbers = _.pluck(clicked_water_rights, 'number')
     # Clear water rights table before appends
-    $('#water_rights_table_body').html ""
+    # $('#water_rights_table_body').html ""
+    wr_table.clear()
     # Re-add water rights to table, highlighting the ones associated with the clicked feature
     for wr in water_rights
       # If current water right number is in clicked_wr_numbers, add the highlighted class and append
       if _.contains(clicked_wr_numbers, wr.number)
-        context = 
-          wr: wr
-          date_formatter: date_formatter
-          highlighted: true
-        $('#water_rights_table_body').append JST['templates/water_right'](context)
+        associated_water_rights.push wr
+        # context = 
+        #   wr: wr
+        #   date_formatter: date_formatter
+        #   highlighted: true
+        # $('#water_rights_table_body').append JST['templates/water_right'](context)
           # "<tr class='highlighted'><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
       # Otherwise add the water right without the highlighted class after appending all highlighted water rights first
       else
         nonassociated_water_rights.push wr
-    for wr in nonassociated_water_rights
-      context = 
-        wr: wr
-        date_formatter: date_formatter
-      $('#water_rights_table_body').append JST['templates/water_right'](context)
+    associated_water_rights = _.map associated_water_rights, (wr) ->
+                              if wr.external_link
+                                number = "<a target='_blank' href='#{wr.external_link}'>#{wr.number}</a>"
+                              else
+                                number = wr.number
+                              if wr.view_link_text
+                                view_link_text = wr.view_link_text
+                              else
+                                view_link_text = "Show"
+                              [
+                                number
+                                date_formatter(wr.priority_date)
+                                wr.change_application_number
+                                date_formatter(wr.proof_due_date)
+                                "<a href='#{wr.number}' class='show-link'>#{view_link_text}</a>"
+                                wr.flow_cfs
+                                wr.flow_ac_ft
+                                wr.uses
+                                "<div class='comments'>#{wr.comments}</div>"
+                                true
+                              ]
+    wr_table.rows.add(associated_water_rights).draw().nodes().to$().addClass 'highlighted'
+    nonassociated_water_rights = _.map nonassociated_water_rights, (wr) ->
+                              if wr.external_link
+                                number = "<a target='_blank' href='#{wr.external_link}'>#{wr.number}</a>"
+                              else
+                                number = wr.number
+                              if wr.view_link_text
+                                view_link_text = wr.view_link_text
+                              else
+                                view_link_text = "Show"
+                              [
+                                number
+                                date_formatter(wr.priority_date)
+                                wr.change_application_number
+                                date_formatter(wr.proof_due_date)
+                                "<a href='#{wr.number}' class='show-link'>#{view_link_text}</a>"
+                                wr.flow_cfs
+                                wr.flow_ac_ft
+                                wr.uses
+                                "<div class='comments'>#{wr.comments}</div>"
+                                false
+                              ]
+    wr_table.rows.add(nonassociated_water_rights).draw()
+    wr_table.order([9, 'desc']).draw()
+    # for wr in nonassociated_water_rights
+    #   context = 
+    #     wr: wr
+    #     date_formatter: date_formatter
+    #   $('#water_rights_table_body').append JST['templates/water_right'](context)
   #         "<tr><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
     $('.comments').readmore
       maxHeight: 20
       moreLink: '<a href="#">...</a>'
     # Update tablesorter
-    $("#water_rights_table").trigger("update", [false])
+    # $("#water_rights_table").trigger("update", [false])
   #   )
   #   setLinkListeners()
   #   return

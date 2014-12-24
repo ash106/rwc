@@ -15,14 +15,8 @@
 //= require bootstrap-sprockets
 //= require underscore
 //= require jquery-readyselector
-//= require jquery-tablesorter
-//= require jquery-tablesorter/addons/pager/jquery.tablesorter.pager
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require dataTables/extras/dataTables.responsive
-//= require jspdf.debug
-//= require jspdf.plugin.table
-//= require html2canvas.min
-//= require jquery.tabletojson.min
 //= require readmore.min
 //= require_tree .
