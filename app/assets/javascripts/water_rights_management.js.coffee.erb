@@ -186,6 +186,9 @@ $(".water_rights_management-show_water_rights").ready ->
           selected_bounds.extend feature.getGeometry().get()
     # Zoom map to bounds for features associated with clicked water right
     map.fitBounds selected_bounds
+    # If zoomed in on a single point, zoom out a few levels
+    if map.getZoom() >= 20
+      map.setZoom 15
 
   # setLinkListeners = ->
   #   console.log "called setLinkListeners"
