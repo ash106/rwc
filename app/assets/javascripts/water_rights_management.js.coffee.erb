@@ -65,20 +65,38 @@ $(".water_rights_management-show_water_rights").ready ->
                     }
                   ]
                 columnDefs: [
-                  visible: false
-                  searchable: false
-                  targets: 9
+                  {
+                    visible: false
+                    searchable: false
+                    targets: 9
+                  }
+                  {
+                    type: "html"
+                    targets: 0
+                  }
                 ]
 
     setCommentsReadmore = ->
       $('.comments').readmore
-        maxHeight: 20
+        collapsedHeight: 20
+        heightMargin: 30
+        moreLink: '<a href="#">...</a>'
+
+    setUsesReadmore = ->
+      $('.uses').readmore
+        collapsedHeight: 20
+        heightMargin: 30
         moreLink: '<a href="#">...</a>'
 
     wr_table.on 'order.dt', -> setCommentsReadmore()
     wr_table.on 'search.dt', -> setCommentsReadmore()
     wr_table.on 'page.dt', -> setCommentsReadmore()
     wr_table.on 'draw.dt', -> setCommentsReadmore()
+
+    wr_table.on 'order.dt', -> setUsesReadmore()
+    wr_table.on 'search.dt', -> setUsesReadmore()
+    wr_table.on 'page.dt', -> setUsesReadmore()
+    wr_table.on 'draw.dt', -> setUsesReadmore()
 
   # Basic map options object
   mapOptions =
@@ -248,7 +266,7 @@ $(".water_rights_management-show_water_rights").ready ->
                                 "<a href='#{wr.number}' class='show-link'>#{view_link_text}</a>"
                                 wr.flow_cfs
                                 wr.flow_ac_ft
-                                wr.uses
+                                "<div class='uses'>#{wr.uses}</div>"
                                 "<div class='comments'>#{wr.comments}</div>"
                                 "" # associated column
                               ]
@@ -318,7 +336,7 @@ $(".water_rights_management-show_water_rights").ready ->
                                 "<a href='#{wr.number}' class='show-link'>#{view_link_text}</a>"
                                 wr.flow_cfs
                                 wr.flow_ac_ft
-                                wr.uses
+                                "<div class='uses'>#{wr.uses}</div>"
                                 "<div class='comments'>#{wr.comments}</div>"
                                 true
                               ]
@@ -340,7 +358,7 @@ $(".water_rights_management-show_water_rights").ready ->
                                 "<a href='#{wr.number}' class='show-link'>#{view_link_text}</a>"
                                 wr.flow_cfs
                                 wr.flow_ac_ft
-                                wr.uses
+                                "<div class='uses'>#{wr.uses}</div>"
                                 "<div class='comments'>#{wr.comments}</div>"
                                 false
                               ]
