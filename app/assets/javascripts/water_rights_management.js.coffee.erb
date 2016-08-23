@@ -118,8 +118,15 @@ $(".water_rights_management-show_water_rights").ready ->
   polygon_stroke_color = '#6eb3c6'
   point_icon_url = 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Outside-Azure.png'
 
+  feature_index = 0
+  num_of_features = 0
+
   # Load GeoJSON based on current_user ID, which defaults to 0 if no user is signed in
-  map.data.loadGeoJson("/get-water-rights-data/#{$('#water_rights_table_body').data('user')}.json")
+  # map.data.loadGeoJson("/get-water-rights-data/#{$('#water_rights_table_body').data('user')}.json")
+  $.getJSON "/get-water-rights-data/#{$('#water_rights_table_body').data('user')}.json", (data) ->
+    feature_index = 0
+    num_of_features = data.features.length
+    map.data.addGeoJson data
 
   #Date formatter for water rights dates in table
   date_formatter = (date) ->
@@ -223,6 +230,7 @@ $(".water_rights_management-show_water_rights").ready ->
 
   # Called when each feature is added to the map
   map.data.addListener 'addfeature', (e) ->
+    feature_index++
     # console.log e.feature
     # If feature is a polygon, add all points of polygon to map bounds
     if e.feature.getGeometry().getType() == "Polygon"
@@ -241,53 +249,54 @@ $(".water_rights_management-show_water_rights").ready ->
     # Push each water right onto the main array
     for wr in wrs
       water_rights.push wr
-    # These 3 functions should only be run once, but can't figure out how to not run them after every feature
-    # Get rid of duplicates
-    water_rights = _.uniq water_rights, (wr) ->
-                      wr.number
-    # Sort water rights by number
-    # water_rights = _.sortBy water_rights, (wr) ->
-    #                   parseInt wr.number.match(/(\d+)$/)[0], 10
-    # Clear water rights table before appends
-    # $('#water_rights_table_body').html ""
-    wr_table.clear()
-    # Add water rights to table
-    formatted_water_rights = _.map water_rights, (wr) ->
-                              if wr.external_link
-                                number = "<a target='_blank' href='#{wr.external_link}'>#{wr.number}</a>"
-                              else
-                                number = wr.number
-                              if wr.view_link_text
-                                view_link_text = wr.view_link_text
-                              else
-                                view_link_text = "Show"
-                              [
-                                number
-                                date_formatter(wr.priority_date)
-                                wr.change_application_number
-                                date_formatter(wr.proof_due_date)
-                                "<a href='#{wr.number}' class='show-link'>#{view_link_text}</a>"
-                                wr.flow_cfs
-                                wr.flow_ac_ft
-                                "<div class='uses'>#{wr.uses}</div>"
-                                "<div class='comments'>#{wr.comments}</div>"
-                                "" # associated column
-                              ]
+    if feature_index == (num_of_features - 1)
+      # These 3 functions should only be run once, but can't figure out how to not run them after every feature
+      # Get rid of duplicates
+      water_rights = _.uniq water_rights, (wr) ->
+                        wr.number
+      # Sort water rights by number
+      # water_rights = _.sortBy water_rights, (wr) ->
+      #                   parseInt wr.number.match(/(\d+)$/)[0], 10
+      # Clear water rights table before appends
+      # $('#water_rights_table_body').html ""
+      wr_table.clear()
+      # Add water rights to table
+      formatted_water_rights = _.map water_rights, (wr) ->
+                                if wr.external_link
+                                  number = "<a target='_blank' href='#{wr.external_link}'>#{wr.number}</a>"
+                                else
+                                  number = wr.number
+                                if wr.view_link_text
+                                  view_link_text = wr.view_link_text
+                                else
+                                  view_link_text = "Show"
+                                [
+                                  number
+                                  date_formatter(wr.priority_date)
+                                  wr.change_application_number
+                                  date_formatter(wr.proof_due_date)
+                                  "<a href='#{wr.number}' class='show-link'>#{view_link_text}</a>"
+                                  wr.flow_cfs
+                                  wr.flow_ac_ft
+                                  "<div class='uses'>#{wr.uses}</div>"
+                                  "<div class='comments'>#{wr.comments}</div>"
+                                  "" # associated column
+                                ]
 
-    # console.log formatted_water_rights
-    wr_table.rows.add(formatted_water_rights).draw()
-    for wr in water_rights
-      # console.log wr_table.row.add(wr).draw().node()
-      context = 
-        wr: wr
-        date_formatter: date_formatter
-      # Append each water right using water_right.jst.eco template
-      # $('#water_rights_table_body').append JST['templates/water_right'](context)
-        # "<tr><td>#{wr.number}</td><td>#{if wr.priority_date then date_formatter(wr.priority_date) else ""}</td><td>#{if wr.change_application_number then wr.change_application_number else ""}</td><td>#{if wr.proof_due_date then date_formatter(wr.proof_due_date) else ""}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft then wr.flow_ac_ft else ""}</td><td>#{if wr.place_of_use then wr.place_of_use else ""}</td><td>#{if wr.comments then wr.comments else ""}</td></tr>"
-    # Update tablesorter
-    # $("#water_rights_table").trigger("update")
-  #   setLinkListeners()
-  #   return
+      # console.log formatted_water_rights
+      wr_table.rows.add(formatted_water_rights).draw()
+      for wr in water_rights
+        # console.log wr_table.row.add(wr).draw().node()
+        context = 
+          wr: wr
+          date_formatter: date_formatter
+        # Append each water right using water_right.jst.eco template
+        # $('#water_rights_table_body').append JST['templates/water_right'](context)
+          # "<tr><td>#{wr.number}</td><td>#{if wr.priority_date then date_formatter(wr.priority_date) else ""}</td><td>#{if wr.change_application_number then wr.change_application_number else ""}</td><td>#{if wr.proof_due_date then date_formatter(wr.proof_due_date) else ""}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft then wr.flow_ac_ft else ""}</td><td>#{if wr.place_of_use then wr.place_of_use else ""}</td><td>#{if wr.comments then wr.comments else ""}</td></tr>"
+      # Update tablesorter
+      # $("#water_rights_table").trigger("update")
+    #   setLinkListeners()
+    #   return
 
   # Called when a feature (piece of geometry) is clicked
   map.data.addListener 'click', (e) ->
@@ -436,4 +445,8 @@ $(".water_rights_management-show_water_rights").ready ->
     # Reset water_rights array
     water_rights = []
     # Load new data based on selected user_id
-    map.data.loadGeoJson("/get-water-rights-data/#{$(this).val()}.json")
+    # map.data.loadGeoJson("/get-water-rights-data/#{$(this).val()}.json")
+    $.getJSON "/get-water-rights-data/#{$(this).val()}.json", (data) ->
+      feature_index = 0
+      num_of_features = data.features.length
+      map.data.addGeoJson data
