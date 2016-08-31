@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2>Hi!</h2>
+    <p>This is just a quick reminder that your water right, #<%= @water_right.number %>, has a proof due date on <%= @water_right.proof_due_date.strftime("%B #{@water_right.proof_due_date.day.ordinalize}, %Y") %>. Please contact <%= link_to "logan@riley-water.com", "mailto:logan@riley-water.com?subject=Questions%20about%20%23#{@water_right.number}%20Proof%20Due%20Date" %> if you need more information!</p>
+  </body>
+</html>
