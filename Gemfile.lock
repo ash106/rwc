@@ -1,23 +1,3 @@
-GIT
-  remote: git://github.com/r4m/workless.git
-  revision: 35b83426a7ea219388680e5878149e445ddf2604
-  specs:
-    workless (1.2.3)
-      delayed_job (>= 2.0.7)
-      heroku-api
-      rails
-      rush
-
-GIT
-  remote: git://github.com/thoughtbot/paperclip.git
-  revision: dca87ec5d8038b2d436a75ad6119c8eb67b73e70
-  specs:
-    paperclip (4.2.0)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
-      mime-types
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -78,7 +58,7 @@ GEM
       json
     climate_control (0.0.3)
       activesupport (>= 3.0)
-    cocaine (0.5.4)
+    cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
     codeclimate-test-reporter (0.4.1)
       simplecov (>= 0.7.1, < 1.0.0)
@@ -140,7 +120,7 @@ GEM
       activesupport
       capybara
       i18n
-    heroku-api (0.3.19)
+    heroku-api (0.3.22)
       excon (~> 0.38)
       multi_json (~> 1.8)
     high_voltage (2.2.1)
@@ -187,6 +167,11 @@ GEM
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
+    paperclip (4.2.0)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pg (0.17.1)
     polyglot (0.3.5)
     polylines (0.2.0)
@@ -294,6 +279,11 @@ GEM
     webmock (1.18.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
+    workless (1.2.3)
+      delayed_job (>= 2.0.7)
+      heroku-api
+      rails
+      rush
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -333,7 +323,7 @@ DEPENDENCIES
   neat (~> 1.5.1)
   newrelic_rpm (>= 3.7.3)
   nokogiri (~> 1.6.2.1)
-  paperclip!
+  paperclip (= 4.2.0)
   pg
   polylines
   pry-rails
@@ -356,4 +346,4 @@ DEPENDENCIES
   underscore-rails
   unicorn
   webmock
-  workless!
+  workless (= 1.2.3)
