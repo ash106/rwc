@@ -61,6 +61,6 @@ class PlaceOfUseAreasController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def place_of_use_area_params
-      params.require(:place_of_use_area).permit(:name, :kml)
+      params.require(:place_of_use_area).permit(:name, :kml, :color)
     end
 end

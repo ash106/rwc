@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209030211) do
+ActiveRecord::Schema.define(version: 20150318215414) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 20141209030211) do
     t.string   "kml_content_type"
     t.integer  "kml_file_size"
     t.datetime "kml_updated_at"
+    t.string   "color"
   end
 
   create_table "point_of_diversion_water_rights", force: true do |t|

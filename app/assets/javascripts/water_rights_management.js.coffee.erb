@@ -114,8 +114,7 @@ $(".water_rights_management-show_water_rights").ready ->
   water_rights = []
 
   #Geometry style settings
-  polygon_fill_color = '#76b5c6'
-  polygon_stroke_color = '#6eb3c6'
+  polygon_color = '#76b5c6'
   point_icon_url = 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Outside-Azure.png'
 
   # Load GeoJSON based on current_user ID, which defaults to 0 if no user is signed in
@@ -174,7 +173,7 @@ $(".water_rights_management-show_water_rights").ready ->
       if _.contains(feature_wr_numbers, clicked_wr_number)
         # If feature is a polygon, set fill color and stroke color
         if feature.getGeometry().getType() == "Polygon"
-          map.data.overrideStyle feature, fillColor: polygon_fill_color, strokeColor: polygon_stroke_color
+          map.data.overrideStyle feature, fillColor: (feature.getProperty("color") or polygon_color), strokeColor: (feature.getProperty("color") or polygon_color)
           # Extend bounds for each point in polygon
           points = feature.getGeometry().getAt(0).getArray()
           for point in points
@@ -297,7 +296,7 @@ $(".water_rights_management-show_water_rights").ready ->
     map.data.revertStyle()
     # If clicked feature is a polygon, set fill color and stroke color
     if e.feature.getGeometry().getType() == "Polygon"
-      map.data.overrideStyle e.feature, fillColor: polygon_fill_color, strokeColor: polygon_stroke_color
+      map.data.overrideStyle e.feature, fillColor: (e.feature.getProperty("color") or polygon_color), strokeColor: (e.feature.getProperty("color") or polygon_color)
     # If clicked feature is a point, set icon
     if e.feature.getGeometry().getType() == "Point"
       map.data.overrideStyle e.feature, icon: point_icon_url

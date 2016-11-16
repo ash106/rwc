@@ -20,4 +20,6 @@
 //= require dataTables/extras/dataTables.responsive
 //= require dataTables/extras/dataTables.tableTools
 //= require readmore.min
+//= require jquery.minicolors
+//= require jquery.minicolors.simple_form
 //= require_tree .
