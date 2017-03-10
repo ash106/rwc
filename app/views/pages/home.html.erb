@@ -1,92 +1,195 @@
-<div class="row">
-  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators hidden-xs">
-      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-      <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-    </ol>
+<% content_for(:extra_body_classes, 'home-page') %>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <img src="http://water-rights.s3.amazonaws.com/services/home_1_dark.jpg" alt="First Slide">
-        <div class="carousel-caption">
-          <h3>Solving Water Right Challenges Facing Public and Private Entities and Individual Water Users</h3>
+<div class="container-fluid">
+  <div class="row">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <!-- <ol class="carousel-indicators hidden-xs">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+      </ol> -->
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="http://water-rights.s3.amazonaws.com/services/home_1_dark.jpg" alt="First Slide">
+          <div class="carousel-caption flex">
+            <h3>Solving Water Right Challenges Facing Public and Private Entities and Individual Water Users</h3>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://water-rights.s3.amazonaws.com/services/home_2_dark.jpg" alt="Second Slide">
+          <div class="carousel-caption flex short-guy">
+            <h3>Specializing in All Things Water Rights</h3>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://water-rights.s3.amazonaws.com/services/home_3_dark.jpg" alt="Third Slide">
+          <div class="carousel-caption flex">
+            <h3>Navigating Clients Through the Administrative Process of the Division of Water Rights</h3>
+          </div>
+        </div>
+        <div class="item">
+          <img src="http://water-rights.s3.amazonaws.com/services/home_4_dark.jpg" alt="Fourth Slide">
+          <div class="carousel-caption flex">
+            <h3>Riley Water Consulting Helps Connect the Dots Between Water Right Buyers and Sellers</h3>
+          </div>
         </div>
       </div>
-      <div class="item">
-        <img src="http://water-rights.s3.amazonaws.com/services/home_2_dark.jpg" alt="Second Slide">
-        <div class="carousel-caption short-guy">
-          <h3>Specializing in All Things Water Rights</h3>
-        </div>
-      </div>
-      <div class="item">
-        <img src="http://water-rights.s3.amazonaws.com/services/home_3_dark.jpg" alt="Third Slide">
-        <div class="carousel-caption">
-          <h3>Navigating Clients Through the Administrative Process of the Division of Water Rights</h3>
-        </div>
-      </div>
-      <div class="item">
-        <img src="http://water-rights.s3.amazonaws.com/services/home_4_dark.jpg" alt="Fourth Slide">
-        <div class="carousel-caption">
-          <h3>Riley Water Consulting Helps Connect the Dots Between Water Right Buyers and Sellers</h3>
-        </div>
-      </div>
+
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
     </div>
-
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-    </a>
-    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-    </a>
   </div>
 </div>
 
 
-<div class="row">
-  <div class="col-md-7">
-    <h1>Riley Water Consulting, LC</h1>
-    <p>Riley Water Consulting, LC (RWC) is a water right engineering and consulting firm in Utah. RWC provides specialization in change applications, updating title on water rights, water right research, conflict resolution, enforcement action, diligence claims, nonuse applications, declarations of beneficial use, applications to appropriate, proofs of beneficial use and much more.</p>
-    <p>Riley Water Consulting has more than 37 years of experience in water rights and has provided clients with personal, honest, ethical, and cost effective service in a timely manner.</p>
-  </div>
-
-  <div id="button-grid" class="col-md-5 no-padding">
-    <div class="btn-group btn-group-justified">
-      <%= link_to 'Diligence Claims', page_path('diligence-claims'), class: 'btn btn-primary', role: 'button' %>
-      <%= link_to 'Proof', page_path('proof-of-beneficial-use'), class: 'btn btn-second', role: 'button'  %>
-      <%= link_to 'Change Apps', page_path('change-application'), class: 'btn btn-third', role: 'button' %>
-    </div>
-    <div class="btn-group btn-group-justified">
-      <%= link_to 'Title', page_path('reports-of-conveyance'), class: 'btn btn-second', role: 'button' %>
-      <%= link_to 'Extension Request', page_path('extension-request'), class: 'btn btn-third', role: 'button' %>
-      <%= link_to '40 Year Plan', page_path('fourty-year-plan'), class: 'btn btn-primary', role: 'button' %>
-    </div>
-    <div class="btn-group btn-group-justified">
-      <%= link_to 'Declarations', page_path('declarations-of-beneficial-use'), class: 'btn btn-third', role: 'button' %>
-      <%= link_to 'App To Appropriate', page_path('applications-to-appropriate'), class: 'btn btn-primary', role: 'button' %>
-      <%= link_to 'Non-Use Apps', page_path('non-use-application'), class: 'btn btn-second', role: 'button' %>
-    </div>
-  </div> 
-</div>
-
-<!-- Call to Action Panel -->
-<div class="row">
-  <div class="col-lg-12">
-    <h4>Get in touch!</h4>
-        
+<div id="about">
+  <div class="container">
     <div class="row">
-      <div class="col-lg-7">
-        <p>We help our clients buy and sell their water rights! Check out our buy/sell page to see what's for sale and what people are looking for. Our buy/sell page also gives information on the water right policy for each area.</p>
-        <div id="buy-button" class="text-center">
-          <%= link_to "Buy/Sell", buy_sell_path, class: "btn btn-primary visible-xs-block" %>
-          <%= link_to "Buy/Sell", buy_sell_path, class: "btn btn-primary btn-lg hidden-xs" %>
+      <div class="col-md-8 col-md-offset-2 about-text">
+        <h1>Riley Water Consulting, LC</h1>
+        <div class="hr"></div>
+        <p>Riley Water Consulting, LC (RWC) is a water right engineering and consulting firm in Utah. RWC provides specialization in change applications, updating title on water rights, water right research, conflict resolution, enforcement action, diligence claims, nonuse applications, declarations of beneficial use, applications to appropriate, proofs of beneficial use and much more.</p>
+        <p>Riley Water Consulting has more than 37 years of experience in water rights and has provided clients with personal, honest, ethical, and cost effective service in a timely manner.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container" id="services">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="section-heading">Services</h2>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-4 service">
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
+      </span>
+      <h4 class="service-heading">Diligence Claims</h4>
+      <p class="text-muted">Lorem ipsum dolor sit amet, mei tation aperiri hendrerit cu, id omnes albucius expetenda quo, no eam sensibus constituto.</p>
+    </div>
+    <div class="col-md-4 service">
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+        <i class="fa fa-balance-scale fa-stack-1x fa-inverse"></i>
+      </span>
+      <h4 class="service-heading">Proof of Beneficial Use</h4>
+      <p class="text-muted">Lorem ipsum dolor sit amet, mei tation aperiri hendrerit cu, id omnes albucius expetenda quo, no eam sensibus constituto.</p>
+    </div>
+    <div class="col-md-4 service">
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+        <i class="fa fa-compass fa-stack-1x fa-inverse"></i>
+      </span>
+      <h4 class="service-heading">Change Application</h4>
+      <p class="text-muted">Lorem ipsum dolor sit amet, mei tation aperiri hendrerit cu, id omnes albucius expetenda quo, no eam sensibus constituto.</p>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-4 service">
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+        <i class="fa fa-map-signs fa-stack-1x fa-inverse"></i>
+      </span>
+      <h4 class="service-heading">Reports of Conveyance (Title)</h4>
+      <p class="text-muted">Lorem ipsum dolor sit amet, mei tation aperiri hendrerit cu, id omnes albucius expetenda quo, no eam sensibus constituto.</p>
+    </div>
+    <div class="col-md-4 service">
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+        <i class="fa fa-university fa-stack-1x fa-inverse"></i>
+      </span>
+      <h4 class="service-heading">40 Year Plan</h4>
+      <p class="text-muted">Lorem ipsum dolor sit amet, mei tation aperiri hendrerit cu, id omnes albucius expetenda quo, no eam sensibus constituto.</p>
+    </div>
+    <div class="col-md-4 service">
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+        <i class="fa fa-thermometer-full fa-stack-1x fa-inverse"></i>
+      </span>
+      <h4 class="service-heading">Extension Request</h4>
+      <p class="text-muted">Lorem ipsum dolor sit amet, mei tation aperiri hendrerit cu, id omnes albucius expetenda quo, no eam sensibus constituto.</p>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-4 service">
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+        <i class="fa fa-life-ring fa-stack-1x fa-inverse"></i>
+      </span>
+      <h4 class="service-heading">Declarations of Beneficial Use</h4>
+      <p class="text-muted">Lorem ipsum dolor sit amet, mei tation aperiri hendrerit cu, id omnes albucius expetenda quo, no eam sensibus constituto.</p>
+    </div>
+    <div class="col-md-4 service">
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+        <i class="fa fa-signal fa-stack-1x fa-inverse"></i>
+      </span>
+      <h4 class="service-heading">Applications to Appropriate</h4>
+      <p class="text-muted">Lorem ipsum dolor sit amet, mei tation aperiri hendrerit cu, id omnes albucius expetenda quo, no eam sensibus constituto.</p>
+    </div>
+    <div class="col-md-4 service">
+      <span class="fa-stack fa-4x">
+        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+        <i class="fa fa-suitcase fa-stack-1x fa-inverse"></i>
+      </span>
+      <h4 class="service-heading">Non-use Application</h4>
+      <p class="text-muted">Lorem ipsum dolor sit amet, mei tation aperiri hendrerit cu, id omnes albucius expetenda quo, no eam sensibus constituto.</p>
+    </div>
+  </div>
+</div>
+
+
+<div id="call-to-action">
+  <div class="call-to-action-bg"
+    data-center="background-position: 50% 0px;"
+    data-top-bottom="background-position: 50% -100px;"
+    data-bottom-top="background-position: 50% 100px;"
+    data-anchor-target="#call-to-action"
+  >
+  <!-- <div class="call-to-action-bg"> -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 text-center">
+          <h2 class="section-heading">Get in touch!</h2>
+          <p>We help our clients buy and sell their water rights! Check out our buy/sell page to see what's for sale and what people are looking for. Our buy/sell page also gives information on the water right policy for each area.</p>
+          <div id="buy-button">
+            <%= link_to "Buy/Sell", buy_sell_path, class: "btn btn-primary visible-xs-block" %>
+            <%= link_to "Buy / Sell", buy_sell_path, class: "btn btn-primary btn-lg outline hidden-xs" %>
+          </div>
         </div>
       </div>
-      
+    </div>
+  </div>
+</div>
+
+<div id="contact">
+  <div class="map-col right">
+    <div id="homepage-map"></div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="contact-info">
+          <h3>Contact Info</h3>
+          <h4>Address:</h4>
+          <p>175 South Main Street Suite 1330<br>Salt Lake City, UT 84111</p>
+          <h4>Phone:</h4>
+          <p>801.355.1883</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

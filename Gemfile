@@ -41,6 +41,7 @@ gem 'simplify_rb'
 gem 'mandrill_mailer'
 gem 'jquery-datatables-rails', '~> 3.1.1'
 gem 'jquery-minicolors-rails'
+gem 'font-awesome-rails'
 
 
 group :development do

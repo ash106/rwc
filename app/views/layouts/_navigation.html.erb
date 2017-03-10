@@ -1,12 +1,8 @@
-<div class="container hidden-xs">
-  <div class="row">
-    <div>
-      <%= link_to (image_tag "https://dl.dropboxusercontent.com/u/38076607/LOGO%20wheel.jpg", class: "logo center-block"), root_path %>
-    </div>
-  </div>
+<div class="brand">
+  <%= link_to (image_tag "https://dl.dropboxusercontent.com/u/38076607/LOGO%20wheel.jpg", class: "logo"), root_path %>
 </div>
 
-<nav class="navbar navbar-inverse" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -35,10 +31,10 @@
         </ul>
       <% end %>
       
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services <b class="caret"></b></a>
-          <ul class="dropdown-menu inverse-dropdown">
+          <ul class="dropdown-menu">
             <li><%= link_to 'Diligence Claims', page_path('diligence-claims') %></li>
             <li><%= link_to 'Proof of Beneficial Use', page_path('proof-of-beneficial-use') %></li>
             <li><%= link_to 'Change Application', page_path('change-application') %></li>
