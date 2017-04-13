@@ -319,26 +319,10 @@ html, body {
   box-shadow: none;
 }
 
-#contact {
+#contact-section, #contact-page {
   background-color: #454545;
   color: white;
   position: relative;
-}
-
-.map-col {
-  width: 50%;
-  height: 100%;
-  background-color: green;
-  position: absolute;
-}
-
-.map-col.right {
-  right: 0;
-}
-
-#homepage-map {
-  width: 100%;
-  height: 100%;
 }
 
 .contact-info {
@@ -362,6 +346,25 @@ html, body {
     font-weight: 300;
     margin-bottom: 20px;
   }
+  a {
+    color: white;
+  }
+}
+
+.map-col {
+  width: 50%;
+  height: 100%;
+  background-color: green;
+  position: absolute;
+}
+
+.map-col.right {
+  right: 0;
+}
+
+#homepage-map, #contact-page-map {
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -411,6 +414,16 @@ html, body {
     font-weight: 300;
     line-height: 30px;
     margin-bottom: 16px;
+  }
+}
+
+
+/* Contact page */
+
+#contact-page .contact-info {
+  padding-left: 0;
+  p {
+    margin-bottom: 30px;
   }
 }
 
