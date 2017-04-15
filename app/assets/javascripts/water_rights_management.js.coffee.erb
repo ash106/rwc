@@ -27,16 +27,6 @@ $(".water_rights_management-dashboard").ready ->
 
 
 $(".water_rights_management-show_water_rights").ready ->
-  # Initialize tablesorter
-  # $("#water_rights_table").tablesorter(
-  #   theme: 'bootstrap',
-  #   widgets: ['uitheme'],
-  #   headerTemplate: '{content} {icon}', # new in v2.7. Needed to add the bootstrap icon!
-  #   sortList: [[0,0]] #Default sort on first column, order ascending
-  # ).tablesorterPager
-  #   container: $("#pager"),
-  #   output: '{startRow} to {endRow} ({totalRows})'
-
   wr_table = $("#water_rights_table").DataTable
                 pagingType: 'simple_numbers'
                 dom: "<'row'<'col-sm-6'l><'col-sm-6'Tf>>" +
@@ -123,7 +113,6 @@ $(".water_rights_management-show_water_rights").ready ->
   num_of_features = 0
 
   # Load GeoJSON based on current_user ID, which defaults to 0 if no user is signed in
-  # map.data.loadGeoJson("/get-water-rights-data/#{$('#water_rights_table_body').data('user')}.json")
   $.getJSON "/get-water-rights-data/#{$('#water_rights_table_body').data('user')}.json", (data) ->
     feature_index = 0
     num_of_features = data.features.length
@@ -151,25 +140,6 @@ $(".water_rights_management-show_water_rights").ready ->
       $(this).removeClass 'highlighted'
     # Add highlighted class only to row containing clicked link
     $(this).parent().parent().addClass 'highlighted'
-    # Clear water rights table before appends
-    # $('#water_rights_table_body').html ""
-    # Re-add water rights to table, highlighting only the clicked row
-    # for wr in water_rights
-    #   # Set the clicked row to highlighted
-    #   if wr.number == clicked_wr_number
-    #     context = 
-    #       wr: wr
-    #       date_formatter: date_formatter
-    #       highlighted: true
-    #     $('#water_rights_table_body').append JST['templates/water_right'](context)
-    #   # All other rows are unhighlighted
-    #   else
-    #     context = 
-    #       wr: wr
-    #       date_formatter: date_formatter
-    #     $('#water_rights_table_body').append JST['templates/water_right'](context)
-    # Update tablesorter
-    # $("#water_rights_table").trigger("update", [false])
     # Create bounds for features associated with clicked water right
     selected_bounds = new google.maps.LatLngBounds()
     # Set styling for features associated with clicked water right
@@ -198,41 +168,9 @@ $(".water_rights_management-show_water_rights").ready ->
     if map.getZoom() >= 20
       map.setZoom 15
 
-  # setLinkListeners = ->
-  #   console.log "called setLinkListeners"
-  #   $('td a').click (e) ->
-  #     e.preventDefault()
-  #     map.data.revertStyle()
-  #     clicked_wr_number = $(this).attr "href"
-  #     $('#water_rights_table_body').html(
-  #       for wr in water_rights
-  #         if wr.number == clicked_wr_number
-  #           "<tr class='highlighted'><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
-  #         else
-  #           "<tr><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
-  #     )
-  #     setLinkListeners()
-  #     console.log clicked_wr_number
-  #     selected_bounds = new google.maps.LatLngBounds()
-  #     map.data.forEach (feature) ->
-  #       feature_wrs = feature.getProperty "water_rights"
-  #       for wr in feature_wrs
-  #         if wr.number == clicked_wr_number
-  #           if feature.getGeometry().getType() == "Polygon"
-  #             map.data.overrideStyle feature, fillColor: '#76b5c6', strokeColor: '#6eb3c6'
-  #             points = feature.getGeometry().getAt(0).getArray()
-  #             for point in points
-  #               selected_bounds.extend point
-  #           if feature.getGeometry().getType() == "Point"
-  #             map.data.overrideStyle feature, icon: 'https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Flag--Azure.png'
-  #             selected_bounds.extend feature.getGeometry().get()
-  #       map.fitBounds selected_bounds
-
-
   # Called when each feature is added to the map
   map.data.addListener 'addfeature', (e) ->
     feature_index++
-    # console.log e.feature
     # If feature is a polygon, add all points of polygon to map bounds
     if e.feature.getGeometry().getType() == "Polygon"
       # Get array of points that make up outer linear ring of polygon
@@ -255,11 +193,6 @@ $(".water_rights_management-show_water_rights").ready ->
       # Get rid of duplicates
       water_rights = _.uniq water_rights, (wr) ->
                         wr.number
-      # Sort water rights by number
-      # water_rights = _.sortBy water_rights, (wr) ->
-      #                   parseInt wr.number.match(/(\d+)$/)[0], 10
-      # Clear water rights table before appends
-      # $('#water_rights_table_body').html ""
       wr_table.clear()
       # Add water rights to table
       formatted_water_rights = _.map water_rights, (wr) ->
@@ -283,21 +216,11 @@ $(".water_rights_management-show_water_rights").ready ->
                                   "<div class='comments'>#{wr.comments}</div>"
                                   "" # associated column
                                 ]
-
-      # console.log formatted_water_rights
       wr_table.rows.add(formatted_water_rights).draw()
       for wr in water_rights
-        # console.log wr_table.row.add(wr).draw().node()
         context = 
           wr: wr
           date_formatter: date_formatter
-        # Append each water right using water_right.jst.eco template
-        # $('#water_rights_table_body').append JST['templates/water_right'](context)
-          # "<tr><td>#{wr.number}</td><td>#{if wr.priority_date then date_formatter(wr.priority_date) else ""}</td><td>#{if wr.change_application_number then wr.change_application_number else ""}</td><td>#{if wr.proof_due_date then date_formatter(wr.proof_due_date) else ""}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft then wr.flow_ac_ft else ""}</td><td>#{if wr.place_of_use then wr.place_of_use else ""}</td><td>#{if wr.comments then wr.comments else ""}</td></tr>"
-      # Update tablesorter
-      # $("#water_rights_table").trigger("update")
-    #   setLinkListeners()
-    #   return
 
   # Called when a feature (piece of geometry) is clicked
   map.data.addListener 'click', (e) ->
@@ -316,19 +239,12 @@ $(".water_rights_management-show_water_rights").ready ->
     # Get array of water right numbers for clicked feature
     clicked_wr_numbers = _.pluck(clicked_water_rights, 'number')
     # Clear water rights table before appends
-    # $('#water_rights_table_body').html ""
     wr_table.clear()
     # Re-add water rights to table, highlighting the ones associated with the clicked feature
     for wr in water_rights
       # If current water right number is in clicked_wr_numbers, add the highlighted class and append
       if _.contains(clicked_wr_numbers, wr.number)
         associated_water_rights.push wr
-        # context = 
-        #   wr: wr
-        #   date_formatter: date_formatter
-        #   highlighted: true
-        # $('#water_rights_table_body').append JST['templates/water_right'](context)
-          # "<tr class='highlighted'><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
       # Otherwise add the water right without the highlighted class after appending all highlighted water rights first
       else
         nonassociated_water_rights.push wr
@@ -377,64 +293,6 @@ $(".water_rights_management-show_water_rights").ready ->
                               ]
     wr_table.rows.add(nonassociated_water_rights).draw()
     wr_table.order([9, 'desc']).draw()
-    # for wr in nonassociated_water_rights
-    #   context = 
-    #     wr: wr
-    #     date_formatter: date_formatter
-    #   $('#water_rights_table_body').append JST['templates/water_right'](context)
-  #         "<tr><td>#{wr.number}</td><td>#{date_formatter(wr.priority_date)}</td><td>#{wr.change_application_number}</td><td>#{date_formatter(wr.proof_due_date)}</td><td><a href='#{wr.number}'>View</a></td><td>#{if wr.flow_cfs != null then wr.flow_cfs else ""}</td><td>#{if wr.flow_ac_ft != null then wr.flow_ac_ft else ""}</td><td>#{wr.place_of_use}</td><td>#{if wr.comments != null then wr.comments else ""}</td></tr>"
-    # Update tablesorter
-    # $("#water_rights_table").trigger("update", [false])
-  #   )
-  #   setLinkListeners()
-  #   return
-
-  # $('#pdf-water-rights').click (e) ->
-  #   data = $('#water_rights_table').tableToJSON
-  #             ignoreColumns: [4]
-  #             ignoreHiddenRows: false
-  #             headings: ["Water Right #", "Priority Date", "Change App #", "Proof Due Date", "View Right", "Flow (cfs)", "Volume (ac-ft)", "Uses", "Comments"]
-  #   console.log data
-  #   e.preventDefault()
-  #   console.log "print pressed"
-  #   doc = new jsPDF('p', 'pt', 'a4')
-  #   margins = 
-  #     top: 40
-  #     bottom: 40
-  #     left: 40
-  #     width: 700
-  #   # doc.setFontSize 12
-  #   # doc.table 20, 20, data, null, { printHeaders: false, autoSize: true, margins: margins, fontSize: 10 }
-  #   # doc.cellInitialize()
-  #   # $.each data, (i, row) ->
-  #   #   $.each row, (j, cell) ->
-  #   #     doc.cell 10, 50, 80, 40, cell, i
-  #   # doc.setFont "courier", "normal"
-  #   # doc.setFontSize 12
-  #   # data = doc.tableToJson 'water_rights_table'
-  #   # doc.drawTable table, {xstart:10,ystart:20,tablestart:20,marginright:0,xOffset: 15}
-  #   # console.log data
-  #   # specialElementHandlers = 
-  #   #   "#editor": (element, renderer) ->
-  #   #     true
-  #   # margins = 
-  #   #   top: 40
-  #   #   bottom: 40
-  #   #   left: 40
-  #   #   width: 700
-  #   # doc.fromHTML $("table").get(0), margins.left, margins.top, 
-  #   #   width: margins.width
-  #   #   elementHandlers: specialElementHandlers
-  #   # doc.text(20, 20, 'Hello world!')
-  #   # console.log doc
-  #   options = 
-  #     format: 'PNG'
-  #     pagesplit: true
-  #     dim:
-  #       w: 400
-  #       h: 400
-  #   doc.addHTML $('#water_rights_table')[0], 20, 20, options, ->
-  #     doc.output('dataurlnewwindow')
 
   # Called when the user selectbox changes
   $('#user-selector').change (e) ->
@@ -446,7 +304,6 @@ $(".water_rights_management-show_water_rights").ready ->
     # Reset water_rights array
     water_rights = []
     # Load new data based on selected user_id
-    # map.data.loadGeoJson("/get-water-rights-data/#{$(this).val()}.json")
     $.getJSON "/get-water-rights-data/#{$(this).val()}.json", (data) ->
       feature_index = 0
       num_of_features = data.features.length
