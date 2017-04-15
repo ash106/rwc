@@ -39,7 +39,9 @@ $(".water_rights_management-show_water_rights").ready ->
 
   wr_table = $("#water_rights_table").DataTable
                 pagingType: 'simple_numbers'
-                dom: 'T<"clear">lfrtip'
+                dom: "<'row'<'col-sm-6'l><'col-sm-6'Tf>>" +
+                     "<'row'<'col-sm-12'tr>>" +
+                     "<'row'<'col-sm-5'i><'col-sm-7'p>>"
                 tableTools:
                   sSwfPath: "<%= asset_path('copy_csv_xls_pdf.swf') %>"
                   aButtons: [

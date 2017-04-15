@@ -2,6 +2,7 @@ $brand-primary: #222d69;
 $second-color: #9d9d9d;
 $third-color: #2c2e2d;
 $grid-gutter-width: 30px;
+$font-family-sans-serif: 'Open Sans', sans-serif;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -464,19 +465,15 @@ html, body {
 }
 
 table.table.table-striped tr.highlighted td {
-  background-color: #76b5c6;
+  background-color: rgba(118,181,198,0.45); // #76b5c6
 }
 
 #user-selector {
   margin-bottom: 10px;
 }
 
-.dataTables_wrapper {
-  padding-top: 15px;
-}
-
 #water_rights_table_wrapper {
-  padding-top: 0;
+  padding-top: 13px;
 }
 
 div.dataTables_filter input {
@@ -488,9 +485,23 @@ div.dataTables_filter input {
   margin-bottom: 10px;
 }
 
+.map-caption {
+  font-size: 14px;
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
 @media (min-width: $screen-md-min) { 
   #map_canvas.water_rights {
-    height: 420px;
+    height: 550px;
+  }
+
+  .show-water-rights-data {
+    margin-bottom: 30px;
+  }
+
+  .show-water-rights-map {
+    margin-bottom: 40px;
   }
 }
 
