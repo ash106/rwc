@@ -371,9 +371,15 @@ html, body {
 
 /* Services pages */
 
+#services-page {
+  margin-bottom: 20px;
+  p:first-of-type {
+    margin-top: 10px;
+  }
+}
+
 .services-pic {
   max-width: 100%;
-  margin-bottom: 10px;
 }
 
 .service-list-header {

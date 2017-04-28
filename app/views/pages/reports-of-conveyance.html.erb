@@ -1,22 +1,13 @@
-<div class="row">
-  <div class="col-md-12">
-    <h1 class="text-center">Report of Conveyance (Title)</h1>
-    <%= image_tag "http://water-rights.s3.amazonaws.com/services/report_of_conveyance.jpg", class: 'services-pic' %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-8">
-    <p>A person or entity who needs to update title to a water right must have a professional (in most cases) fill out and submit to the State of Utah a Report of Conveyance (ROC). One ROC is required for every water right, therefore if someone owns a piece of ground with several water rights that are appurtenant, then several ROC’s will need to be filled out and filed at the State. </p>
-    <p>Every ROC has a State filing fee of $40. Once submitted, every ROC is reviewed in great detail by the staff at the Division of Water Rights. ROC’s take several months to be processed, and for larger more complex ones it can be even longer. Once the State updates a water rights title, they then send out a letter to the new owner stating what it has been updated to.</p>
-    <p>The State currently has two different ROC forms, a 100% form and a portion form. In filing a ROC it is very important that the right form is used. If a water right has several owners and someone is trying to update title from just one of those owners, then a 100% form should be used. However, if a someone was trying to update title on a portion of someones interest in a water right then the portion form should be used.</p>
-    <h4>By Appurtenance</h4>
-    <p>If a water right is being conveyed by appurtenance a map is required with every description to show that the land being conveyed has the particular water right appurtenant to it. In general it is good practice to plot the description of the land deed on top of the proof map or hydrographic survey map (where available). It is also good practice to attach a map to every deed submitted.</p>
-    <h4>By Water Deed or Water Mentioned on Land Deed</h4>
-    <p>Often times water rights are mentioned on deeds. If the water right that someone is trying to update is mentioned on all of the deeds from the owner on the States records down to the current owner, then no maps are required.</p>
-    <h4>Water Addendum</h4>
-    <p>If someone is trying to update title directly from the owner of a water right shown on the States record to themselves, they can file at the County Recorder's Office a water right deed and a Water Right Addendum (<%= link_to "http://www.waterrights.utah.gov/wrinfo/forms/WaterDeedAddendum.pdf","http://www.waterrights.utah.gov/wrinfo/forms/WaterDeedAddendum.pdf", class: 'word-wrap' %>). These must be recorded as if it is one document. The County then sends the water deed and addendum to the Division of Water Rights for processing. </p>
-    <p>For more information on Water Right Reports of Conveyance see <%= link_to "http://www.waterrights.utah.gov/titleInfo/default.asp","http://www.waterrights.utah.gov/titleInfo/default.asp", class: 'word-wrap' %>.</p>
-    <p>Riley Water Consulting has filed and processed hundreds of ROC’s at the State. We follow through with the State and make sure that what we submit title on to the State is updated.</p>
-  </div>
-  <%= render "layouts/other_services" %>
-</div>
+<%= render layout: 'layouts/services_page', locals: {title: 'Report of Conveyance (Title)', img_link: 'http://water-rights.s3.amazonaws.com/services/report_of_conveyance.jpg'} do %>
+  <p>A person or entity who needs to update title to a water right must have a professional (in most cases) fill out and submit to the State of Utah a Report of Conveyance (ROC). One ROC is required for every water right, therefore if someone owns a piece of ground with several water rights that are appurtenant, then several ROC’s will need to be filled out and filed at the State. </p>
+  <p>Every ROC has a State filing fee of $40. Once submitted, every ROC is reviewed in great detail by the staff at the Division of Water Rights. ROC’s take several months to be processed, and for larger more complex ones it can be even longer. Once the State updates a water rights title, they then send out a letter to the new owner stating what it has been updated to.</p>
+  <p>The State currently has two different ROC forms, a 100% form and a portion form. In filing a ROC it is very important that the right form is used. If a water right has several owners and someone is trying to update title from just one of those owners, then a 100% form should be used. However, if a someone was trying to update title on a portion of someones interest in a water right then the portion form should be used.</p>
+  <h4>By Appurtenance</h4>
+  <p>If a water right is being conveyed by appurtenance a map is required with every description to show that the land being conveyed has the particular water right appurtenant to it. In general it is good practice to plot the description of the land deed on top of the proof map or hydrographic survey map (where available). It is also good practice to attach a map to every deed submitted.</p>
+  <h4>By Water Deed or Water Mentioned on Land Deed</h4>
+  <p>Often times water rights are mentioned on deeds. If the water right that someone is trying to update is mentioned on all of the deeds from the owner on the States records down to the current owner, then no maps are required.</p>
+  <h4>Water Addendum</h4>
+  <p>If someone is trying to update title directly from the owner of a water right shown on the States record to themselves, they can file at the County Recorder's Office a water right deed and a Water Right Addendum (<%= link_to "http://www.waterrights.utah.gov/wrinfo/forms/WaterDeedAddendum.pdf","http://www.waterrights.utah.gov/wrinfo/forms/WaterDeedAddendum.pdf", class: 'word-wrap' %>). These must be recorded as if it is one document. The County then sends the water deed and addendum to the Division of Water Rights for processing. </p>
+  <p>For more information on Water Right Reports of Conveyance see <%= link_to "http://www.waterrights.utah.gov/titleInfo/default.asp","http://www.waterrights.utah.gov/titleInfo/default.asp", class: 'word-wrap' %>.</p>
+  <p>Riley Water Consulting has filed and processed hundreds of ROC’s at the State. We follow through with the State and make sure that what we submit title on to the State is updated.</p>
+<% end %>

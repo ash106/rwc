@@ -1,14 +1,5 @@
-<div class="row">
-  <div class="col-md-12">
-    <h1 class="text-center">Change Applications</h1>
-    <%= image_tag "http://water-rights.s3.amazonaws.com/services/change_applications.jpg", class: 'services-pic' %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-8">
-    <p>A Change Application is an application to the State where a water right owner seeks to change the point of diversion location, place of use location, period of use or nature of use of their water right. A change application cannot be processed if the water right(s) which the change application is based on hasn’t had the sole supply determined (see Declarations of Beneficial Use). A permanent change application changes the water right permanently and requires Proof of Beneficial Use to be filed. A temporary change application is valid for one year from the approval date, at which point the water right attributes revert back to the underlying right.</p>
-    <p>The State Engineer typically gives applicant’s five years from the approval date of the permanent change application to file Proof of Beneficial Use (see Proof of Beneficial Use). If the water has not been placed to beneficial use the applicant has several options, one of which is to file an extension of time request (see Extension of Time Request).</p>
-    <p>Riley Water Consulting helps clients file change applications in the best way possible to ensure that the applicant’s change application has the best chance to be approved by the State of Utah. In preparing change applications Riley Water Consulting researches each water right involved, determines the diversion/depletion of the current uses, reviews the current ownership, and determines the diversion/depletion of the proposed uses (if changing nature of use).</p>
-  </div>
-  <%= render "layouts/other_services" %>
-</div>
+<%= render layout: 'layouts/services_page', locals: {title: 'Change Applications', img_link: 'http://water-rights.s3.amazonaws.com/services/change_applications.jpg'} do %>
+  <p>A Change Application is an application to the State where a water right owner seeks to change the point of diversion location, place of use location, period of use or nature of use of their water right. A change application cannot be processed if the water right(s) which the change application is based on hasn’t had the sole supply determined (see Declarations of Beneficial Use). A permanent change application changes the water right permanently and requires Proof of Beneficial Use to be filed. A temporary change application is valid for one year from the approval date, at which point the water right attributes revert back to the underlying right.</p>
+  <p>The State Engineer typically gives applicant’s five years from the approval date of the permanent change application to file Proof of Beneficial Use (see Proof of Beneficial Use). If the water has not been placed to beneficial use the applicant has several options, one of which is to file an extension of time request (see Extension of Time Request).</p>
+  <p>Riley Water Consulting helps clients file change applications in the best way possible to ensure that the applicant’s change application has the best chance to be approved by the State of Utah. In preparing change applications Riley Water Consulting researches each water right involved, determines the diversion/depletion of the current uses, reviews the current ownership, and determines the diversion/depletion of the proposed uses (if changing nature of use).</p>
+<% end %>

@@ -1,0 +1,12 @@
+<div id="services-page" class="container">
+  <div class="row text-center">
+    <%= image_tag img_link, class: 'services-pic' %>
+    <h1><%= title -%></h1>
+  </div>
+  <div class="row">
+    <div class="col-md-8 col-lg-6 col-lg-offset-1">
+      <%= yield %>
+    </div>
+    <%= render "layouts/other_services" %>
+  </div>
+</div>

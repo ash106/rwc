@@ -1,13 +1,4 @@
-<div class="row">
-  <div class="col-md-12">
-    <h1 class="text-center">Non-use Applications</h1>
-    <%= image_tag "http://water-rights.s3.amazonaws.com/services/non_use_application.jpg", class: 'services-pic' %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-8">
-    <p>A Non-Use Application is an application to the State Engineer where the water right owner, anticipating that the water will not be used for 7 years, seeks to protect his water right from forfeiture. All Non-Use Applications are advertised in the local paper and then time is given for protests.</p>
-    <p>Riley Water Consulting helps water right owners fill out Non-Use Forms to ensure that no water is lost. Water right owners must file a Non-Use Application on each water right, even if several water rights are used together to cover one use. If a water right is owned by several water right owners all of them must sign, if not only those who signed will be protected from forfeiture. For more information see <%= link_to "http://www.waterrights.utah.gov/wrinfo/policy/topics/p021112.pdf", "http://www.waterrights.utah.gov/wrinfo/policy/topics/p021112.pdf", class: 'word-wrap' %>.</p>
-  </div>
-  <%= render "layouts/other_services" %>
-</div>
+<%= render layout: 'layouts/services_page', locals: {title: 'Non-use Applications', img_link: 'http://water-rights.s3.amazonaws.com/services/non_use_application.jpg'} do %>
+  <p>A Non-Use Application is an application to the State Engineer where the water right owner, anticipating that the water will not be used for 7 years, seeks to protect his water right from forfeiture. All Non-Use Applications are advertised in the local paper and then time is given for protests.</p>
+  <p>Riley Water Consulting helps water right owners fill out Non-Use Forms to ensure that no water is lost. Water right owners must file a Non-Use Application on each water right, even if several water rights are used together to cover one use. If a water right is owned by several water right owners all of them must sign, if not only those who signed will be protected from forfeiture. For more information see <%= link_to "http://www.waterrights.utah.gov/wrinfo/policy/topics/p021112.pdf", "http://www.waterrights.utah.gov/wrinfo/policy/topics/p021112.pdf", class: 'word-wrap' %>.</p>
+<% end %>

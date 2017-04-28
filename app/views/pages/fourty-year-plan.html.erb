@@ -1,13 +1,4 @@
-<div class="row">
-  <div class="col-md-12">
-    <h1 class="text-center">40 Year Plan</h1>
-    <%= image_tag "http://water-rights.s3.amazonaws.com/services/fourty_year_plan.jpg", class: 'services-pic' %>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-8">
-    <p>Municipalities and public water suppliers are able to receive an extension beyond the 50 years allotted to file Proof. A 40 Year Plan shows the State Engineer that the water applied for meets the reasonable future requirement of the public for the next 40 year. This includes evaluation of: all sources, water rights, projected population, estimated water demand and a specific outlined water right plan.</p>
-    <p>Riley Water Consulting has completed 40 Year Plans for several municipalities including but not limited to: City of West Jordan, Sandy City and Eagle Mountain. All of the municipalities that we have submitted a 40 Year Plan for has received an extension beyond 50 years to submit proof.</p>
-  </div>
-  <%= render "layouts/other_services" %>
-</div>
+<%= render layout: 'layouts/services_page', locals: {title: '40 Year Plan', img_link: 'http://water-rights.s3.amazonaws.com/services/fourty_year_plan.jpg'} do %>
+  <p>Municipalities and public water suppliers are able to receive an extension beyond the 50 years allotted to file Proof. A 40 Year Plan shows the State Engineer that the water applied for meets the reasonable future requirement of the public for the next 40 year. This includes evaluation of: all sources, water rights, projected population, estimated water demand and a specific outlined water right plan.</p>
+  <p>Riley Water Consulting has completed 40 Year Plans for several municipalities including but not limited to: City of West Jordan, Sandy City and Eagle Mountain. All of the municipalities that we have submitted a 40 Year Plan for has received an extension beyond 50 years to submit proof.</p>
+<% end %>
