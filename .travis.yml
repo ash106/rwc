@@ -1,12 +1,19 @@
 language: ruby
 rvm:
-  - 2.1.2
+- 2.1.2
 cache: bundler
 before_install:
-  - gem update --system
-  - gem update bundler
+- gem update --system
+- gem update bundler
 before_script:
-  - cp .sample.env .env
-  - psql -c 'create database "rwc_test";' -U postgres
+- cp .sample.env .env
+- psql -c 'create database "rwc_test";' -U postgres
 addons:
-  postgresql: "9.3"
+  postgresql: '9.3'
+deploy:
+  provider: heroku
+  api_key:
+    secure: dfk0xWx5Gue8yhzq9zUX9l1yAXLVGiewD8vcdfRIxVNp04f1Xz8cFTnLWQR6x/59ikQQTr+MDErCZ4hd9T0NEztvjfPKXaIapMj/gEEZD1Qdi6iKwam2xf3AuuUEBOPHNhiYIXiY+C2AbY6SnHE4OmjpaaVF0ZRljTfwzv8dSwg=
+  app: rwc-staging
+  on:
+    repo: ash106/rwc
