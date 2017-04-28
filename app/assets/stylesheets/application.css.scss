@@ -187,12 +187,13 @@ html, body {
 
 .carousel-caption h3 {
   font-family: 'Roboto', sans-serif;
-  font-weight: 100;
+  font-weight: 300;
   line-height: 2em;
 }
 
 @media (min-width: $screen-lg-min) {
   .carousel-caption h3 {
+    font-weight: 100;
     font-size: 4em;
   }
 }
