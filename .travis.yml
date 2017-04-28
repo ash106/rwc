@@ -2,6 +2,9 @@ language: ruby
 rvm:
   - 2.1.2
 cache: bundler
+before_install:
+  - gem update --system
+  - gem update bundler
 before_script:
   - cp .sample.env .env
   - psql -c 'create database "rwc_test";' -U postgres
