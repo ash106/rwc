@@ -1,3 +1,6 @@
 language: ruby
 rvm:
   - 2.1.2
+before_script:
+  - cp .sample.env .env
+  - psql -c 'create database "rwc_test";' -U postgres
