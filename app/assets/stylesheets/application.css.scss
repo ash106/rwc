@@ -188,13 +188,22 @@ html, body {
 .carousel-caption h3 {
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
-  font-size: 4em;
   line-height: 2em;
+}
+
+@media (min-width: $screen-lg-min) {
+  .carousel-caption h3 {
+    font-size: 4em;
+  }
 }
 
 .carousel-control.left, .carousel-control.right {
    background-image:none !important;
    filter:none !important;
+}
+
+.glyphicon-chevron-left, .glyphicon-chevron-right {
+  margin-top: -10px;
 }
 
 .flex {
