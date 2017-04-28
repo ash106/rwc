@@ -1,6 +1,6 @@
 $(".home-page").ready ->
-  skrollr.init
-    forceHeight: false
+  # skrollr.init
+  #   forceHeight: false
 
   createMap = ->
     ourLoc = new google.maps.LatLng(40.765344, -111.890736)
