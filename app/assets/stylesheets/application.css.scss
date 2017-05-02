@@ -40,10 +40,17 @@ h4 {
 
 p, .contact-info .intro {
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 300;
-  line-height: 30px;
+  line-height: 24px;
   margin-bottom: 16px;
+}
+
+@media (min-width: $screen-md-min) {
+  p, .contact-info .intro {
+    font-size: 16px;
+    line-height: 30px;
+  }
 }
 
 .simple_form {
@@ -73,31 +80,28 @@ p, .contact-info .intro {
 }
 
 .navbar-default {
-  border: none;
-  background: white;
-  padding-top: 12px;
-  padding-bottom: 14px;
+  background-color: white;
+  border-color: transparent;
 }
 
-.navbar-nav {
-  display: table;
-  float: none;
-  margin: 0 auto;
-  table-layout: fixed;
+@media (min-width: $screen-sm-min) {
+  .navbar-default {
+    border: none;
+    background: white;
+    padding-top: 12px;
+    padding-bottom: 14px;
+  }
 }
 
 .navbar-nav {
   text-transform: uppercase;
-  font-weight: 500;
 }
 
-.navbar-default .navbar-nav>li>a {
+.navbar-default .navbar-nav>li>a,
+.dropdown-menu>li>a {
   color: black;
-  letter-spacing: 0.12em;
+  // letter-spacing: 0.12em;
   font-family: 'Quicksand', sans-serif;
-  padding: 14px;
-  margin-left: 5px;
-  margin-bottom: 7px;
 }
 
 .dropdown-menu>li>a {
@@ -106,6 +110,25 @@ p, .contact-info .intro {
 }
 
 @media (min-width: $screen-sm-min) { 
+  .navbar-nav {
+    display: table;
+    float: none;
+    margin: 0 auto;
+    table-layout: fixed;
+    // font-weight: 500;
+  }
+  .navbar-default .navbar-nav>li>a {
+    // color: black;
+    letter-spacing: 0.12em;
+    // font-family: 'Quicksand', sans-serif;
+    padding: 14px;
+    margin-left: 5px;
+    margin-bottom: 7px;
+  }
+  .navbar-default .navbar-nav>li>a,
+  .dropdown-menu>li>a {
+    // letter-spacing: 0.12em;
+  }
   .navbar {
     // margin-bottom: 20px;
   }
@@ -191,9 +214,21 @@ html, body {
   line-height: 2em;
 }
 
-@media (min-width: $screen-lg-min) {
+@media (min-width: $screen-sm-min) {
   .carousel-caption h3 {
     font-weight: 100;
+    font-size: 2.35em;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .carousel-caption h3 {
+    font-size: 3.2em;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .carousel-caption h3 {
     font-size: 4em;
   }
 }
@@ -235,11 +270,10 @@ html, body {
   background-color: $third-color;
   color: white;
   text-align: center;
-  padding-top: 40px;
-  padding-bottom: 50px;
+  padding-bottom: 10px;
   h1 {
     font-family: 'Raleway', sans-serif;
-    font-size: 2.2em;
+    font-size: 1.35em;
     font-weight: 700;
     line-height: 1.5;
     text-transform: uppercase;
@@ -254,6 +288,30 @@ html, body {
   }
 }
 
+@media (min-width: $screen-sm-min) {
+  #about {
+    padding-top: 15px;
+    padding-bottom: 25px;
+    h1 {
+      font-size: 2.2em;
+    }
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  #about {
+    padding-top: 25px;
+    padding-bottom: 35px;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  #about {
+    padding-top: 40px;
+    padding-bottom: 50px;
+  }
+}
+
 .hr {
   border-bottom: 1px solid white;
   display: block;
@@ -263,10 +321,31 @@ html, body {
 }
 
 #services {
-  padding-top: 40px;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
   p {
     font-family: 'Open Sans', sans-serif;
+  }
+  // i { font-size: 18px; }
+}
+
+@media (min-width: $screen-sm-min) {
+  #services {
+    padding-top: 15px;
+    padding-bottom: 25px;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  #services {
+    padding-top: 25px;
+    padding-bottom: 35px;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  #services {
+    padding-top: 40px;
+    padding-bottom: 60px;
   }
 }
 
@@ -274,11 +353,23 @@ html, body {
   font-size: 18px;
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
-  margin: 15px 0;
+  margin: 10px 0;
+}
+
+@media (min-width: $screen-lg-min) {
+  .service-heading {
+    margin: 15px 0;
+  }
 }
 
 .service {
-  padding-top: 20px;
+  padding-top: 10px;
+}
+
+@media (min-width: $screen-lg-min) {
+  .service {
+    padding-top: 20px;
+  }
 }
 
 #call-to-action {
@@ -296,17 +387,43 @@ html, body {
 .call-to-action-bg {
   background: linear-gradient(rgba(0, 0, 0, 0.33), rgba(0, 0, 0, 0.33)), url("http://water-rights.s3.amazonaws.com/services/home_2_dark.jpg");
   background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
   background-color: #454545;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-bottom: 10px;
+}
+
+@media (min-width: $screen-sm-min) {
+  .call-to-action-bg {
+    padding-top: 15px;
+    padding-bottom: 25px;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  .call-to-action-bg {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (min-width: $screen-lg-min) {
+  .call-to-action-bg {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
 }
 
 #buy-button {
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 20px;
+}
+
+@media (min-width: $screen-md-min) {
+  #buy-button {
+    margin-top: 40px;
+  }
 }
 
 .btn.outline {
@@ -337,7 +454,7 @@ html, body {
 }
 
 .contact-info {
-  padding: 60px 0 60px 30px;
+  padding: 30px 0;
   font-family: 'Open Sans', sans-serif;
   h3 {
     margin-top: 0;
@@ -352,8 +469,8 @@ html, body {
     margin-bottom: 10px;
   }
   p {
-    font-size: 21px;
-    line-height: 37px;
+    font-size: 18px;
+    line-height: 26px;
     font-weight: 300;
     margin-bottom: 20px;
   }
@@ -362,11 +479,30 @@ html, body {
   }
 }
 
+@media (min-width: $screen-md-min) {
+  .contact-info {
+    padding: 60px 0 60px 30px;
+    p {
+      font-size: 21px;
+      line-height: 37px;
+      font-weight: 300;
+      margin-bottom: 20px;
+    }
+  }
+}
+
 .map-col {
-  width: 50%;
   height: 100%;
-  background-color: green;
-  position: absolute;
+  background-color: #454545;
+  width: 100%;
+  position: static;
+}
+
+@media (min-width: $screen-md-min) {
+  .map-col {
+    width: 50%;
+    position: absolute;
+  }
 }
 
 .map-col.right {
@@ -375,8 +511,22 @@ html, body {
 
 #homepage-map, #contact-page-map {
   width: 100%;
-  height: 100%;
+  // height: 100%;
+  height: 290px;
 }
+
+@media (min-width: $screen-sm-min) {
+  #homepage-map, #contact-page-map {
+    height: 400px;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  #homepage-map, #contact-page-map {
+    height: 100%;
+  }
+}
+
 
 
 /* Services pages */
