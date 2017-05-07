@@ -194,6 +194,7 @@ $(".water_rights_management-show_water_rights").ready ->
       water_rights = _.uniq water_rights, (wr) ->
                         wr.number
       wr_table.clear()
+      # console.table water_rights
       # Add water rights to table
       formatted_water_rights = _.map water_rights, (wr) ->
                                 if wr.external_link
@@ -224,6 +225,7 @@ $(".water_rights_management-show_water_rights").ready ->
 
   # Called when a feature (piece of geometry) is clicked
   map.data.addListener 'click', (e) ->
+    # console.table water_rights
     associated_water_rights = []
     nonassociated_water_rights = []
     # Reset styling for map features 
@@ -240,6 +242,9 @@ $(".water_rights_management-show_water_rights").ready ->
     clicked_wr_numbers = _.pluck(clicked_water_rights, 'number')
     # Clear water rights table before appends
     wr_table.clear()
+    # Get rid of duplicates (Temp fix for bug)
+    water_rights = _.uniq water_rights, (wr) ->
+                      wr.number
     # Re-add water rights to table, highlighting the ones associated with the clicked feature
     for wr in water_rights
       # If current water right number is in clicked_wr_numbers, add the highlighted class and append
@@ -248,6 +253,7 @@ $(".water_rights_management-show_water_rights").ready ->
       # Otherwise add the water right without the highlighted class after appending all highlighted water rights first
       else
         nonassociated_water_rights.push wr
+    # console.table associated_water_rights
     associated_water_rights = _.map associated_water_rights, (wr) ->
                               if wr.external_link
                                 number = "<a target='_blank' href='#{wr.external_link}'>#{wr.number}</a>"
