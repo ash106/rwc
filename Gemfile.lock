@@ -16,15 +16,9 @@ GEM
       erubis (~> 2.7.0)
     active_model_serializers (0.8.3)
       activemodel (>= 3.0)
-    activejob (0)
-      activemodel-globalid
-      activesupport (>= 4.1.0)
     activemodel (4.1.5)
       activesupport (= 4.1.5)
       builder (~> 3.1)
-    activemodel-globalid (0.1.1)
-      activemodel (>= 4.1.0)
-      activesupport (>= 4.1.0)
     activerecord (4.1.5)
       activemodel (= 4.1.5)
       activesupport (= 4.1.5)
@@ -152,14 +146,6 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mandrill-api (1.0.53)
-      excon (>= 0.16.0, < 1.0)
-      json (>= 1.7.7, < 2.0)
-    mandrill_mailer (1.6.0)
-      actionpack
-      activejob
-      activesupport
-      mandrill-api (~> 1.0.9)
     meta_request (0.3.4)
       callsite (~> 0.0, >= 0.0.11)
       rack-contrib (~> 1.1)
@@ -321,7 +307,6 @@ DEPENDENCIES
   jquery-rails
   jquery-tablesorter
   launchy
-  mandrill_mailer
   meta_request (~> 0.3.0)
   newrelic_rpm (>= 3.7.3)
   nokogiri (~> 1.6.2.1)
