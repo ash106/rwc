@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'mandrill_mailer/offline'
 
 class TransactionMailerTest < ActionMailer::TestCase
 

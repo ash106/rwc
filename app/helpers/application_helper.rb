@@ -55,7 +55,7 @@ module ApplicationHelper
       coordinates_hash << {x: c[0], y: c[1]}
     end
     # Simplify coordinates using tolerance: 0.001
-    SimplifyRb.simplify(coordinates_hash, 0.001)
+    SimplifyRb::Simplifier.new.process(coordinates_hash, 0.001)
   end
   
 end
