@@ -1,29 +1,32 @@
-<!-- <p id="notice"><%#= notice %></p> -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <p>
+        <strong>Volume:</strong>
+        <%= @wanted.volume %> ac-ft
+      </p>
 
-<p>
-  <strong>Volume:</strong>
-  <%= @wanted.volume %>
-</p>
+      <p>
+        <strong>Source:</strong>
+        <%= @wanted.source %>
+      </p>
 
-<p>
-  <strong>Source:</strong>
-  <%= @wanted.source %>
-</p>
+      <p>
+        <strong>Description:</strong>
+        <%= @wanted.description %>
+      </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @wanted.description %>
-</p>
+      <p>
+        <strong>Contact info:</strong>
+        <%= @wanted.contact_info %>
+      </p>
 
-<p>
-  <strong>Contact info:</strong>
-  <%= @wanted.contact_info %>
-</p>
+      <p>
+        <strong>Listing area:</strong>
+        <%= @wanted.listing_area.name %>
+      </p>
 
-<p>
-  <strong>Listing area:</strong>
-  <%= @wanted.listing_area.name %>
-</p>
-
-<%= link_to 'Edit', edit_wanted_path(@wanted) %> |
-<%= link_to 'Back', wanteds_path %>
+      <%= link_to 'Edit', edit_wanted_path(@wanted) %>
+    </div>
+  </div>
+</div>
