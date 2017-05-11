@@ -7,17 +7,17 @@
     <% if @point_of_diversion.kml_file_name %>
       <p>Current KML File: <%= @point_of_diversion.kml_file_name %></p>
       <% if @point_of_diversion.point %>
-        <div class="row">
-          <div class="col-md-4">
-            <%= content_tag "div", id: "map_canvas", class: "edit_page", data: {feature: {type: "Feature", geometry: @point_of_diversion.point}} do %>
-            <% end %>
-          </div>
-        </div>
+        <%= content_tag "div", id: "map_canvas", class: "edit_page", data: {feature: {type: "Feature", geometry: @point_of_diversion.point}} do %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
 
   <div class="form-actions text-center">
-    <%= f.button :submit %>
+    <% if @point_of_diversion.new_record? %>
+      <%= f.button :submit, "Create Point of Diversion", class: "btn-block btn-lg" %>
+    <% else %>
+      <%= f.button :submit, "Update Point of Diversion", class: "btn-block btn-lg" %>
+    <% end %>
   </div>
 <% end %>

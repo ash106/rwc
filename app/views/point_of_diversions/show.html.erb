@@ -1,23 +1,17 @@
-<!-- <p id="notice"><%#= notice %></p> -->
-
-<p>
-  <strong>Name:</strong>
-  <%= @point_of_diversion.name %>
-</p>
-
-<p>
-  <strong>Point:</strong>
-  <%= @point_of_diversion.point %>
-</p>
-
-<% if @point_of_diversion.point %>
+<div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <%= content_tag "div", id: "map_canvas", class: "show_page", data: {feature: {type: "Feature", geometry: @point_of_diversion.point}} do %>
+    <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <h2><%= @point_of_diversion.name %> <%= link_to '(edit)', edit_point_of_diversion_path(@point_of_diversion), class: "edit-link" %></h2>
+      
+      <% if @point_of_diversion.point %>
+        <%= content_tag "div", id: "map_canvas", class: "show_page", data: {feature: {type: "Feature", geometry: @point_of_diversion.point}} do %>
+        <% end %>
       <% end %>
+
+      <p>
+        <strong>Point:</strong>
+        <%= @point_of_diversion.point %>
+      </p>
     </div>
   </div>
-<% end %>
-
-<%= link_to 'Edit', edit_point_of_diversion_path(@point_of_diversion) %> |
-<%= link_to 'Back', point_of_diversions_path %>
+</div>
