@@ -1,29 +1,19 @@
-<!-- <p id="notice"><%#= notice %></p> -->
-
-<p>
-  <strong>Name:</strong>
-  <%= @listing_area.name %>
-</p>
-
-<p>
-  <strong>Policy:</strong>
-  <%= @listing_area.policy %>
-</p>
-
-<p>
-  <strong>Polygon:</strong>
-  <%= @listing_area.polygon %>
-</p>
-
-<% if @listing_area.polygon %>
+<div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <%= content_tag "div", id: "map_canvas", class: "show_page", data: {feature: {type: "Feature", geometry: @listing_area.polygon}} do %>
+    <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <h2><%= @listing_area.name %> <%= link_to '(edit)', edit_listing_area_path(@listing_area), class: "edit-link" %></h2>
+
+      <p><%= @listing_area.policy %></p>
+
+      <% if @listing_area.polygon %>
+        <%= content_tag "div", id: "map_canvas", class: "show_page", data: {feature: {type: "Feature", geometry: @listing_area.polygon}} do %>
+        <% end %>
       <% end %>
+
+      <p>
+        Polygon: <%= truncate(@listing_area.polygon.to_s, length: 300) %>
+      </p>
+  
     </div>
   </div>
-<% end %>
-
-
-<%= link_to 'Edit', edit_listing_area_path(@listing_area) %> |
-<%= link_to 'Back', listing_areas_path %>
+</div>
