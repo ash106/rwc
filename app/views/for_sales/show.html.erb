@@ -1,34 +1,37 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <p>
+        <strong>Volume:</strong>
+        <%= @for_sale.volume %> ac-ft
+      </p>
 
-<p>
-  <strong>Volume:</strong>
-  <%= @for_sale.volume %>
-</p>
+      <p>
+        <strong>Source:</strong>
+        <%= @for_sale.source %>
+      </p>
 
-<p>
-  <strong>Source:</strong>
-  <%= @for_sale.source %>
-</p>
+      <p>
+        <strong>Description:</strong>
+        <%= @for_sale.description %>
+      </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @for_sale.description %>
-</p>
+      <p>
+        <strong>Price:</strong>
+        $<%= @for_sale.price %>/ac-ft
+      </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @for_sale.price %>
-</p>
+      <p>
+        <strong>Contact info:</strong>
+        <%= @for_sale.contact_info %>
+      </p>
 
-<p>
-  <strong>Contact info:</strong>
-  <%= @for_sale.contact_info %>
-</p>
+      <p>
+        <strong>Listing area:</strong>
+        <%= @for_sale.listing_area.name %>
+      </p>
 
-<p>
-  <strong>Listing area:</strong>
-  <%= @for_sale.listing_area.name %>
-</p>
-
-<%= link_to 'Edit', edit_for_sale_path(@for_sale) %> |
-<%= link_to 'Back', for_sales_path %>
+      <%= link_to 'Edit', edit_for_sale_path(@for_sale) %>
+    </div>
+  </div>
+</div>
