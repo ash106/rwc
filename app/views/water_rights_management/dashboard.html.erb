@@ -1,25 +1,29 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <%= select_tag :user_id, options_for_select(@users, (@user.id if @user) || 0), class: 'form-control', id: 'dashboard-user-selector' %>
 
-    <%= select_tag :user_id, options_for_select(@users, (@user.id if @user) || 0), class: 'form-control', id: 'dashboard-user-selector' %>
+      <div role="tabpanel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#water-rights" aria-controls="water-rights" role="tab" data-toggle="tab">Water Rights</a></li>
+          <li role="presentation"><a href="#place-of-use-areas" aria-controls="place-of-use-areas" role="tab" data-toggle="tab">Place of Use Areas</a></li>
+          <li role="presentation"><a href="#point-of-diversions" aria-controls="point-of-diversions" role="tab" data-toggle="tab">Point of Diversions</a></li>
+        </ul>
 
-
-<div role="tabpanel">
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#water-rights" aria-controls="water-rights" role="tab" data-toggle="tab">Water Rights</a></li>
-    <li role="presentation"><a href="#place-of-use-areas" aria-controls="place-of-use-areas" role="tab" data-toggle="tab">Place of Use Areas</a></li>
-    <li role="presentation"><a href="#point-of-diversions" aria-controls="point-of-diversions" role="tab" data-toggle="tab">Point of Diversions</a></li>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="water-rights">
-      <%= render template: 'water_rights/index', object: @water_rights %>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="place-of-use-areas">
-      <%= render template: 'place_of_use_areas/index', object: @place_of_use_areas %>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="point-of-diversions">
-      <%= render template: 'point_of_diversions/index', object: @point_of_diversions %>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="water-rights">
+            <%= render template: 'water_rights/index', object: @water_rights %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="place-of-use-areas">
+            <%= render template: 'place_of_use_areas/index', object: @place_of_use_areas %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="point-of-diversions">
+            <%= render template: 'point_of_diversions/index', object: @point_of_diversions %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

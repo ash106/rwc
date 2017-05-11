@@ -1,91 +1,94 @@
-<!-- <p id="notice"><%#= notice %></p> -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <p>
+        <strong>Number:</strong>
+        <%= @water_right.number %>
+      </p>
 
-<p>
-  <strong>Number:</strong>
-  <%= @water_right.number %>
-</p>
+      <p>
+        <strong>Flow cfs:</strong>
+        <%= @water_right.flow_cfs %>
+      </p>
 
-<p>
-  <strong>Flow cfs:</strong>
-  <%= @water_right.flow_cfs %>
-</p>
+      <p>
+        <strong>Flow ac ft:</strong>
+        <%= @water_right.flow_ac_ft %>
+      </p>
 
-<p>
-  <strong>Flow ac ft:</strong>
-  <%= @water_right.flow_ac_ft %>
-</p>
+      <p>
+        <strong>Uses:</strong>
+        <%= @water_right.uses %>
+      </p>
 
-<p>
-  <strong>Uses:</strong>
-  <%= @water_right.uses %>
-</p>
+      <p>
+        <strong>Change application number:</strong>
+        <%= @water_right.change_application_number %>
+      </p>
 
-<p>
-  <strong>Change application number:</strong>
-  <%= @water_right.change_application_number %>
-</p>
+      <p>
+        <strong>Proof due date:</strong>
+        <%= @water_right.proof_due_date %>
+      </p>
 
-<p>
-  <strong>Proof due date:</strong>
-  <%= @water_right.proof_due_date %>
-</p>
+      <p>
+        <strong>Priority date:</strong>
+        <%= @water_right.priority_date %>
+      </p>
 
-<p>
-  <strong>Priority date:</strong>
-  <%= @water_right.priority_date %>
-</p>
+      <p>
+        <strong>View link text:</strong>
+        <%= @water_right.view_link_text %>
+      </p>
 
-<p>
-  <strong>View link text:</strong>
-  <%= @water_right.view_link_text %>
-</p>
+      <p>
+        <strong>External link:</strong>
+        <%= link_to @water_right.external_link, @water_right.external_link if @water_right.external_link %>
+      </p>
 
-<p>
-  <strong>External link:</strong>
-  <%= link_to @water_right.external_link, @water_right.external_link if @water_right.external_link %>
-</p>
+      <p>
+        <strong>User:</strong>
+        <%= @water_right.user.email if @water_right.user %>
+      </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @water_right.user.email if @water_right.user %>
-</p>
+      <% if @water_right.comments %>
+        <p>
+          <strong>Comments:</strong>
+          <%= @water_right.comments %>
+        </p>
+      <% end %>
 
-<% if @water_right.comments %>
-  <p>
-    <strong>Comments:</strong>
-    <%= @water_right.comments %>
-  </p>
-<% end %>
+      <div>
+        <strong>Place of Use Areas:</strong>
+        <ul>
+          <% @water_right.place_of_use_areas.each do |area| %>
+            <li><%= area.name %> <%= link_to '(x)', place_of_use_area_water_right_path(water_right_id: @water_right.id, place_of_use_area_id: area.id), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <% end %>
+        </ul>
+        <%= simple_form_for :place_of_use_area_water_right, url: '/place_of_use_area_water_rights' do |f| %>
+          <%= f.input :water_right_id, as: :hidden, input_html: { value: @water_right.id } %>
+          <%= f.input :place_of_use_area_id, collection: @unassociated_place_of_use_areas, label_method: :name, value_method: :id, label: false, include_blank: false %>
+          <%= f.submit "Create Association", class: 'btn btn-primary' %>
+        <% end %>
+      </div>
 
-<div>
-  <strong>Place of Use Areas:</strong>
-  <ul>
-    <% @water_right.place_of_use_areas.each do |area| %>
-      <li><%= area.name %> <%= link_to '(x)', place_of_use_area_water_right_path(water_right_id: @water_right.id, place_of_use_area_id: area.id), method: :delete, data: { confirm: 'Are you sure?' } %></li>
-    <% end %>
-  </ul>
-  <%= simple_form_for :place_of_use_area_water_right, url: '/place_of_use_area_water_rights' do |f| %>
-    <%= f.input :water_right_id, as: :hidden, input_html: { value: @water_right.id } %>
-    <%= f.input :place_of_use_area_id, collection: @unassociated_place_of_use_areas, label_method: :name, value_method: :id, label: false, include_blank: false %>
-    <%= f.submit "Create Association", class: 'btn btn-primary' %>
-  <% end %>
+
+      <div>
+        <strong>Points of Diversion:</strong>
+        <ul>
+          <% @water_right.point_of_diversions.each do |point| %>
+            <li><%= point.name %> <%= link_to '(x)', point_of_diversion_water_right_path(water_right_id: @water_right.id, point_of_diversion_id: point.id), method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          <% end %>
+        </ul>
+        <%= simple_form_for :point_of_diversion_water_right, url: '/point_of_diversion_water_rights' do |f| %>
+          <%= f.input :water_right_id, as: :hidden, input_html: { value: @water_right.id } %>
+          <%= f.input :point_of_diversion_id, collection: @unassociated_point_of_diversions, label_method: :name, value_method: :id, label: false, include_blank: false %>
+          <%= f.submit "Create Association", class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+
+
+      <%= link_to 'Edit', edit_water_right_path(@water_right) %>
+    </div>
+  </div>
 </div>
-
-
-<div>
-  <strong>Points of Diversion:</strong>
-  <ul>
-    <% @water_right.point_of_diversions.each do |point| %>
-      <li><%= point.name %> <%= link_to '(x)', point_of_diversion_water_right_path(water_right_id: @water_right.id, point_of_diversion_id: point.id), method: :delete, data: { confirm: 'Are you sure?' } %></li>
-    <% end %>
-  </ul>
-  <%= simple_form_for :point_of_diversion_water_right, url: '/point_of_diversion_water_rights' do |f| %>
-    <%= f.input :water_right_id, as: :hidden, input_html: { value: @water_right.id } %>
-    <%= f.input :point_of_diversion_id, collection: @unassociated_point_of_diversions, label_method: :name, value_method: :id, label: false, include_blank: false %>
-    <%= f.submit "Create Association", class: 'btn btn-primary' %>
-  <% end %>
-</div>
-
-
-<%= link_to 'Edit', edit_water_right_path(@water_right) %> |
-<%= link_to 'Back', water_rights_path %>
