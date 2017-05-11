@@ -1,21 +1,27 @@
-<div role="tabpanel">
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#listing-areas" aria-controls="listing-areas" role="tab" data-toggle="tab">Listing Areas</a></li>
-    <li role="presentation"><a href="#wanteds" aria-controls="wanteds" role="tab" data-toggle="tab">Wanteds</a></li>
-    <li role="presentation"><a href="#for-sales" aria-controls="for-sales" role="tab" data-toggle="tab">For Sales</a></li>
-  </ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <div role="tabpanel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#listing-areas" aria-controls="listing-areas" role="tab" data-toggle="tab">Listing Areas</a></li>
+          <li role="presentation"><a href="#wanteds" aria-controls="wanteds" role="tab" data-toggle="tab">Wanteds</a></li>
+          <li role="presentation"><a href="#for-sales" aria-controls="for-sales" role="tab" data-toggle="tab">For Sales</a></li>
+        </ul>
 
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="listing-areas">
-      <%= render template: 'listing_areas/index', object: @listing_areas %>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="wanteds">
-      <%= render template: 'wanteds/index', object: @wanteds %>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="for-sales">
-      <%= render template: 'for_sales/index', object: @for_sales %>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="listing-areas">
+            <%= render template: 'listing_areas/index', object: @listing_areas %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="wanteds">
+            <%= render template: 'wanteds/index', object: @wanteds %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="for-sales">
+            <%= render template: 'for_sales/index', object: @for_sales %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

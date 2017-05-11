@@ -706,3 +706,11 @@ div.dataTables_filter input {
   margin: 10px 0 0;
   // padding-left: 10px;
 }
+
+.tab-pane > .dataTables_wrapper {
+  margin-top: 10px;
+}
+
+.tab-content {
+  padding-bottom: 40px;
+}
