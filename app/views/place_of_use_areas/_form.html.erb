@@ -1,4 +1,4 @@
-<%= simple_form_for @place_of_use_area, :html => { :multipart => true } do |f| %>
+<%= simple_form_for @place_of_use_area, html: { multipart: true } do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -8,17 +8,17 @@
     <% if @place_of_use_area.kml_file_name %>
       <p>Current KML File: <%= @place_of_use_area.kml_file_name %></p>
       <% if @place_of_use_area.polygon %>
-        <div class="row">
-          <div class="col-md-4">
-            <%= content_tag "div", id: "map_canvas", class: "edit_page", data: {feature: {type: "Feature", geometry: @place_of_use_area.polygon}} do %>
-            <% end %>
-          </div>
-        </div>
+        <%= content_tag "div", id: "map_canvas", class: "edit_page", data: {feature: {type: "Feature", geometry: @place_of_use_area.polygon}} do %>
+        <% end %>
       <% end %>
     <% end %>
   </div>
 
   <div class="form-actions text-center">
-    <%= f.button :submit %>
+    <% if @place_of_use_area.new_record? %>
+      <%= f.button :submit, "Create Place of Use Area", class: "btn-block btn-lg" %>
+    <% else %>
+      <%= f.button :submit, "Update Place of Use Area", class: "btn-block btn-lg" %>
+    <% end %>
   </div>
 <% end %>

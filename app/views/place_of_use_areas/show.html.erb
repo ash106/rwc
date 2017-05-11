@@ -1,28 +1,21 @@
-<!-- <p id="notice"><%#= notice %></p> -->
-
-<p>
-  <strong>Name:</strong>
-  <%= @place_of_use_area.name %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @place_of_use_area.color %>
-</p>
-
-<p>
-  <strong>Polygon:</strong>
-  <%= @place_of_use_area.polygon %>
-</p>
-
-<% if @place_of_use_area.polygon %>
+<div class="container">
   <div class="row">
-    <div class="col-md-4">
-      <%= content_tag "div", id: "map_canvas", class: "show_page", data: {feature: {type: "Feature", geometry: @place_of_use_area.polygon}} do %>
+    <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <h2><%= @place_of_use_area.name %> <%= link_to '(edit)', edit_place_of_use_area_path(@place_of_use_area), class: "edit-link" %></h2>
+
+      <% if @place_of_use_area.polygon %>
+        <%= content_tag "div", id: "map_canvas", class: "show_page", data: {feature: {type: "Feature", geometry: @place_of_use_area.polygon}} do %>
+        <% end %>
       <% end %>
+
+      <p>
+        <strong>Color:</strong>
+        <%= @place_of_use_area.color %>
+      </p>
+
+      <p>
+        Polygon: <%= truncate(@place_of_use_area.polygon.to_s, length: 300) %>
+      </p>
     </div>
   </div>
-<% end %>
-
-<%= link_to 'Edit', edit_place_of_use_area_path(@place_of_use_area) %> |
-<%= link_to 'Back', place_of_use_areas_path %>
+</div>
