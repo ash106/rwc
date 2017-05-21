@@ -34,8 +34,8 @@ FactoryGirl.define do
     description 'This can be moved throughout most of this area'
     price 4000
     contact_info 'tester@example.com'
-    after(:build) do |wanted|
-      wanted.listing_area = (ListingArea.first || create(:listing_area))
+    after(:build) do |for_sale|
+      for_sale.listing_area = (ListingArea.first || create(:listing_area))
     end
   end
 
@@ -63,6 +63,13 @@ FactoryGirl.define do
     after(:build) do |wr|
       wr.place_of_use_areas << create(:place_of_use_area)
       wr.point_of_diversions << create(:point_of_diversion)
+    end
+  end
+
+  factory :place_of_use_area_water_right do
+    after(:build) do |place_of_use_area_water_right|
+      place_of_use_area_water_right.place_of_use_area = (PlaceOfUseArea.first || create(:place_of_use_area))
+      place_of_use_area_water_right.water_right = (WaterRight.first || create(:water_right))
     end
   end
 

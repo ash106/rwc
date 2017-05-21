@@ -1,4 +1,6 @@
 class PlaceOfUseAreaWaterRightsController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     place_of_use_area_water_right = PlaceOfUseAreaWaterRight.new(place_of_use_area_water_right_params)
 
