@@ -73,4 +73,11 @@ FactoryGirl.define do
     end
   end
 
+  factory :point_of_diversion_water_right do
+    after(:build) do |point_of_diversion_water_right|
+      point_of_diversion_water_right.point_of_diversion = (PointOfDiversion.first || create(:point_of_diversion))
+      point_of_diversion_water_right.water_right = (WaterRight.first || create(:water_right))
+    end
+  end
+
 end

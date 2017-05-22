@@ -1,4 +1,6 @@
 class PointOfDiversionWaterRightsController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     point_of_diversion_water_right = PointOfDiversionWaterRight.new(point_of_diversion_water_right_params)
 
