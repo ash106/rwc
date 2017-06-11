@@ -50,7 +50,7 @@ class PlaceOfUseAreasController < ApplicationController
   def destroy
     authorize @place_of_use_area
     @place_of_use_area.destroy
-    redirect_to place_of_use_areas_url, notice: 'Place of use area was successfully destroyed.'
+    redirect_to wrm_dashboard_url, notice: 'Place of use area was successfully destroyed.'
   end
 
   private

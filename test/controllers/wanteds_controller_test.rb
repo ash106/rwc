@@ -77,6 +77,6 @@ class WantedsControllerTest < ActionController::TestCase
     assert_difference 'Wanted.count', -1 do
       delete :destroy, id: wanted.id
     end
-    assert_redirected_to wanteds_path
+    assert_redirected_to listings_dashboard_path
   end
 end

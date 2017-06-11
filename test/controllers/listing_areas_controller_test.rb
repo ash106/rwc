@@ -83,7 +83,7 @@ class ListingAreasControllerTest < ActionController::TestCase
     assert_difference 'ListingArea.count', -1 do
       delete :destroy, id: listing_area.id
     end
-    assert_redirected_to listing_areas_path
+    assert_redirected_to listings_dashboard_path
   end
 
 #   test "should create listing_area" do

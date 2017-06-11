@@ -79,6 +79,6 @@ class ForSalesControllerTest < ActionController::TestCase
     assert_difference 'ForSale.count', -1 do
       delete :destroy, id: for_sale.id
     end
-    assert_redirected_to for_sales_path
+    assert_redirected_to listings_dashboard_path
   end
 end

@@ -82,6 +82,6 @@ class PlaceOfUseAreasControllerTest < ActionController::TestCase
     assert_difference 'PlaceOfUseArea.count', -1 do
       delete :destroy, id: place_of_use_area.id
     end
-    assert_redirected_to place_of_use_areas_path
+    assert_redirected_to wrm_dashboard_path
   end
 end

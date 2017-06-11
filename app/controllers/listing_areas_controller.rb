@@ -50,7 +50,7 @@ class ListingAreasController < ApplicationController
   def destroy
     authorize @listing_area
     @listing_area.destroy
-    redirect_to listing_areas_url, notice: 'Listing area was successfully destroyed.'
+    redirect_to listings_dashboard_url, notice: 'Listing area was successfully destroyed.'
   end
 
   private

@@ -50,7 +50,7 @@ class PointOfDiversionsController < ApplicationController
   def destroy
     authorize @point_of_diversion
     @point_of_diversion.destroy
-    redirect_to point_of_diversions_url, notice: 'Point of diversion was successfully destroyed.'
+    redirect_to wrm_dashboard_url, notice: 'Point of diversion was successfully destroyed.'
   end
 
   private

@@ -81,6 +81,6 @@ class PointOfDiversionsControllerTest < ActionController::TestCase
     assert_difference 'PointOfDiversion.count', -1 do
       delete :destroy, id: point_of_diversion.id
     end
-    assert_redirected_to point_of_diversions_path
+    assert_redirected_to wrm_dashboard_path
   end
 end

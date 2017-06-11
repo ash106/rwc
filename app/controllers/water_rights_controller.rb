@@ -52,7 +52,7 @@ class WaterRightsController < ApplicationController
   def destroy
     authorize @water_right
     @water_right.destroy
-    redirect_to water_rights_url, notice: 'Water right was successfully destroyed.'
+    redirect_to wrm_dashboard_url, notice: 'Water right was successfully destroyed.'
   end
 
   private

@@ -79,6 +79,6 @@ class WaterRightsControllerTest < ActionController::TestCase
     assert_difference 'WaterRight.count', -1 do
       delete :destroy, id: water_right.id
     end
-    assert_redirected_to water_rights_path
+    assert_redirected_to wrm_dashboard_path
   end
 end

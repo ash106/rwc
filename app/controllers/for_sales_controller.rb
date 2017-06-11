@@ -50,7 +50,7 @@ class ForSalesController < ApplicationController
   def destroy
     authorize @for_sale
     @for_sale.destroy
-    redirect_to for_sales_url, notice: 'For sale was successfully destroyed.'
+    redirect_to listings_dashboard_url, notice: 'For sale was successfully destroyed.'
   end
 
   private

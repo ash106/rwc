@@ -50,7 +50,7 @@ class WantedsController < ApplicationController
   def destroy
     authorize @wanted
     @wanted.destroy
-    redirect_to wanteds_url, notice: 'Wanted was successfully destroyed.'
+    redirect_to listings_dashboard_url, notice: 'Wanted was successfully destroyed.'
   end
 
   private
