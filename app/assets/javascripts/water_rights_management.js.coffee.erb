@@ -29,33 +29,45 @@ $(".water_rights_management-dashboard").ready ->
 $(".water_rights_management-show_water_rights").ready ->
   wr_table = $("#water_rights_table").DataTable
                 pagingType: 'simple_numbers'
-                dom: "<'row'<'col-sm-6'l><'col-sm-6'Tf>>" +
+                dom: "<'row'<'col-sm-6'B><'col-sm-6'f>>" +
                      "<'row'<'col-sm-12'tr>>" +
                      "<'row'<'col-sm-5'i><'col-sm-7'p>>"
-                tableTools:
-                  sSwfPath: "<%= asset_path('copy_csv_xls_pdf.swf') %>"
-                  aButtons: [
-                    {
-                      sExtends: "copy"
-                      mColumns: 'visible'
+                buttons: [ 
+                  {
+                    extend: 'copy',
+                    exportOptions: {
+                      columns: ':visible'
                     }
-                    {
-                      sExtends: "csv"
-                      mColumns: 'visible'
+                  }
+                  {
+                    extend: 'csv',
+                    exportOptions: {
+                      columns: ':visible'
                     }
-                    {
-                      sExtends: "xls"
-                      mColumns: 'visible'
+                  }
+                  {
+                    extend: 'excel',
+                    exportOptions: {
+                      columns: ':visible'
                     }
-                    {
-                      sExtends: "pdf"
-                      mColumns: 'visible'
+                  }
+                  {
+                    extend: 'pdf',
+                    exportOptions: {
+                      columns: ':visible'
                     }
-                    {
-                      sExtends: "print"
-                      mColumns: 'visible'
+                  }
+                  {
+                    extend: 'print',
+                    exportOptions: {
+                      columns: ':visible'
                     }
-                  ]
+                  }
+                  {
+                    extend: 'colvis',
+                    columns: [0,1,2,3,4,5,6,7,8]
+                  }
+                ]
                 columnDefs: [
                   {
                     visible: false

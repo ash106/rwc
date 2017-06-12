@@ -6,9 +6,9 @@ $font-family-sans-serif: 'Open Sans', sans-serif;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "dataTables/bootstrap/3/jquery.dataTables.bootstrap";
-@import "dataTables/extras/dataTables.responsive";
-@import "dataTables/extras/dataTables.tableTools";
+@import "dataTables.bootstrap.min";
+@import "responsive.dataTables.min";
+@import "buttons.bootstrap.min";
 @import "jquery.minicolors";
 @import "font-awesome";
 
