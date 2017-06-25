@@ -80,27 +80,27 @@ $(".water_rights_management-show_water_rights").ready ->
                   }
                 ]
 
-    setCommentsReadmore = ->
-      $('.comments').readmore
-        collapsedHeight: 20
-        heightMargin: 30
-        moreLink: '<a href="#">...</a>'
+  setCommentsReadmore = ->
+    $('.comments').readmore
+      collapsedHeight: 20
+      heightMargin: 30
+      moreLink: '<a href="#">...</a>'
 
-    setUsesReadmore = ->
-      $('.uses').readmore
-        collapsedHeight: 20
-        heightMargin: 30
-        moreLink: '<a href="#">...</a>'
+  setUsesReadmore = ->
+    $('.uses').readmore
+      collapsedHeight: 20
+      heightMargin: 30
+      moreLink: '<a href="#">...</a>'
 
-    wr_table.on 'order.dt', -> setCommentsReadmore()
-    wr_table.on 'search.dt', -> setCommentsReadmore()
-    wr_table.on 'page.dt', -> setCommentsReadmore()
-    wr_table.on 'draw.dt', -> setCommentsReadmore()
+  wr_table.on 'order.dt', -> setCommentsReadmore()
+  wr_table.on 'search.dt', -> setCommentsReadmore()
+  wr_table.on 'page.dt', -> setCommentsReadmore()
+  wr_table.on 'draw.dt', -> setCommentsReadmore()
 
-    wr_table.on 'order.dt', -> setUsesReadmore()
-    wr_table.on 'search.dt', -> setUsesReadmore()
-    wr_table.on 'page.dt', -> setUsesReadmore()
-    wr_table.on 'draw.dt', -> setUsesReadmore()
+  wr_table.on 'order.dt', -> setUsesReadmore()
+  wr_table.on 'search.dt', -> setUsesReadmore()
+  wr_table.on 'page.dt', -> setUsesReadmore()
+  wr_table.on 'draw.dt', -> setUsesReadmore()
 
   # Basic map options object
   mapOptions =
