@@ -236,6 +236,8 @@ $(".water_rights_management-show_water_rights").ready ->
 
   # Called when a feature (piece of geometry) is clicked
   map.data.addListener 'click', (e) ->
+    # Clear search box to show all water rights again
+    wr_table.search('').draw()
     associated_water_rights = []
     nonassociated_water_rights = []
     # Reset styling for map features 
@@ -308,6 +310,8 @@ $(".water_rights_management-show_water_rights").ready ->
 
   # Called when the user selectbox changes
   $('#user-selector').change (e) ->
+    # Clear search box to show all water rights again
+    wr_table.search('').draw()
     # Remove previous GeoJSON features
     map.data.forEach (feature) ->
       map.data.remove feature
