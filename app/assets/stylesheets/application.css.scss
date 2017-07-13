@@ -599,7 +599,7 @@ html, body {
 
 #map_canvas.listings {
   height: 275px;
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 
 #data {
@@ -621,6 +621,7 @@ html, body {
 @media (min-width: $screen-md-min) { 
   #map_canvas.listings {
     height: 420px;
+    margin-bottom: 40px;
   }
 }
 
