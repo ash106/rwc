@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.4.1'
 
-gem 'airbrake'
 gem 'coffee-rails'
 gem 'delayed_job_active_record'
 gem 'email_validator'
