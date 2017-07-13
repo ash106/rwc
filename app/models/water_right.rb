@@ -11,7 +11,7 @@ class WaterRight < ActiveRecord::Base
   def self.send_reminders(num_of_days)
     WaterRight.all.each do |water_right|
       if water_right.proof_due_date && (water_right.proof_due_date - num_of_days) == Date.today
-        TransactionMailer.proof_due_date_reminder(water_right).deliver
+        TransactionMailer.proof_due_date_reminder(water_right).deliver_now
       end
     end
   end

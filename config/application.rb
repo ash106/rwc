@@ -53,5 +53,7 @@ module Rwc
     }
 
     config.assets.paths << "#{Rails.root}/vendor/assets/swf"
+
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

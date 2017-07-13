@@ -6,7 +6,7 @@ class TransactionMailerTest < ActionMailer::TestCase
     user = create(:user)
     water_right = create(:water_right, number: '555-555', proof_due_date: '2016-01-25')
     user.water_rights << water_right
-    email = TransactionMailer.proof_due_date_reminder(water_right).deliver
+    email = TransactionMailer.proof_due_date_reminder(water_right).deliver_now
     assert_equal [user.email], email.to
     assert_equal ['no-reply@riley-water.com'], email.from
     assert_equal 'Proof Due Date Reminder for #555-555', email.subject
