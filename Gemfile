@@ -28,7 +28,6 @@ gem 'rabl'
 gem 'active_model_serializers', '~> 0.8.3'
 gem 'underscore-rails'
 gem 'pundit'
-gem 'workless', '1.2.3'
 gem 'eco'
 gem 'daemons'
 gem 'coveralls', require: false

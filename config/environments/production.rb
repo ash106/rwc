@@ -105,8 +105,4 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
-
-  config.after_initialize do 
-    Delayed::Job.scaler = :heroku_cedar
-  end
 end
