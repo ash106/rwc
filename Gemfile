@@ -36,7 +36,6 @@ gem 'simplify_rb'
 gem 'jquery-minicolors-rails'
 gem 'font-awesome-rails'
 gem 'puma'
-gem 'rack-timeout'
 
 
 group :development do
