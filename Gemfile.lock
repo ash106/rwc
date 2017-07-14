@@ -142,7 +142,6 @@ GEM
     jquery-tablesorter (1.23.9)
       railties (>= 3.2, < 6)
     json (1.8.6)
-    kgio (2.11.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     loofah (2.0.3)
@@ -177,6 +176,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (2.0.5)
+    puma (3.9.1)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     rabl (0.13.1)
@@ -217,7 +217,6 @@ GEM
       activesupport (= 4.2.9)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    raindrops (0.18.0)
     rake (12.0.0)
     recipient_interceptor (0.1.2)
       mail
@@ -268,9 +267,6 @@ GEM
     uglifier (3.2.0)
       execjs (>= 0.3.0, < 3)
     underscore-rails (1.8.3)
-    unicorn (5.3.0)
-      kgio (~> 2.6)
-      raindrops (~> 0.7)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (2.3.0)
@@ -321,6 +317,7 @@ DEPENDENCIES
   pg
   polylines
   pry-rails
+  puma
   pundit
   rabl
   rack-timeout
@@ -338,7 +335,6 @@ DEPENDENCIES
   title
   uglifier
   underscore-rails
-  unicorn
   web-console (~> 2.0)
   webmock
 

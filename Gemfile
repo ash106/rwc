@@ -16,7 +16,6 @@ gem 'sass-rails', '~> 5.0.6'
 gem 'simple_form', '3.4.0'
 gem 'title'
 gem 'uglifier'
-gem 'unicorn'
 gem 'devise', '~> 3.5.0'
 gem 'rolify', '~> 3.4'
 gem 'cancancan', '~> 1.8'
@@ -36,6 +35,8 @@ gem 'polylines'
 gem 'simplify_rb'
 gem 'jquery-minicolors-rails'
 gem 'font-awesome-rails'
+gem 'puma'
+gem 'rack-timeout'
 
 
 group :development do

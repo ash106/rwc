@@ -1,1 +1,1 @@
-Rack::Timeout.timeout = (ENV['TIMEOUT_IN_SECONDS'] || 5).to_i
+Rack::Timeout.service_timeout = 20  # seconds
