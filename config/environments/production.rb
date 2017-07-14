@@ -90,7 +90,7 @@ Rails.application.configure do
 
   # ActionMailer Config
   # config.action_mailer.default_url_options = { host: 'riley-water.com' }
-  config.action_mailer.default_url_options = { host: 'rwc-production.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: ENV['ACTION_MAILER_DEFAULT_URL'] }
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
