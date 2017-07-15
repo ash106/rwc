@@ -38,7 +38,7 @@ class WaterRightsManagementController < ApplicationController
     else
       @geometry = PlaceOfUseArea.for_user(user).preload(:water_rights) + PointOfDiversion.for_user(user).preload(:water_rights)
     end
-    render json: @geometry, root: "features", meta: "FeatureCollection", meta_key: 'type'
+    render json: GeojsonSerializer.to_geojson(@geometry)
   end
 
 private
