@@ -6,12 +6,12 @@ class GeojsonSerializer
       features << {
         type: "Feature",
         geometry: item.respond_to?('polygon') ? item.polygon : item.point,
-        # Need to add color to properties only for PlaceOfUseArea
         properties: { 
           id: item.id,
           name: item.name,
+          color: (item.color if item.respond_to?('color')),
           water_rights: water_rights_for_item(item.water_rights)
-        }
+        }.delete_if{ |k,v| v.nil? }
       }
     end
     result["type"] = "FeatureCollection"
