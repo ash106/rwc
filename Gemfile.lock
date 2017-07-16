@@ -66,7 +66,7 @@ GEM
       xpath (~> 2.0)
     case_transform (0.2)
       activesupport
-    climate_control (0.1.0)
+    climate_control (0.2.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
     codeclimate-test-reporter (0.6.0)
@@ -165,10 +165,10 @@ GEM
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     orm_adapter (0.5.0)
-    paperclip (4.2.0)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.3)
+    paperclip (4.2.4)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
       mime-types
     pg (0.20.0)
     polylines (0.3.0)
@@ -309,7 +309,7 @@ DEPENDENCIES
   meta_request (~> 0.3.0)
   newrelic_rpm (>= 3.7.3)
   nokogiri (~> 1.8.0)
-  paperclip (= 4.2.0)
+  paperclip (~> 4.2.0)
   pg
   polylines
   pry-rails
