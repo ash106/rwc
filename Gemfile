@@ -4,7 +4,6 @@ ruby '2.4.1'
 
 gem 'coffee-rails'
 gem 'delayed_job_active_record'
-gem 'email_validator'
 gem 'flutie'
 gem 'high_voltage'
 gem 'jquery-rails'

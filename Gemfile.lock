@@ -114,8 +114,6 @@ GEM
       eco-source
       execjs
     eco-source (1.1.0.rc.1)
-    email_validator (1.6.0)
-      activemodel
     erubis (2.7.0)
     execjs (2.7.0)
     factory_girl (4.8.0)
@@ -305,7 +303,6 @@ DEPENDENCIES
   devise (~> 3.5.0)
   dotenv-rails
   eco
-  email_validator
   factory_girl_rails
   flutie
   font-awesome-rails
