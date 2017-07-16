@@ -23,7 +23,6 @@ gem 'active_model_serializers', '~> 0.10.6'
 gem 'underscore-rails'
 gem 'pundit'
 gem 'eco'
-gem 'daemons'
 gem 'coveralls', require: false
 gem 'jquery-tablesorter'
 gem 'polylines'
