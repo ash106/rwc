@@ -24,7 +24,6 @@ gem 'underscore-rails'
 gem 'pundit'
 gem 'eco'
 gem 'coveralls', require: false
-gem 'jquery-tablesorter'
 gem 'polylines'
 gem 'simplify_rb'
 gem 'jquery-minicolors-rails'
