@@ -261,9 +261,6 @@ GEM
     tilt (2.0.7)
     timecop (0.8.1)
     tins (1.13.2)
-    title (0.0.7)
-      i18n
-      rails (>= 3.1)
     tzinfo (1.2.3)
       thread_safe (~> 0.1)
     uglifier (3.2.0)
@@ -332,7 +329,6 @@ DEPENDENCIES
   simplify_rb
   spring
   timecop
-  title
   uglifier
   underscore-rails
   web-console (~> 2.0)
