@@ -47,7 +47,6 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem 'timecop'
   gem 'webmock'
   gem "codeclimate-test-reporter", "~> 0.6.0", require: nil
   gem 'simplecov', :require => false
