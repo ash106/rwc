@@ -51,7 +51,7 @@ group :test do
   gem 'simplecov', :require => false
 end
 
-group :staging, :production do
+group :production do
   gem 'rails_12factor'
   gem 'newrelic_rpm', '>= 3.7.3'
 end
