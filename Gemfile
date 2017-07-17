@@ -36,7 +36,6 @@ group :development do
   gem 'spring'
   gem 'meta_request', '~> 0.3.0'
   gem 'web-console', '~> 2.0'
-  # gem 'spring-commands-rspec'
 end
 
 group :development, :test do
@@ -44,13 +43,10 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'pry-rails'
-  # gem 'rspec-rails', '~> 2.14.0'
 end
 
 group :test do
-  # gem 'capybara-webkit', '>= 1.0.0'
   gem 'database_cleaner'
-  gem 'formulaic'
   gem 'launchy'
   gem 'shoulda-matchers', require: false
   gem 'timecop'
