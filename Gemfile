@@ -30,7 +30,6 @@ gem 'jquery-minicolors-rails'
 gem 'font-awesome-rails'
 gem 'puma'
 
-
 group :development do
   gem 'foreman'
   gem 'spring'
@@ -48,7 +47,7 @@ end
 group :test do
   gem 'database_cleaner'
   gem "codeclimate-test-reporter", "~> 0.6.0", require: nil
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
 end
 
 group :production do
