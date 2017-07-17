@@ -44,8 +44,6 @@ class ActiveSupport::TestCase
     DatabaseCleaner.clean
   end
 
-  WebMock.disable_net_connect!(:allow => "codeclimate.com")
-
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   #
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
