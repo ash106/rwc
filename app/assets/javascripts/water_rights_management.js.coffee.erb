@@ -25,6 +25,12 @@ $(".water_rights_management-dashboard").ready ->
       targets: [1,2,3,4]
     ]
 
+  $('a[data-toggle="tab"]').on 'shown.bs.tab', (e) ->
+    $.fn.dataTable.tables(
+      visible: true
+      api: true).columns.adjust()
+    return
+
 
 $(".water_rights_management-show_water_rights").ready ->
   wr_table = $("#water_rights_table").DataTable
