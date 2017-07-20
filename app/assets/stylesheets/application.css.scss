@@ -690,7 +690,7 @@ div.dataTables_filter input {
   margin-bottom: 10px;
 }
 
-.table-word-wrap {
+.table-word-wrap, .dtr-data {
   /* These are technically the same, but use both */
   overflow-wrap: break-word;
   word-wrap: break-word;
