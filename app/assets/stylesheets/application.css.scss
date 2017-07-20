@@ -680,9 +680,11 @@ div.dataTables_filter input {
 
 /* Admin pages */
 
-#dashboard-user-selector {
-  width: 200px;
-  float: right;
+@media (min-width: $screen-md-min) {
+  #dashboard-user-selector {
+    width: 200px;
+    float: right;
+  }
 }
 
 #map_canvas.edit_page, #map_canvas.show_page {
