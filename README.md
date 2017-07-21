@@ -117,8 +117,8 @@ end
 ### Prerequisites
 
 ```bash
-ruby -v     # 2.1.2
-rails -v    # 4.1.1
+ruby -v     # 2.4.1
+rails -v    # 4.2.9
 ```
 
 ### Installing
