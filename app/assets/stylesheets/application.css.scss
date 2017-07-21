@@ -195,6 +195,29 @@ html, body {
   }
 }
 
+@media (max-width: $screen-xs-max) {
+  #wrap {
+    margin: 0 auto -185px;
+  }
+
+  #push, #footer {
+    height: 185px;
+  }
+
+  .footer-nav {
+    text-align: right;
+    margin-bottom: 10px;
+    padding-left: 0;
+    margin-left: 0;
+    &>li {
+      display: list-item;
+      padding-left: 0;
+      padding-right: 0;
+      margin-bottom: 5px;
+    }
+  }
+}
+
 
 /* Homepage */
 
