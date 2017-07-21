@@ -720,3 +720,72 @@ div.dataTables_filter input {
 .edit-link {
   font-size: 14px;
 }
+
+
+/* Bootstrap 3 responsive tabs */
+
+@media (max-width: $screen-xs-max) {
+  .responsive-tabs.nav-tabs {
+    position: relative;
+    z-index: 10;
+    height: 42px;
+    overflow: visible;
+    border-bottom: none;
+    span.glyphicon {
+      position: absolute;
+      top: 14px;
+      right: 22px;
+      &.glyphicon-triangle-top {
+        display: none;
+      }
+    }
+    >li {
+      display: none;
+      float: none;
+      text-align: center;
+      &:last-of-type > a {
+        margin-right: 0;
+      }
+      >a {
+        margin-right: 0;
+        background: #fff;
+        border: 1px solid #DDDDDD;
+      }
+      &.active {
+        display: block;
+        a {
+          border: 1px solid #DDDDDD;
+          border-radius: 2px;
+        }
+      }
+    }
+    &.open {
+      span.glyphicon {
+        &.glyphicon-triangle-top {
+          display: block;
+        }
+        &.glyphicon-triangle-bottom {
+          display: none;
+        }
+      }
+      >li {
+        display: block;
+        a {
+          border-radius: 0;
+        }
+        &:first-of-type a {
+          border-radius: 2px 2px 0 0;
+        }
+        &:last-of-type a {
+          border-radius: 0 0 2px 2px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  span.glyphicon.glyphicon-triangle-bottom, span.glyphicon.glyphicon-triangle-top {
+    display: none;
+  }
+}
