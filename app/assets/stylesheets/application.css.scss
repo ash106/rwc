@@ -744,6 +744,22 @@ div.dataTables_filter input {
   font-size: 14px;
 }
 
+@media (max-width: $screen-xs-max) {
+  div.dataTables_wrapper div.dataTables_filter label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  div.dataTables_wrapper div.dataTables_filter input {
+    flex: 1;
+  }
+
+  div.dataTables_filter input {
+    margin-right: 0;
+  }
+}
+
 
 /* Bootstrap 3 responsive tabs */
 
