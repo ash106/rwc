@@ -52,6 +52,9 @@ $(".listings-dashboard").ready ->
   $('#listing-areas-table').DataTable
     pagingType: 'simple_numbers',
     responsive: true,
+    dom: "<'row'<'col-sm-6 hidden-xs'l><'col-sm-6'f>>" +
+         "<'row'<'col-sm-12'tr>>" +
+         "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
       orderable: false, 
       targets: [2,3,4,5]
@@ -59,6 +62,9 @@ $(".listings-dashboard").ready ->
   $('#wanteds-table').DataTable
     pagingType: 'simple_numbers',
     responsive: true,
+    dom: "<'row'<'col-sm-6 hidden-xs'l><'col-sm-6'f>>" +
+         "<'row'<'col-sm-12'tr>>" +
+         "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
       orderable: false, 
       targets: [5,6,7]
@@ -66,6 +72,9 @@ $(".listings-dashboard").ready ->
   $('#for-sales-table').DataTable
     pagingType: 'simple_numbers',
     responsive: true,
+    dom: "<'row'<'col-sm-6 hidden-xs'l><'col-sm-6'f>>" +
+         "<'row'<'col-sm-12'tr>>" +
+         "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
       orderable: false, 
       targets: [6,7,8]

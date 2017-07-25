@@ -5,6 +5,9 @@ $(".water_rights_management-dashboard").ready ->
   $('#water-rights-table').DataTable
     pagingType: 'simple_numbers',
     responsive: true,
+    dom: "<'row'<'col-sm-6 hidden-xs'l><'col-sm-6'f>>" +
+         "<'row'<'col-sm-12'tr>>" +
+         "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
       orderable: false, 
       targets: [11,12,13]
@@ -12,6 +15,9 @@ $(".water_rights_management-dashboard").ready ->
   $('#place-of-use-areas-table').DataTable
     pagingType: 'simple_numbers',
     responsive: true,
+    dom: "<'row'<'col-sm-6 hidden-xs'l><'col-sm-6'f>>" +
+         "<'row'<'col-sm-12'tr>>" +
+         "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
       orderable: false, 
       targets: [1,2,3,4]
@@ -19,6 +25,9 @@ $(".water_rights_management-dashboard").ready ->
   $('#point-of-diversions-table').DataTable
     pagingType: 'simple_numbers',
     responsive: true,
+    dom: "<'row'<'col-sm-6 hidden-xs'l><'col-sm-6'f>>" +
+         "<'row'<'col-sm-12'tr>>" +
+         "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
       orderable: false, 
       targets: [1,2,3,4]
