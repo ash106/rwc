@@ -669,7 +669,6 @@ table.table.table-striped tr.highlighted td {
 
 div.dataTables_filter input {
   margin-left: 0.5em;
-  margin-right: 0.5em;
 }
 
 .table-responsive {
@@ -753,10 +752,6 @@ div.dataTables_filter input {
 
   div.dataTables_wrapper div.dataTables_filter input {
     flex: 1;
-  }
-
-  div.dataTables_filter input {
-    margin-right: 0;
   }
 }
 
