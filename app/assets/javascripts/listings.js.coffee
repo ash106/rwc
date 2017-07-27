@@ -72,7 +72,7 @@ $(".listings-dashboard").ready ->
          "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
       { orderable: false, targets: [5,6,7] },
-      { responsivePriority: 1, targets: [2] }, # Description
+      { responsivePriority: 1, targets: [0] }, # Description
       { responsivePriority: 2, targets: [4] }  # Listing area
     ],
     language: {
@@ -87,7 +87,7 @@ $(".listings-dashboard").ready ->
          "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
       { orderable: false, targets: [6,7,8] },
-      { responsivePriority: 1, targets: [2] }, # Description
+      { responsivePriority: 1, targets: [0] }, # Description
       { responsivePriority: 2, targets: [5] }, # Listing Area
       { responsivePriority: 3, targets: [3] }  # Price
     ],
