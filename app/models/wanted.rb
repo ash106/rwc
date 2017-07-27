@@ -1,4 +1,4 @@
 class Wanted < ActiveRecord::Base
   belongs_to :listing_area
-  validates :description, presence: true
+  validates :description, :listing_area, presence: true
 end

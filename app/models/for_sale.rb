@@ -1,5 +1,4 @@
 class ForSale < ActiveRecord::Base
   belongs_to :listing_area
-  validates :description, presence: true
-  validates :price, presence: true
+  validates :description, :price, :listing_area, presence: true
 end
