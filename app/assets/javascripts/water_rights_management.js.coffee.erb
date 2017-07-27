@@ -9,8 +9,8 @@ $(".water_rights_management-dashboard").ready ->
          "<'row'<'col-sm-12'tr>>" +
          "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
-      orderable: false, 
-      targets: [11,12,13]
+      { orderable: false, targets: [11,12,13] },
+      { responsivePriority: 1, targets: [0,9] } # Number, User
     ],
     language: {
       search: "_INPUT_",
@@ -23,8 +23,8 @@ $(".water_rights_management-dashboard").ready ->
          "<'row'<'col-sm-12'tr>>" +
          "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
-      orderable: false, 
-      targets: [1,2,3,4]
+      { orderable: false, targets: [1,2,3,4] },
+      { responsivePriority: 1, targets: [0,1] } # Name, Preview Map
     ],
     language: {
       search: "_INPUT_",
@@ -37,8 +37,8 @@ $(".water_rights_management-dashboard").ready ->
          "<'row'<'col-sm-12'tr>>" +
          "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
-      orderable: false, 
-      targets: [1,2,3,4]
+      { orderable: false, targets: [1,2,3,4] },
+      { responsivePriority: 1, targets: [0,1] } # Name, Preview Map
     ],
     language: {
       search: "_INPUT_",
