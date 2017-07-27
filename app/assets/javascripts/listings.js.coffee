@@ -58,7 +58,11 @@ $(".listings-dashboard").ready ->
     columnDefs: [
       orderable: false, 
       targets: [2,3,4,5]
-    ]
+    ],
+    language: {
+      search: "_INPUT_",
+      searchPlaceholder: "Search..."
+    }
   $('#wanteds-table').DataTable
     pagingType: 'simple_numbers',
     responsive: true,
@@ -68,7 +72,11 @@ $(".listings-dashboard").ready ->
     columnDefs: [
       orderable: false, 
       targets: [5,6,7]
-    ]
+    ],
+    language: {
+      search: "_INPUT_",
+      searchPlaceholder: "Search..."
+    }
   $('#for-sales-table').DataTable
     pagingType: 'simple_numbers',
     responsive: true,
@@ -78,4 +86,8 @@ $(".listings-dashboard").ready ->
     columnDefs: [
       orderable: false, 
       targets: [6,7,8]
-    ]
+    ],
+    language: {
+      search: "_INPUT_",
+      searchPlaceholder: "Search..."
+    }

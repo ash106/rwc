@@ -11,7 +11,11 @@ $(".water_rights_management-dashboard").ready ->
     columnDefs: [
       orderable: false, 
       targets: [11,12,13]
-    ]
+    ],
+    language: {
+      search: "_INPUT_",
+      searchPlaceholder: "Search..."
+    }
   $('#place-of-use-areas-table').DataTable
     pagingType: 'simple_numbers',
     responsive: true,
@@ -21,7 +25,11 @@ $(".water_rights_management-dashboard").ready ->
     columnDefs: [
       orderable: false, 
       targets: [1,2,3,4]
-    ]
+    ],
+    language: {
+      search: "_INPUT_",
+      searchPlaceholder: "Search..."
+    }
   $('#point-of-diversions-table').DataTable
     pagingType: 'simple_numbers',
     responsive: true,
@@ -31,7 +39,11 @@ $(".water_rights_management-dashboard").ready ->
     columnDefs: [
       orderable: false, 
       targets: [1,2,3,4]
-    ]
+    ],
+    language: {
+      search: "_INPUT_",
+      searchPlaceholder: "Search..."
+    }
 
 $(".water_rights_management-show_water_rights").ready ->
   wr_table = $("#water_rights_table").DataTable
@@ -86,7 +98,11 @@ $(".water_rights_management-show_water_rights").ready ->
                     type: "html"
                     targets: 0
                   }
-                ]
+                ],
+                language: {
+                  search: "_INPUT_",
+                  searchPlaceholder: "Search..."
+                }
 
   setCommentsReadmore = ->
     $('.comments').readmore

@@ -667,8 +667,8 @@ table.table.table-striped tr.highlighted td {
   padding-top: 13px;
 }
 
-div.dataTables_filter input {
-  margin-left: 0.5em;
+div.dataTables_wrapper div.dataTables_filter input {
+  margin-left: 0;
 }
 
 .table-responsive {
