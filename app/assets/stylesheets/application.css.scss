@@ -660,11 +660,14 @@ table.table.table-striped tr.highlighted td {
 }
 
 #user-selector {
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 
-#water_rights_table_wrapper {
-  padding-top: 13px;
+@media (min-width: $screen-md-min) {
+  #user-selector {
+    margin-top: 0;
+  }
 }
 
 div.dataTables_wrapper div.dataTables_filter input {
