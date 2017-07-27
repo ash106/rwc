@@ -57,8 +57,8 @@ $(".listings-dashboard").ready ->
          "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
       { orderable: false, targets: [2,3,4,5] },
-      { responsivePriority: 1, targets: [0,2] },
-      { responsivePriority: 2, targets: [4] }
+      { responsivePriority: 1, targets: [0,2] }, # Name, Preview Map
+      { responsivePriority: 2, targets: [4] }    # Edit
     ],
     language: {
       search: "_INPUT_",
@@ -71,8 +71,9 @@ $(".listings-dashboard").ready ->
          "<'row'<'col-sm-12'tr>>" +
          "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
-      orderable: false, 
-      targets: [5,6,7]
+      { orderable: false, targets: [5,6,7] },
+      { responsivePriority: 1, targets: [2] }, # Description
+      { responsivePriority: 2, targets: [4] }  # Listing area
     ],
     language: {
       search: "_INPUT_",
@@ -85,8 +86,10 @@ $(".listings-dashboard").ready ->
          "<'row'<'col-sm-12'tr>>" +
          "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
-      orderable: false, 
-      targets: [6,7,8]
+      { orderable: false, targets: [6,7,8] },
+      { responsivePriority: 1, targets: [2] }, # Description
+      { responsivePriority: 2, targets: [5] }, # Listing Area
+      { responsivePriority: 3, targets: [3] }  # Price
     ],
     language: {
       search: "_INPUT_",
