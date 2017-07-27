@@ -56,8 +56,9 @@ $(".listings-dashboard").ready ->
          "<'row'<'col-sm-12'tr>>" +
          "<'row'<'col-sm-5'i><'col-sm-7'p>>",
     columnDefs: [
-      orderable: false, 
-      targets: [2,3,4,5]
+      { orderable: false, targets: [2,3,4,5] },
+      { responsivePriority: 1, targets: [0,2] },
+      { responsivePriority: 2, targets: [4] }
     ],
     language: {
       search: "_INPUT_",
