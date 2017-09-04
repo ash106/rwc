@@ -12,9 +12,11 @@ Rails.application.configure do
   # preloads Rails for running tests, you may have to set it to true.
   config.eager_load = false
 
-  # Configure static asset server for tests with Cache-Control for performance.
-  config.serve_static_files  = true
-  config.static_cache_control = 'public, max-age=3600'
+  # Configure public file server for tests with Cache-Control for performance.
+  config.public_file_server.enabled = true
+  config.public_file_server.headers = {
+    'Cache-Control' => "public, max-age=#{1.hour.seconds.to_i}"
+  }
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
@@ -25,6 +27,7 @@ Rails.application.configure do
 
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false
+  config.action_mailer.perform_caching = false
 
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
@@ -40,10 +43,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'www.example.com' }
 
   config.paperclip_defaults = {
-    :storage => :filesystem,
-    :path => "#{Rails.root}/test/fixtures/:filename",
-    :url => "#{Rails.root}/test/fixtures/:filename"
+    storage: :filesystem,
+    path: "#{Rails.root}/test/fixtures/:filename",
+    url: "#{Rails.root}/test/fixtures/:filename"
   }
+
+  Paperclip::Attachment.default_options[:preserve_files] = true
 
   config.action_controller.action_on_unpermitted_parameters = :raise
 

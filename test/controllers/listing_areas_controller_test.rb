@@ -21,7 +21,7 @@ class ListingAreasControllerTest < ActionController::TestCase
 
   test 'get show is successful' do
     listing_area = create(:listing_area)
-    get :show, id: listing_area.id
+    get :show, params: { id: listing_area.id }
     assert_equal listing_area, assigns(:listing_area)
     assert_response :success
   end
@@ -34,20 +34,19 @@ class ListingAreasControllerTest < ActionController::TestCase
 
   test 'get edit is successful' do
     listing_area = create(:listing_area)
-    get :edit, id: listing_area.id
+    get :edit, params: { id: listing_area.id }
     assert_equal listing_area, assigns(:listing_area)
     assert_response :success
   end
 
   test 'post create is successful with valid attributes' do
-    kml_file = ActionDispatch::Http::UploadedFile.new({
-      filename: 'SLV_Central.kml',
-      content_type: 'application/xml',
-      tempfile: File.new("#{Rails.root}/test/fixtures/SLV_Central.kml")
-    })
+    kml_file = Rack::Test::UploadedFile.new(
+      "#{Rails.root}/test/fixtures/SLV_Central.kml",
+      "application/xml"
+    )
     listing_area_params = { name: 'SLV Central', kml: kml_file }
     assert_difference 'ListingArea.count' do
-      post :create, listing_area: listing_area_params
+      post :create, params: { listing_area: listing_area_params }
     end
     assert_redirected_to listing_area_path(ListingArea.last)
   end
@@ -55,7 +54,7 @@ class ListingAreasControllerTest < ActionController::TestCase
   test 'post create is unsuccessful with invalid attributes' do
     invalid_params = { name: '', kml: '' }
     assert_no_difference 'ListingArea.count' do
-      post :create, listing_area: invalid_params
+      post :create, params: { listing_area: invalid_params }
     end
     assert_template 'new'
     assert_response :success
@@ -64,7 +63,7 @@ class ListingAreasControllerTest < ActionController::TestCase
   test 'put update is successful with valid attributes' do
     listing_area = create(:listing_area)
     valid_attributes = { name: 'Salt Lake Valley Central' }
-    put :update, id: listing_area.id, listing_area: valid_attributes
+    put :update, params: { id: listing_area.id, listing_area: valid_attributes }
     assert_equal valid_attributes[:name], listing_area.reload.name
     assert_redirected_to listing_area_path(listing_area)
   end
@@ -72,7 +71,7 @@ class ListingAreasControllerTest < ActionController::TestCase
   test 'put update is unsuccessful with invalid attributes' do
     listing_area = create(:listing_area)
     invalid_attributes = { name: '' }
-    put :update, id: listing_area.id, listing_area: invalid_attributes
+    put :update, params: { id: listing_area.id, listing_area: invalid_attributes }
     refute_equal invalid_attributes[:name], listing_area.reload.name
     assert_template 'edit'
     assert_response :success
@@ -81,7 +80,7 @@ class ListingAreasControllerTest < ActionController::TestCase
   test 'delete destroy is successful' do
     listing_area = create(:listing_area)
     assert_difference 'ListingArea.count', -1 do
-      delete :destroy, id: listing_area.id
+      delete :destroy, params: { id: listing_area.id }
     end
     assert_redirected_to listings_dashboard_path
   end

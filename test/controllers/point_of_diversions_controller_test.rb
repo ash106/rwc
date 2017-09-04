@@ -19,7 +19,7 @@ class PointOfDiversionsControllerTest < ActionController::TestCase
 
   test 'get show is successful' do
     point_of_diversion = create(:point_of_diversion)
-    get :show, id: point_of_diversion.id
+    get :show, params: { id: point_of_diversion.id }
     assert_equal point_of_diversion, assigns(:point_of_diversion)
     assert_response :success
   end
@@ -32,20 +32,19 @@ class PointOfDiversionsControllerTest < ActionController::TestCase
 
   test 'get edit is successful' do
     point_of_diversion = create(:point_of_diversion)
-    get :edit, id: point_of_diversion.id
+    get :edit, params: { id: point_of_diversion.id }
     assert_equal point_of_diversion, assigns(:point_of_diversion)
     assert_response :success
   end
 
   test 'post create is successful with valid attributes' do
-    kml_file = ActionDispatch::Http::UploadedFile.new({
-      filename: 'Stream.kml',
-      content_type: 'application/xml',
-      tempfile: File.new("#{Rails.root}/test/fixtures/Stream.kml")
-    })
+    kml_file = Rack::Test::UploadedFile.new(
+      "#{Rails.root}/test/fixtures/Stream.kml",
+      "application/xml"
+    )
     point_of_diversion_params = { name: 'Stream', kml: kml_file }
     assert_difference 'PointOfDiversion.count' do
-      post :create, point_of_diversion: point_of_diversion_params
+      post :create, params: { point_of_diversion: point_of_diversion_params }
     end
     assert_redirected_to point_of_diversion_path(PointOfDiversion.last)
   end
@@ -53,7 +52,7 @@ class PointOfDiversionsControllerTest < ActionController::TestCase
   test 'post create is unsuccessful with invalid attributes' do
     invalid_params = { name: '', kml: '' }
     assert_no_difference 'PointOfDiversion.count' do
-      post :create, point_of_diversion: invalid_params
+      post :create, params: { point_of_diversion: invalid_params }
     end
     assert_template 'new'
     assert_response :success
@@ -62,7 +61,7 @@ class PointOfDiversionsControllerTest < ActionController::TestCase
   test 'put update is successful with valid attributes' do
     point_of_diversion = create(:point_of_diversion)
     valid_attributes = { name: 'Streeeeem' }
-    put :update, id: point_of_diversion.id, point_of_diversion: valid_attributes
+    put :update, params: { id: point_of_diversion.id, point_of_diversion: valid_attributes }
     assert_equal valid_attributes[:name], point_of_diversion.reload.name
     assert_redirected_to point_of_diversion_path(point_of_diversion)
   end
@@ -70,7 +69,7 @@ class PointOfDiversionsControllerTest < ActionController::TestCase
   test 'put update is unsuccessful with invalid attributes' do
     point_of_diversion = create(:point_of_diversion)
     invalid_attributes = { name: '' }
-    put :update, id: point_of_diversion.id, point_of_diversion: invalid_attributes
+    put :update, params: { id: point_of_diversion.id, point_of_diversion: invalid_attributes }
     refute_equal invalid_attributes[:name], point_of_diversion.reload.name
     assert_template 'edit'
     assert_response :success
@@ -79,7 +78,7 @@ class PointOfDiversionsControllerTest < ActionController::TestCase
   test 'delete destroy is successful' do
     point_of_diversion = create(:point_of_diversion)
     assert_difference 'PointOfDiversion.count', -1 do
-      delete :destroy, id: point_of_diversion.id
+      delete :destroy, params: { id: point_of_diversion.id }
     end
     assert_redirected_to wrm_dashboard_path
   end

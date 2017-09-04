@@ -15,7 +15,7 @@ class PointOfDiversionWaterRightsControllerTest < ActionController::TestCase
     water_right = create(:water_right)
     point_of_diversion_water_right_params = { point_of_diversion_id: point_of_diversion.id, water_right_id: water_right.id }
     assert_difference 'PointOfDiversionWaterRight.count' do
-      post :create, point_of_diversion_water_right: point_of_diversion_water_right_params
+      post :create, params: { point_of_diversion_water_right: point_of_diversion_water_right_params }
     end
     assert_redirected_to water_right_path(water_right)
   end
@@ -24,7 +24,7 @@ class PointOfDiversionWaterRightsControllerTest < ActionController::TestCase
     water_right = create(:water_right)
     invalid_params = { point_of_diversion_id: nil, water_right_id: water_right.id }
     assert_no_difference 'PointOfDiversionWaterRight.count' do
-      post :create, point_of_diversion_water_right: invalid_params
+      post :create, params: { point_of_diversion_water_right: invalid_params }
     end
     assert_redirected_to water_right_path(water_right)
   end
@@ -32,7 +32,7 @@ class PointOfDiversionWaterRightsControllerTest < ActionController::TestCase
   test 'delete destroy is successful' do
     point_of_diversion_water_right = create(:point_of_diversion_water_right)
     assert_difference 'PointOfDiversionWaterRight.count', -1 do
-      delete :destroy, point_of_diversion_id: point_of_diversion_water_right.point_of_diversion.id, water_right_id: point_of_diversion_water_right.water_right.id
+      delete :destroy, params: { point_of_diversion_id: point_of_diversion_water_right.point_of_diversion.id, water_right_id: point_of_diversion_water_right.water_right.id }
     end
     assert_redirected_to water_right_path(point_of_diversion_water_right.water_right)
   end

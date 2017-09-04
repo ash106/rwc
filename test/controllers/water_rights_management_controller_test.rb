@@ -26,7 +26,7 @@ class WaterRightsManagementControllerTest < ActionController::TestCase
     user = create(:user)
     associated_water_right = create(:water_right)
     user.water_rights << associated_water_right
-    get :dashboard, user_id: user.id
+    get :dashboard, params: { user_id: user.id }
     assert_includes assigns(:water_rights), user.water_rights.first
     assert_includes assigns(:place_of_use_areas), user.water_rights.first.place_of_use_areas.first
     assert_includes assigns(:point_of_diversions), user.water_rights.first.point_of_diversions.first
@@ -65,7 +65,7 @@ class WaterRightsManagementControllerTest < ActionController::TestCase
     sign_in user
     water_right = create(:water_right)
     another_water_right = create(:water_right, number: "13-777")
-    get :get_data, id: user.id
+    get :get_data, params: { id: user.id }
     response = JSON.parse(@response.body)
     assert_equal "FeatureCollection", response["type"] # Make sure "type":"FeatureCollection" key exists
     assert_equal 4, response["features"].length # Make sure "features" key includes geometry for all water rights when user is admin
@@ -78,7 +78,7 @@ class WaterRightsManagementControllerTest < ActionController::TestCase
     associated_water_right = create(:water_right)
     user.water_rights << associated_water_right
     nonassociated_water_right = create(:water_right, number: "13-7777")
-    get :get_data, id: user.id
+    get :get_data, params: { id: user.id }
     response = JSON.parse(@response.body)
     assert_equal "FeatureCollection", response["type"] # Make sure "type":"FeatureCollection" key exists
     assert_equal 2, response["features"].length # Make sure "features" key includes geometry for associated_water_right only
@@ -93,7 +93,7 @@ class WaterRightsManagementControllerTest < ActionController::TestCase
     associated_water_right = create(:water_right)
     user.water_rights << associated_water_right
     nonassociated_water_right = create(:water_right, number: "13-777")
-    get :get_data, id: 0 # 0 is the user_id used when no user is signed in
+    get :get_data, params: { id: 0 } # 0 is the user_id used when no user is signed in
     response = JSON.parse(@response.body)
     assert_equal "FeatureCollection", response["type"] # Make sure "type":"FeatureCollection" key exists
     assert_equal 2, response["features"].length # Make sure "features" key includes geometry for demo water right only

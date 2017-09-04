@@ -1,4 +1,4 @@
-class PointOfDiversion < ActiveRecord::Base
+class PointOfDiversion < ApplicationRecord
   has_many :point_of_diversion_water_rights
   has_many :water_rights, through: :point_of_diversion_water_rights
   validates :name, presence: true, uniqueness: true
@@ -15,7 +15,7 @@ class PointOfDiversion < ActiveRecord::Base
 private
   
   def queue_processing
-    if kml_updated_at_changed?
+    if saved_change_to_kml_updated_at?
       parser = KmlParser.new(id, 'PointOfDiversion')
       parser.delay.parse_point
     end

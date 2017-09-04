@@ -9,12 +9,12 @@ gem 'high_voltage'
 gem 'jquery-rails'
 gem 'pg'
 gem 'rack-timeout'
-gem 'rails', '4.2.9'
+gem 'rails', '~> 5.1.3'
 gem 'sass-rails', '~> 5.0.6'
 gem 'simple_form', '~> 3.5.0'
 gem 'uglifier'
-gem 'devise', '~> 3.5.0'
-gem 'rolify', '~> 3.4'
+gem 'devise', '~> 4.3.0'
+gem 'rolify', '~> 5.1.0'
 gem 'paperclip', '~> 4.2.0'
 gem 'aws-sdk', '< 2'
 gem 'nokogiri', '~> 1.8.0'
@@ -29,12 +29,15 @@ gem 'simplify_rb'
 gem 'jquery-minicolors-rails'
 gem 'font-awesome-rails'
 gem 'puma'
+gem 'rails-controller-testing'
 
 group :development do
   gem 'foreman'
   gem 'spring'
-  gem 'meta_request', '~> 0.3.0'
-  gem 'web-console', '~> 2.0'
+  gem 'meta_request', '~> 0.4.0'
+  gem 'web-console', '>= 3.3.0'
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :development, :test do
@@ -42,6 +45,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'pry-rails'
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :test do
@@ -51,6 +55,8 @@ group :test do
 end
 
 group :production do
-  gem 'rails_12factor'
   gem 'newrelic_rpm', '>= 3.7.3'
 end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

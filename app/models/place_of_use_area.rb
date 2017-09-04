@@ -1,4 +1,4 @@
-class PlaceOfUseArea < ActiveRecord::Base
+class PlaceOfUseArea < ApplicationRecord
   has_many :place_of_use_area_water_rights
   has_many :water_rights, through: :place_of_use_area_water_rights
   validates :name, presence: true, uniqueness: true
@@ -15,7 +15,7 @@ class PlaceOfUseArea < ActiveRecord::Base
 private
   
   def queue_processing
-    if kml_updated_at_changed?
+    if saved_change_to_kml_updated_at?
       parser = KmlParser.new(id, 'PlaceOfUseArea')
       parser.delay.parse_polygon
     end

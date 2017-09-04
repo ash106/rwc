@@ -20,7 +20,7 @@ class PlaceOfUseAreasControllerTest < ActionController::TestCase
 
   test 'get show is successful' do
     place_of_use_area = create(:place_of_use_area)
-    get :show, id: place_of_use_area.id
+    get :show, params: { id: place_of_use_area.id }
     assert_equal place_of_use_area, assigns(:place_of_use_area)
     assert_response :success
   end
@@ -33,20 +33,19 @@ class PlaceOfUseAreasControllerTest < ActionController::TestCase
 
   test 'get edit is successful' do
     place_of_use_area = create(:place_of_use_area)
-    get :edit, id: place_of_use_area.id
+    get :edit, params: { id: place_of_use_area.id }
     assert_equal place_of_use_area, assigns(:place_of_use_area)
     assert_response :success
   end
 
   test 'post create is successful with valid attributes' do
-    kml_file = ActionDispatch::Http::UploadedFile.new({
-      filename: 'Area_1.kml',
-      content_type: 'application/xml',
-      tempfile: File.new("#{Rails.root}/test/fixtures/Area_1.kml")
-    })
+    kml_file = Rack::Test::UploadedFile.new(
+      "#{Rails.root}/test/fixtures/Area_1.kml",
+      "application/xml"
+    )
     place_of_use_area_params = { name: 'Area One', kml: kml_file }
     assert_difference 'PlaceOfUseArea.count' do
-      post :create, place_of_use_area: place_of_use_area_params
+      post :create, params: { place_of_use_area: place_of_use_area_params }
     end
     assert_redirected_to place_of_use_area_path(PlaceOfUseArea.last)
   end
@@ -54,7 +53,7 @@ class PlaceOfUseAreasControllerTest < ActionController::TestCase
   test 'post create is unsuccessful with invalid attributes' do
     invalid_params = { name: '', kml: '' }
     assert_no_difference 'PlaceOfUseArea.count' do
-      post :create, place_of_use_area: invalid_params
+      post :create, params: { place_of_use_area: invalid_params }
     end
     assert_template 'new'
     assert_response :success
@@ -63,7 +62,7 @@ class PlaceOfUseAreasControllerTest < ActionController::TestCase
   test 'put update is successful with valid attributes' do
     place_of_use_area = create(:place_of_use_area)
     valid_attributes = { name: 'Area Uno' }
-    put :update, id: place_of_use_area.id, place_of_use_area: valid_attributes
+    put :update, params: { id: place_of_use_area.id, place_of_use_area: valid_attributes }
     assert_equal valid_attributes[:name], place_of_use_area.reload.name
     assert_redirected_to place_of_use_area_path(place_of_use_area)
   end
@@ -71,7 +70,7 @@ class PlaceOfUseAreasControllerTest < ActionController::TestCase
   test 'put update is unsuccessful with invalid attributes' do
     place_of_use_area = create(:place_of_use_area)
     invalid_attributes = { name: '' }
-    put :update, id: place_of_use_area.id, place_of_use_area: invalid_attributes
+    put :update, params: { id: place_of_use_area.id, place_of_use_area: invalid_attributes }
     refute_equal invalid_attributes[:name], place_of_use_area.reload.name
     assert_template 'edit'
     assert_response :success
@@ -80,7 +79,7 @@ class PlaceOfUseAreasControllerTest < ActionController::TestCase
   test 'delete destroy is successful' do
     place_of_use_area = create(:place_of_use_area)
     assert_difference 'PlaceOfUseArea.count', -1 do
-      delete :destroy, id: place_of_use_area.id
+      delete :destroy, params: { id: place_of_use_area.id }
     end
     assert_redirected_to wrm_dashboard_path
   end

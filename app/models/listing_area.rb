@@ -1,4 +1,4 @@
-class ListingArea < ActiveRecord::Base
+class ListingArea < ApplicationRecord
   has_many :wanteds, dependent: :destroy
   has_many :for_sales, dependent: :destroy
   validates :name, presence: true, uniqueness: true
@@ -11,7 +11,7 @@ class ListingArea < ActiveRecord::Base
 private
   
   def queue_processing
-    if kml_updated_at_changed?
+    if saved_change_to_kml_updated_at?
       parser = KmlParser.new(id, 'ListingArea')
       parser.delay.parse_polygon
     end

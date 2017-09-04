@@ -15,7 +15,7 @@ class PlaceOfUseAreaWaterRightsControllerTest < ActionController::TestCase
     water_right = create(:water_right)
     place_of_use_area_water_right_params = { place_of_use_area_id: place_of_use_area.id, water_right_id: water_right.id }
     assert_difference 'PlaceOfUseAreaWaterRight.count' do
-      post :create, place_of_use_area_water_right: place_of_use_area_water_right_params
+      post :create, params: { place_of_use_area_water_right: place_of_use_area_water_right_params }
     end
     assert_redirected_to water_right_path(water_right)
   end
@@ -24,7 +24,7 @@ class PlaceOfUseAreaWaterRightsControllerTest < ActionController::TestCase
     water_right = create(:water_right)
     invalid_params = { place_of_use_area_id: nil, water_right_id: water_right.id }
     assert_no_difference 'PlaceOfUseAreaWaterRight.count' do
-      post :create, place_of_use_area_water_right: invalid_params
+      post :create, params: { place_of_use_area_water_right: invalid_params }
     end
     assert_redirected_to water_right_path(water_right)
   end
@@ -32,7 +32,7 @@ class PlaceOfUseAreaWaterRightsControllerTest < ActionController::TestCase
   test 'delete destroy is successful' do
     place_of_use_area_water_right = create(:place_of_use_area_water_right)
     assert_difference 'PlaceOfUseAreaWaterRight.count', -1 do
-      delete :destroy, place_of_use_area_id: place_of_use_area_water_right.place_of_use_area.id, water_right_id: place_of_use_area_water_right.water_right.id
+      delete :destroy, params: { place_of_use_area_id: place_of_use_area_water_right.place_of_use_area.id, water_right_id: place_of_use_area_water_right.water_right.id }
     end
     assert_redirected_to water_right_path(place_of_use_area_water_right.water_right)
   end
