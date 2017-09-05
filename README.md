@@ -118,7 +118,7 @@ end
 
 ```bash
 ruby -v     # 2.4.1
-rails -v    # 4.2.9
+rails -v    # 5.1.3
 ```
 
 ### Installing
