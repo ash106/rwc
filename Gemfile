@@ -30,6 +30,7 @@ gem 'jquery-minicolors-rails', '~> 2.2.3.1'
 gem 'font-awesome-rails', '~> 4.7.0.2'
 gem 'puma', '~> 3.10.0'
 gem 'rails-controller-testing', '~> 1.0.2'
+gem 'lograge', '~> 0.6.0'
 
 group :development do
   gem 'foreman', '~> 0.84.0'
