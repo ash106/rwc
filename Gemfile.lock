@@ -180,7 +180,7 @@ GEM
     puma (3.10.0)
     pundit (1.1.0)
       activesupport (>= 3.0.0)
-    rack (2.0.3)
+    rack (2.0.8)
     rack-contrib (1.2.0)
       rack (>= 0.9.1)
     rack-test (0.7.0)
