@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.7.1'
+ruby '2.6.6'
 
 gem 'coffee-rails', '~> 4.2.2'
 gem 'delayed_job_active_record', '~> 4.1.4'
