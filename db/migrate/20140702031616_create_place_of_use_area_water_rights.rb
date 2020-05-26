@@ -1,4 +1,4 @@
-class CreatePlaceOfUseAreaWaterRights < ActiveRecord::Migration
+class CreatePlaceOfUseAreaWaterRights < ActiveRecord::Migration[4.2]
   def change
     create_table :place_of_use_area_water_rights do |t|
       t.references :place_of_use_area, index: true

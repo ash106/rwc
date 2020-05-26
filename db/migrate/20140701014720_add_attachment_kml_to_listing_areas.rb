@@ -1,4 +1,4 @@
-class AddAttachmentKmlToListingAreas < ActiveRecord::Migration
+class AddAttachmentKmlToListingAreas < ActiveRecord::Migration[4.2]
   def self.up
     change_table :listing_areas do |t|
       t.attachment :kml

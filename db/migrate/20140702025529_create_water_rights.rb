@@ -1,4 +1,4 @@
-class CreateWaterRights < ActiveRecord::Migration
+class CreateWaterRights < ActiveRecord::Migration[4.2]
   def change
     create_table :water_rights do |t|
       t.string :number

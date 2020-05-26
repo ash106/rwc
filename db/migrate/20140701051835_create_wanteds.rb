@@ -1,4 +1,4 @@
-class CreateWanteds < ActiveRecord::Migration
+class CreateWanteds < ActiveRecord::Migration[4.2]
   def change
     create_table :wanteds do |t|
       t.float :volume

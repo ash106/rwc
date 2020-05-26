@@ -1,4 +1,4 @@
-class AddAttachmentKmlToPlaceOfUseAreas < ActiveRecord::Migration
+class AddAttachmentKmlToPlaceOfUseAreas < ActiveRecord::Migration[4.2]
   def self.up
     change_table :place_of_use_areas do |t|
       t.attachment :kml
