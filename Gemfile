@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.7.1'
 
 gem 'coffee-rails', '~> 4.2.2'
-gem 'delayed_job_active_record', '~> 4.1.2'
+gem 'delayed_job_active_record', '~> 4.1.4'
 gem 'flutie', '~> 2.0.0'
 gem 'high_voltage', '~> 3.0.0'
 gem 'jquery-rails', '~> 4.3.1'
