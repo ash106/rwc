@@ -28,7 +28,7 @@ gem 'polylines', '~> 0.3.0'
 gem 'simplify_rb', '~> 0.3.0'
 gem 'jquery-minicolors-rails', '~> 2.2.3.1'
 gem 'font-awesome-rails', '~> 4.7.0.2'
-gem 'puma', '~> 3.10.0'
+gem 'puma', '~> 4.3.8'
 gem 'rails-controller-testing', '~> 1.0.2'
 gem 'lograge', '~> 0.6.0'
 
